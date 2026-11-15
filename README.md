@@ -4,6 +4,8 @@ Margin is a Markdown notebook in the macOS menu bar. Press ⌃⌥N from any app 
 
 This repository holds Margin's release downloads. The source is kept elsewhere.
 
+**Documentation:** every feature, with step by step instructions, at <https://tayler-id.github.io/margin-releases/>.
+
 ## Install
 
 Margin needs macOS 26 or later.
