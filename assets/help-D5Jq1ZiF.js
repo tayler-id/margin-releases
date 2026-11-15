@@ -7,11 +7,11 @@ summary: Let Claude Code, Codex or another MCP agent search and read your notes 
 
 # Connect a coding agent
 
-Margin can serve your notes to a coding agent such as Claude Code or Codex, over the Model Context Protocol (MCP) or a command line. The agent can search and read your notes. Every edit it makes arrives as a proposal, and nothing reaches a file until you accept it. The connection stays on your Mac, and Margin opens no network port.
+Margin can serve your notes to a coding agent such as Claude Code or Codex, over the Model Context Protocol (MCP) or a command line. The agent can search and read your notes. Every edit it makes arrives as a proposal, and nothing reaches a file until you accept it. The connection stays on your Mac, and Margin [opens no network port](privacy.md#when-margin-goes-online).
 
 ## Turn on Agents
 
-1. Press ⌘, and open the Agents pane.
+1. Press ⌘, and open the [Agents pane](settings.md#agents).
 2. Turn on the switch.
 
 Agents is off until you turn it on. While it is off, an agent's requests get an answer that says so.
@@ -23,7 +23,7 @@ The switch is not a security boundary. Your notes are plain files, and an agent 
 1. In the Agents pane, click the copy button for your agent: Claude Code, Codex, or any MCP client.
 2. Paste the setup where your agent's documentation says to add an MCP server.
 
-The setup starts the \`margin\` command, which Homebrew put on your PATH, as \`margin mcp\`. If Margin is not running when the agent starts, the command starts it in the background.
+The setup starts the \`margin\` command, which [Homebrew put on your PATH](install.md#install-with-homebrew), as \`margin mcp\`. If Margin is not running when the agent starts, the command starts it in the background.
 
 ## What an agent can do
 
@@ -57,13 +57,13 @@ A failure prints \`margin: <reason>\` and exits with status 1. A message can be 
 
 ## Review what an agent proposes
 
-When proposals wait, a button in the editor's footer says how many. Click it, or press ⌘J and choose Review Agent Proposals.
+When proposals wait, a button in the editor's [footer](window-tour.md#the-footer) says how many. Click it, or press ⌘J and choose Review Agent Proposals.
 
-Proposals open in the same review as Change Across Notes. Accept or reject each hunk or each note. Click Cancel to keep them for later, or Reject All to drop them.
+Proposals open in the same review as [Change Across Notes](ai-across-notes.md#change-several-notes-at-once). Accept or reject each hunk or each note. Click Cancel to keep them for later, or Reject All to drop them.
 
 - A second edit from the same agent to the same note builds on its first, so you review each note once.
 - A proposed new note never lands on a path that already exists.
-- Margin holds up to 50 proposals and 64 MB. Switching to another notes folder drops them.
+- Margin holds up to 50 proposals and 64 MB. [Switching to another notes folder](notes-folder.md#change-the-folder) drops them.
 
 ## See what agents did
 
@@ -93,6 +93,12 @@ Margin checks \`CLAUDE.md\`, \`CLAUDE.local.md\`, \`AGENTS.md\` and \`GEMINI.md\
 2. Press ⇧⌘P and choose Agent Context.
 
 The list shows the files an agent loads with this one, under Loaded with it, and the files it imports with \`@path\`, as a tree under Imports. A row marks an import that is missing, outside the notes folder, already imported above, or past the number of hops the agent follows. The last line counts the files and lines the agent reads. Press Return to open a file.
+
+## See also
+
+- [AI in a note](ai.md), to keep notes and passages away from agents and AI
+- [AI across notes](ai-across-notes.md), for the review where agent proposals wait
+- [Troubleshooting](troubleshooting.md), when an agent cannot reach Margin
 `,r=`---
 title: AI across notes
 section: AI
@@ -108,10 +114,10 @@ Some AI commands read more than the open note. They answer questions from your n
 
 1. Press ⌘J and choose Ask About Notes….
 2. Type your question.
-3. Margin searches for its words and shows the best passage from each matching note. Remove any you do not want sent.
+3. Margin [searches for its words](find-and-create.md#search-your-notes) and shows the best passage from each matching note. Remove any you do not want sent.
 4. Send the question.
 
-The answer cites each claim with a link to its passage, \`[[Note#Heading]]\`, and a short quote. A quote Margin cannot find in the note it names reads "Not found in note". On this Mac, the passages stay under 1,100 words in all, so one call can answer.
+The answer cites each claim with a [link](links.md#link-to-another-note) to its passage, \`[[Note#Heading]]\`, and a short quote. A quote Margin cannot find in the note it names reads "Not found in note". On this Mac, the passages stay under 1,100 words in all, so one call can answer.
 
 ## Change several notes at once
 
@@ -120,7 +126,7 @@ The answer cites each claim with a link to its passage, \`[[Note#Heading]]\`, an
 3. Tick the notes to change.
 4. Review the proposals. Every hunk appears in one list, grouped by note, with Accept and Reject for each hunk and each note.
 
-Margin does not flag a detail you named in your request, so a rename needs no hand check of every hunk. When you apply the changes, Margin holds back any note that changed meanwhile. To undo the whole set later, even after the review closes, press ⌘J and choose Undo Change Across Notes. A note changed since stays as it is.
+Margin does not flag a detail you named in your request, so a rename needs no hand check of every hunk. When you apply the changes, Margin holds back any note that [changed meanwhile](safety.md#when-another-app-changes-a-note). To undo the whole set later, even after the review closes, press ⌘J and choose Undo Change Across Notes. A note changed since stays as it is.
 
 ## Review a draft
 
@@ -135,7 +141,7 @@ Margin lists each item as Pass, Fail or Cannot tell. A pass must quote the draft
 
 ## Keep dependent notes up to date
 
-A note can say it depends on others in its front matter:
+A note can say it depends on others in its [front matter](properties-and-bases.md#edit-a-notes-properties):
 
 \`\`\`yaml
 ---
@@ -151,17 +157,23 @@ Press ⌘J and choose Notes Needing Review. Margin lists each note whose file is
 
 Find by meaning searches for notes about an idea, even when they use other words. It runs on your Mac and works with AI off.
 
-1. Press ⌘, and open the AI settings.
+1. Press ⌘, and open the [AI settings](settings.md#ai).
 2. Turn on Find by meaning. It is off at first.
 3. In the search field, type \`?\` and then your words.
 
 The list shows each note's closest passage. Delete the \`?\` to go back to ordinary search.
 
-Margin reads each section of each note in the background, at low priority, and keeps what it learns in its Application Support folder. Notes kept out of AI are never read.
+Margin reads each section of each note in the background, at low priority, and keeps what it learns in its [Application Support folder](privacy.md#where-margin-keeps-its-files). Notes kept out of AI are never read.
 
 ## Review proposals from coding agents
 
 Edits from coding agents wait in the same review as Change Across Notes. See [Connect a coding agent](agents.md#review-what-an-agent-proposes).
+
+## See also
+
+- [AI in a note](ai.md), to turn on AI and run commands on one note
+- [Check a note](checks.md), to check a note against Vale style rules, with no AI
+- [Find and replace](find-and-replace.md), to replace exact text across notes, with no AI
 `,i=`---
 title: AI in a note
 section: AI
@@ -175,10 +187,10 @@ AI is off until you turn it on. When it is on, AI commands rewrite, shorten, tra
 
 ## Turn on AI
 
-1. Press ⌘, and open the AI settings.
+1. Press ⌘, and open the [AI settings](settings.md#ai).
 2. Choose one:
    - Off. No AI command shows and no AI code runs.
-   - On this Mac. Margin uses Apple's on-device model. You need no account, and nothing leaves your Mac.
+   - On this Mac. Margin uses Apple's on-device model. You need no account, and [nothing leaves your Mac](privacy.md#when-margin-goes-online).
    - Claude. Margin sends text to Anthropic's Claude with your own API key. Enter the key when you choose Claude.
 
 Margin keeps your Claude key in the macOS Keychain and nowhere else.
@@ -188,7 +200,7 @@ The on-device model reads about 4,096 tokens at a time, reply included, so it wo
 ## Run an AI command
 
 1. Select text, or put the caret in a section.
-2. Press ⌘J, click the AI button in the format bar, or choose the AI row in the slash menu.
+2. Press ⌘J, click the AI button in the [format bar](formatting.md#use-the-format-bar), or choose the AI row in the slash menu.
 3. Choose a command. If it needs a detail, such as a tone or a language, it asks first.
 
 A command reads the selection if there is one, otherwise the caret's section, otherwise the whole note. A read-only note offers no AI commands.
@@ -247,17 +259,17 @@ The passage goes to the model as a placeholder and comes back unchanged. A run t
 - Write Outline and Summarize read the selection, or else the whole note, and put their reply a blank line below it.
 - Notes to Draft and Suggest Headings replace what they read.
 - Suggest Title reads the first 1,000 words and replaces the first heading, or adds one at the top.
-- Prose to Table and Prose to Checklist replace what they read. Prose to Diagram puts a Mermaid block below it.
+- Prose to Table and Prose to Checklist replace what they read. Prose to Diagram puts a [Mermaid block](preview.md#draw-diagrams) below it.
 
 Margin checks that a table, a checklist or a diagram reply has the right shape. A reply that does not says "Did not parse" and stays for you to read.
 
 ## Pull action items
 
-Open a meeting note, press ⌘J and choose Pull Action Items. Margin reads the whole note and proposes a task list under \`## Action items\` at its end, one task a line, with the owner and due date when the note names them, such as \`- [ ] Send the budget (Ada, Friday)\`. It leaves out what the note already has as a task. If there is nothing to pull, it says "The note holds no action items."
+Open a meeting note, press ⌘J and choose Pull Action Items. Margin reads the whole note and proposes a [task list](lists-and-tasks.md) under \`## Action items\` at its end, one task a line, with the owner and due date when the note names them, such as \`- [ ] Send the budget (Ada, Friday)\`. It leaves out what the note already has as a task. If there is nothing to pull, it says "The note holds no action items."
 
 ## Explain code or an equation
 
-Put the caret in a code block or an equation, press ⌘J and choose Explain. The explanation appears in a popover. Click Insert to put it below the block.
+Put the caret in a [code block](code-blocks.md) or an equation, press ⌘J and choose Explain. The explanation appears in a popover. Click Insert to put it below the block.
 
 ## Draft from a template
 
@@ -277,7 +289,7 @@ Replies have no tools. A note that tells the model to ignore its instructions ca
 
 ## Set rules for a folder
 
-Put these files in your notes folder's \`.margin\` folder:
+Put these files in your [notes folder's](notes-folder.md#files-margin-keeps-in-the-margin-folder) \`.margin\` folder:
 
 - \`.margin/ai.md\` holds the audience, terms and style every run should follow. With Claude, the Send line names it and counts its words.
 - \`.margin/ai.json\` lists folders and notes to keep out of AI, such as \`{"exclude": ["Private"]}\`.
@@ -298,6 +310,13 @@ Press ⇧⌘P and choose Show Authorship. Margin records the AI text you accept 
 ## Check the AI log
 
 Margin logs each run in \`ai-log.jsonl\` in its Application Support folder: the time, the provider, the model, the scope, the tokens and the cost. The log never holds note text.
+
+## See also
+
+- [AI across notes](ai-across-notes.md), to ask questions of every note and change many at once
+- [Privacy and network use](privacy.md), for exactly what Claude receives and what stays on your Mac
+- [Connect a coding agent](agents.md), to let Claude Code or Codex read your notes and propose edits
+- [Review SQL](schema-review.md), where AI can explain a finding and propose a fix
 `,a=`---
 title: Themes and writing comfort
 section: Writing
@@ -311,23 +330,23 @@ Margin follows the system's light or dark appearance. You can change its colors 
 
 ## Choose a theme
 
-1. Press ⌘, to open Settings.
+1. Press ⌘, to open [Settings](settings.md#editor).
 2. Under Editor, choose a Theme: Standard or Sepia.
 
-Standard uses the system's own colors. Sepia sets the editor and the preview on warm paper in light appearance and on warm dark brown in dark appearance. Both meet the WCAG 2.2 AA contrast ratio. Your highlight color still marks selected text.
+Standard uses the system's own colors. Sepia sets the editor and the [preview](preview.md) on warm paper in light appearance and on warm dark brown in dark appearance. Both meet the WCAG 2.2 AA contrast ratio. Your highlight color still marks selected text.
 
-A theme changes only the screen. Exports, printing and Copy as HTML stay black on white.
+A theme changes only the screen. [Exports, printing and Copy as HTML](export.md) stay black on white.
 
 ## Make your own theme
 
-1. In your notes folder, put a CSS file in \`.margin/themes/\`, such as \`.margin/themes/Harbour.css\`.
+1. In your [notes folder](notes-folder.md#files-margin-keeps-in-the-margin-folder), put a CSS file in \`.margin/themes/\`, such as \`.margin/themes/Harbour.css\`.
 2. Open Settings and choose Harbour under Theme. Your themes follow Standard and Sepia in the list.
 
 Margin applies a theme as you save its file, so you can keep the file open in another editor and watch the change. A theme can set Margin's own color tokens, such as \`--surface\`, the color behind the editor and the preview, and anything else CSS can style.
 
 - A theme file can be up to 1 MB.
 - Margin passes over files whose names start with a dot, and files in folders inside \`.margin/themes/\`.
-- A theme cannot load other style sheets with \`@import\` or use web fonts. It loads images from the web only while Load remote images is on.
+- A theme cannot load other style sheets with \`@import\` or use web fonts. It loads images from the web only while [Load remote images](images.md#show-images-from-the-web) is on.
 
 ## Set the font, size and spacing
 
@@ -347,7 +366,7 @@ Press ⌘+, ⌘- or ⌘0 to change the text size without opening Settings. See [
 
 ## Focus on one paragraph
 
-Press ⌘D to turn on Focus Mode. Margin dims every line outside the block the caret is in to 40 percent, and hides the footer, the note list and the folder column. The lit block is the caret's paragraph, heading, code block, table or list item. Select text across blocks to light all of them.
+Press ⌘D to turn on Focus Mode. Margin dims every line outside the block the caret is in to 40 percent, and hides the footer, the note list and the [folder column](manage-notes.md#show-the-folder-column). The lit block is the caret's paragraph, heading, code block, table or list item. Select text across blocks to light all of them.
 
 Press ⌘\\ to bring the list back while you work. Press ⌘D again to leave Focus Mode. The list returns if it was showing when you started.
 
@@ -359,7 +378,7 @@ Focus Mode and typewriter scrolling each have a switch in Settings. Margin remem
 
 ## Use Increase Contrast
 
-Turn on Increase Contrast in System Settings, under Accessibility and then Display. Margin darkens its quiet colors so dimmed marks, bullets, checkbox edges, keycaps, calculation answers and thin lines reach a contrast ratio of 4.5 to 1. A theme keeps the colors it sets.
+Turn on Increase Contrast in System Settings, under Accessibility and then Display. Margin darkens its quiet colors so dimmed marks, bullets, checkbox edges, keycaps, [calculation answers](calc.md) and thin lines reach a contrast ratio of 4.5 to 1. A theme keeps the colors it sets.
 
 ## Write text that runs right to left
 
@@ -383,7 +402,13 @@ dir: rtl
 \`\`\`
 
 With a fixed direction, every line takes it, so a line that starts with a number or a Latin name in a right-to-left note stays right to left. Automatic reads each line on its own, as described above.
-`,o="---\ntitle: Math in notes\nsection: Math in notes\norder: 1\nsummary: Work out sums, percentages, units, dates and currencies in a note, with each answer beside its line.\n---\n\n# Math in notes\n\nWrite arithmetic in plain words and Margin shows the answer at the right of each line, the way Numi and Soulver do. Answers never go into the file, so the note stays plain Markdown.\n\n## Start a calculation\n\nMargin works out lines only inside a calculation, so a list item such as `1. Buy milk` or a date such as `2026-11-03` elsewhere in your notes stays as it is. Start one in either of these ways:\n\n- Add a ` ```calc ` block. Type `/` and choose Calc block, or type the fence yourself. Margin works out every line in the block.\n- Add `calc: true` to a note's front matter. Margin works out every line from the end of the front matter to the end of the note, except tables, HTML and other code blocks.\n\nA ` ```math ` block is still LaTeX math, not a calculation.\n\n## Write lines Margin can read\n\nMargin finds the arithmetic in each line and passes over the words around it.\n\n| Line | Answer |\n| --- | --- |\n| `$19 for breakfast + $22 for the uber` | $41.00 |\n| `Rent: 1,850` | 1,850 |\n| `- [ ] Rent 1,850` | 1,850 |\n| `6 (3)` | 18 |\n\n- Text before a colon and a space is a label.\n- Everything after `//` is a comment.\n- Margin skips text in double quotes.\n- List markers, task boxes, quote marks, emphasis and link addresses come off first.\n- A heading shows no answer, even when it holds numbers.\n- A line with nothing Margin can read shows no answer and no error.\n\n## Do arithmetic\n\nUse symbols or words. `and` and `with` add, `without` subtracts, and `mul` and `times` multiply. `6 (3)` multiplies too.\n\n- `2 ^ 3 ^ 2` is 512, since powers group from the right.\n- `sqrt`, logarithms and trigonometry work in radians unless a value says `°` or `degrees`.\n- `larger of 100 and 200` is 200.\n- `random number between 1 and 10` draws a new whole number each time Margin reads the line.\n- `0.1 + 0.2` is 0.3, since Margin counts in decimal.\n\nAnswers show up to 10 decimal places. A line Margin cannot work out, such as `1 / 0`, shows no answer.\n\n## Work with percentages\n\n| Line | Answer |\n| --- | --- |\n| `200 + 10%` | 220 |\n| `10% of 200` | 20 |\n| `10% off 200` | 180 |\n| `30% + 0.4` | 70% |\n| `20/200 %` | 10% |\n| `20 is 10% of what` | 200 |\n| `50 to 75 is what %` | 50% |\n| `5% of what is $6` | $120.00 |\n| `2/3 of 600` | 400 |\n| `1/4 off $100` | $75.00 |\n| `2/10 as fraction` | 1/5 |\n| `0.534 to nearest 16th` | 9/16 |\n| `20/5 as multiplier` | 4x |\n\n`as %` makes a number a percent, and `as dec` makes a percent a number again.\n\n## Use variables and earlier lines\n\n- `name = value` sets a variable. A name can be several words, and works on the lines below it.\n- `+=` and `-=` change a variable.\n- `prev` is the answer on the line above. A line that starts with an operator, such as `* 2`, carries on from it.\n- A `---` line clears your variables.\n\nVariables carry on through every calculation in a note, top to bottom. Type two letters of a variable's name to have Margin offer it.\n\n## Add up totals\n\nWrite `sum` or `total` to add the answers above it, `average` or `avg` to average them, or `subtotal` to add them as a subtotal. Each stops at the nearest blank line, heading, `---` line or earlier total.\n\nWhile the caret is in a calculation, the footer shows its Total. Select lines to total only those, under Selection. Click the footer total to copy it. Answers that do not add, such as 5 km and 3 kg, show no total.\n\n## Convert units\n\nUse `in`, `into`, `as` or `to` to convert.\n\n| Line | Answer |\n| --- | --- |\n| `1km + 1,000m` | 2 km |\n| `1 meter 20 cm` | 120 cm |\n| `5 km in 25 min` | 05:00/km |\n| `time to upload 3GB at 10 MB/s` | The time, in the largest whole unit |\n| `12h 30m in degrees` | An angle, at 15° an hour |\n\n- Data sizes count 1,000 for `kB` and 1,024 for `KiB`, with `b` for bits and `B` for bytes.\n- Temperatures read `°C`, `C`, `celsius`, the same for Fahrenheit, and `K` or `kelvin`.\n- `em` is 16 px and `ppi` is 96 until a line sets them. `at 326 ppi` sets the density for its own line.\n- `cast` changes a unit without converting.\n\nWhen two amounts of one kind add, the larger unit wins. A plain number takes the other amount's unit.\n\n## Work with dates and times\n\n| Line | Answer |\n| --- | --- |\n| `today + 3 weeks` | The date three weeks from today |\n| `days between 3 March and 30 May` | The days between them |\n| `January 31 2020 + 1 month` | 29 February 2020 |\n| `6pm Sydney in Chicago` | The time in Chicago |\n| `time in Tokyo` | Tokyo's time now |\n\n- A date without a year is this year's, unless that is more than nine months ago.\n- A date in digits needs a four-digit year, and reads in your region's order.\n- A clock time needs am or pm. A city counts as a time zone only beside a time, so `flight to Paris $500` is $500.00.\n- One date minus another gives the span between them in years, months, weeks and days.\n\n## Use rates\n\nA rate is an amount per unit, such as `3 hours / day`, `$99 per week` or `$24 a day`.\n\n| Line | Answer |\n| --- | --- |\n| `$50/week × 12 weeks` | $600.00 |\n| `$24 a day for a year` | $8,765.82 |\n| `30 hours at $30/hour` | $900.00 |\n| `$500 at $20/hour` | 25 hours |\n\nWrite `as / month`, `in €/month` or `is what per year` to restate a rate. In time arithmetic a year is 365.2425 days and a month is a twelfth of one.\n\n## Convert currencies\n\nWrite money with a sign such as `$`, `€`, `US$` or `C$`, a code after the amount such as `50 CHF`, a common code before it such as `EUR 50`, or a name such as `dollars` or `yen`.\n\nMargin finds a rate for a conversion in this order:\n\n1. A rate on the line itself, such as `50 EUR in USD at 1.05 USD/EUR`.\n2. A rate line above it in the note or the definitions note, such as `EUR = 1.09 USD`.\n3. A currency both have a rate to.\n4. The European Central Bank's reference rates for about 30 currencies, bundled with Margin on the day it was built.\n\nPoint at an answer converted with the bundled rates to see their date. A sum of two currencies converts into the first. Without a rate, the line reads, for example, \"no EUR rate\". Margin never fetches rates from the internet.\n\n## Format numbers\n\nMargin uses your Mac's region for decimal points, thousands separators and clock times, and reads your lines the same way. `1_000_000`, `1e3` and `5 300` all read as numbers.\n\nAdd a format to any line, such as `in hex`, `in binary`, `as base 8`, `in sci`, `to 2 dp`, `to 5 digits`, `to nearest 10`, `rounded down` or `rounded up to nearest 5`. Large answers show as `1.7M`. Money rounds to its currency's places, so yen show none.\n\nTo set defaults, open Settings and find Math. Turn large answers as 1.5M on or off, and choose decimal places from 0 to 10 or automatic.\n\n## Copy answers\n\n- Click an answer to copy it. It reads Copied for a second.\n- Press ⌥⇧⌘C to copy the answer on the caret's line, as shown.\n- Choose Copy Unformatted Answer in the palette to copy the number without separators, units or notation.\n- Choose Copy with Answers to copy the selected lines, or the whole calculation, as `expression | answer` lines lined up on the bar.\n- Choose Insert Answer to add the answer to the caret's line as a comment, such as ` // 1,850`. The `//` keeps it out of later sums.\n\nA long answer ends in an ellipsis. Point at it to see all of it.\n\n## Define your own units and values\n\nPick one note to hold the values and units you use everywhere:\n\n1. Open Settings and find Math.\n2. Choose a definitions note.\n\nIts variables, units and rates apply in every calculation in that notes folder, below each note's own. A unit is written in terms of one Margin knows, such as `1 watermelon = 20 lb`, and its plural works too, so `40 lb in watermelons` is 2 watermelons. If you rename the definitions note in Margin, the choice follows it.\n\n## See answers in the preview and exports\n\nThe preview shows a ` ```calc ` block with its answers in a second column, and each answer of a `calc: true` note at the right of its line. Printing, HTML and PDF exports, Copy as HTML and Share carry the answers. Export as plain text writes `expression | answer` lines.\n\n## What Margin leaves out\n\nMargin does not do math that needs the internet, such as weather, stocks or live crypto rates. It has no numbered line references, since a plain file has nowhere to keep them when lines move, and no scripting. For custom units and values, use the definitions note.\n",s=`---
+
+## See also
+
+- [Write and edit](editor.md), for text size, spell check and input methods
+- [Export, print and share](export.md), to set the look of PDFs and HTML with an export template
+- [Open and close the panel](panel.md), to fill the screen with the panel
+`,o="---\ntitle: Math in notes\nsection: Math in notes\norder: 1\nsummary: Work out sums, percentages, units, dates and currencies in a note, with each answer beside its line.\n---\n\n# Math in notes\n\nWrite arithmetic in plain words and Margin shows the answer at the right of each line, the way Numi and Soulver do. Answers never go into the file, so the note stays plain Markdown.\n\n## Start a calculation\n\nMargin works out lines only inside a calculation, so a list item such as `1. Buy milk` or a date such as `2026-11-03` elsewhere in your notes stays as it is. Start one in either of these ways:\n\n- Add a ` ```calc ` block. Type `/` and choose [Calc block](slash-menu.md#insert-a-block-from-the-slash-menu), or type the fence yourself. Margin works out every line in the block.\n- Add `calc: true` to a note's [front matter](properties-and-bases.md#edit-a-notes-properties). Margin works out every line from the end of the front matter to the end of the note, except tables, HTML and other code blocks.\n\nA ` ```math ` block is still [LaTeX math](preview.md#write-math), not a calculation.\n\n## Write lines Margin can read\n\nMargin finds the arithmetic in each line and passes over the words around it.\n\n| Line | Answer |\n| --- | --- |\n| `$19 for breakfast + $22 for the uber` | $41.00 |\n| `Rent: 1,850` | 1,850 |\n| `- [ ] Rent 1,850` | 1,850 |\n| `6 (3)` | 18 |\n\n- Text before a colon and a space is a label.\n- Everything after `//` is a comment.\n- Margin skips text in double quotes.\n- List markers, task boxes, quote marks, emphasis and link addresses come off first.\n- A heading shows no answer, even when it holds numbers.\n- A line with nothing Margin can read shows no answer and no error.\n\n## Do arithmetic\n\nUse symbols or words. `and` and `with` add, `without` subtracts, and `mul` and `times` multiply. `6 (3)` multiplies too.\n\n- `2 ^ 3 ^ 2` is 512, since powers group from the right.\n- `sqrt`, logarithms and trigonometry work in radians unless a value says `°` or `degrees`.\n- `larger of 100 and 200` is 200.\n- `random number between 1 and 10` draws a new whole number each time Margin reads the line.\n- `0.1 + 0.2` is 0.3, since Margin counts in decimal.\n\nAnswers show up to 10 decimal places. A line Margin cannot work out, such as `1 / 0`, shows no answer.\n\n## Work with percentages\n\n| Line | Answer |\n| --- | --- |\n| `200 + 10%` | 220 |\n| `10% of 200` | 20 |\n| `10% off 200` | 180 |\n| `30% + 0.4` | 70% |\n| `20/200 %` | 10% |\n| `20 is 10% of what` | 200 |\n| `50 to 75 is what %` | 50% |\n| `5% of what is $6` | $120.00 |\n| `2/3 of 600` | 400 |\n| `1/4 off $100` | $75.00 |\n| `2/10 as fraction` | 1/5 |\n| `0.534 to nearest 16th` | 9/16 |\n| `20/5 as multiplier` | 4x |\n\n`as %` makes a number a percent, and `as dec` makes a percent a number again.\n\n## Use variables and earlier lines\n\n- `name = value` sets a variable. A name can be several words, and works on the lines below it.\n- `+=` and `-=` change a variable.\n- `prev` is the answer on the line above. A line that starts with an operator, such as `* 2`, carries on from it.\n- A `---` line clears your variables.\n\nVariables carry on through every calculation in a note, top to bottom. Type two letters of a variable's name to have Margin offer it.\n\n## Add up totals\n\nWrite `sum` or `total` to add the answers above it, `average` or `avg` to average them, or `subtotal` to add them as a subtotal. Each stops at the nearest blank line, heading, `---` line or earlier total.\n\nWhile the caret is in a calculation, the [footer](window-tour.md#the-footer) shows its Total. Select lines to total only those, under Selection. Click the footer total to copy it. Answers that do not add, such as 5 km and 3 kg, show no total.\n\n## Convert units\n\nUse `in`, `into`, `as` or `to` to convert.\n\n| Line | Answer |\n| --- | --- |\n| `1km + 1,000m` | 2 km |\n| `1 meter 20 cm` | 120 cm |\n| `5 km in 25 min` | 05:00/km |\n| `time to upload 3GB at 10 MB/s` | The time, in the largest whole unit |\n| `12h 30m in degrees` | An angle, at 15° an hour |\n\n- Data sizes count 1,000 for `kB` and 1,024 for `KiB`, with `b` for bits and `B` for bytes.\n- Temperatures read `°C`, `C`, `celsius`, the same for Fahrenheit, and `K` or `kelvin`.\n- `em` is 16 px and `ppi` is 96 until a line sets them. `at 326 ppi` sets the density for its own line.\n- `cast` changes a unit without converting.\n\nWhen two amounts of one kind add, the larger unit wins. A plain number takes the other amount's unit.\n\n## Work with dates and times\n\n| Line | Answer |\n| --- | --- |\n| `today + 3 weeks` | The date three weeks from today |\n| `days between 3 March and 30 May` | The days between them |\n| `January 31 2020 + 1 month` | 29 February 2020 |\n| `6pm Sydney in Chicago` | The time in Chicago |\n| `time in Tokyo` | Tokyo's time now |\n\n- A date without a year is this year's, unless that is more than nine months ago.\n- A date in digits needs a four-digit year, and reads in your region's order.\n- A clock time needs am or pm. A city counts as a time zone only beside a time, so `flight to Paris $500` is $500.00.\n- One date minus another gives the span between them in years, months, weeks and days.\n\n## Use rates\n\nA rate is an amount per unit, such as `3 hours / day`, `$99 per week` or `$24 a day`.\n\n| Line | Answer |\n| --- | --- |\n| `$50/week × 12 weeks` | $600.00 |\n| `$24 a day for a year` | $8,765.82 |\n| `30 hours at $30/hour` | $900.00 |\n| `$500 at $20/hour` | 25 hours |\n\nWrite `as / month`, `in €/month` or `is what per year` to restate a rate. In time arithmetic a year is 365.2425 days and a month is a twelfth of one.\n\n## Convert currencies\n\nWrite money with a sign such as `$`, `€`, `US$` or `C$`, a code after the amount such as `50 CHF`, a common code before it such as `EUR 50`, or a name such as `dollars` or `yen`.\n\nMargin finds a rate for a conversion in this order:\n\n1. A rate on the line itself, such as `50 EUR in USD at 1.05 USD/EUR`.\n2. A rate line above it in the note or the definitions note, such as `EUR = 1.09 USD`.\n3. A currency both have a rate to.\n4. The European Central Bank's reference rates for about 30 currencies, bundled with Margin on the day it was built.\n\nPoint at an answer converted with the bundled rates to see their date. A sum of two currencies converts into the first. Without a rate, the line reads, for example, \"no EUR rate\". Margin [never fetches rates](privacy.md#when-margin-goes-online) from the internet.\n\n## Format numbers\n\nMargin uses your Mac's region for decimal points, thousands separators and clock times, and reads your lines the same way. `1_000_000`, `1e3` and `5 300` all read as numbers.\n\nAdd a format to any line, such as `in hex`, `in binary`, `as base 8`, `in sci`, `to 2 dp`, `to 5 digits`, `to nearest 10`, `rounded down` or `rounded up to nearest 5`. Large answers show as `1.7M`. Money rounds to its currency's places, so yen show none.\n\nTo set defaults, open [Settings](settings.md#math) and find Math. Turn large answers as 1.5M on or off, and choose decimal places from 0 to 10 or automatic.\n\n## Copy answers\n\n- Click an answer to copy it. It reads Copied for a second.\n- Press ⌥⇧⌘C to copy the answer on the caret's line, as shown.\n- Choose Copy Unformatted Answer in the palette to copy the number without separators, units or notation.\n- Choose Copy with Answers to copy the selected lines, or the whole calculation, as `expression | answer` lines lined up on the bar.\n- Choose Insert Answer to add the answer to the caret's line as a comment, such as ` // 1,850`. The `//` keeps it out of later sums.\n\nA long answer ends in an ellipsis. Point at it to see all of it.\n\n## Define your own units and values\n\nPick one note to hold the values and units you use everywhere:\n\n1. Open Settings and find Math.\n2. Choose a definitions note.\n\nIts variables, units and rates apply in every calculation in that notes folder, below each note's own. A unit is written in terms of one Margin knows, such as `1 watermelon = 20 lb`, and its plural works too, so `40 lb in watermelons` is 2 watermelons. If you [rename](manage-notes.md#rename-a-note) the definitions note in Margin, the choice follows it.\n\n## See answers in the preview and exports\n\nThe preview shows a ` ```calc ` block with its answers in a second column, and each answer of a `calc: true` note at the right of its line. [Printing, HTML and PDF exports](export.md), Copy as HTML and Share carry the answers. Export as plain text writes `expression | answer` lines.\n\n## What Margin leaves out\n\nMargin does not do math that needs the internet, such as weather, stocks or live crypto rates. It has no numbered line references, since a plain file has nowhere to keep them when lines move, and no scripting. For custom units and values, use the definitions note.\n\n## See also\n\n- [Read the preview](preview.md), for LaTeX math, which draws formulas and works nothing out\n- [Export, print and share](export.md), to print or export a note with its answers\n- [Settings](settings.md), for the Math settings and the definitions note\n",s=`---
 title: Check a note
 section: Writing
 order: 12
@@ -392,19 +417,19 @@ summary: Check a note's accessibility, style rules and front matter before you p
 
 # Check a note
 
-Margin has commands that check the open note against a set of rules and list what they find above the editor. Each list works like the outline. Type to filter it, use the arrow keys to choose a row, press Return to go to the problem, and press Esc to close the list. Nothing is checked until you run a command.
+Margin has commands that check the open note against a set of rules and list what they find above the editor. Each list works like the [outline](outline-and-sections.md#open-the-outline). Type to filter it, use the arrow keys to choose a row, press Return to go to the problem, and press Esc to close the list. Nothing is checked until you run a command.
 
 ## Check accessibility
 
 1. Press ⇧⌘P and choose Check Accessibility.
 2. The list shows two kinds of problem:
-   - An Error for each image with no alt text, with its line and path.
+   - An Error for each image with no [alt text](images.md#add-alt-text-and-a-caption), with its line and path.
    - A Warning for each heading that skips a level, such as a level 4 heading under a level 2.
 3. Choose a row and press Return. For an image, Margin opens the Alt text and caption sheet. For a heading, it puts the caret at the heading's start.
 
-The list also names the language the HTML export will declare, from the note's \`lang\` property or else your Mac's language. A note with neither problem says "No accessibility problems." and the language.
+The list also names the language the [HTML export](export.md#export-a-note) will declare, from the note's \`lang\` property or else your Mac's language. A note with neither problem says "No accessibility problems." and the language.
 
-The HTML export writes that language into the page, and writes a numbered table's caption as the table's own caption.
+The HTML export writes that language into the page, and writes a [numbered table's caption](preview.md#number-figures-equations-and-tables) as the table's own caption.
 
 ## Check style with Vale rules
 
@@ -422,7 +447,7 @@ If no \`.vale.ini\` applies, or the note raises no alerts, the list says so. Mar
 
 ## Check front matter against a schema
 
-You can describe the properties a note should have in a JSON Schema, and check the note against it.
+You can describe the [properties](properties-and-bases.md#edit-a-notes-properties) a note should have in a JSON Schema, and check the note against it.
 
 1. Name the schema in one of two ways:
    - In the note's front matter, as \`$schema: schemas/post.yaml\`.
@@ -445,6 +470,12 @@ Margin checks these keywords: \`type\`, \`enum\`, \`const\`, \`required\`, \`pro
 - To find links that lead nowhere, see [Links and wikilinks](links.md#fix-broken-links).
 - To review the SQL in a note, see [Review SQL](schema-review.md).
 - To check the instruction files for coding agents, see [Connect a coding agent](agents.md#check-agent-instruction-files).
+
+## See also
+
+- [Images and attachments](images.md), to add alt text and captions
+- [Export, print and share](export.md), to export the checked note as HTML or PDF
+- [Tags, properties and bases](properties-and-bases.md), to edit the front matter a schema checks
 `,c=`---
 title: Code blocks
 section: Writing
@@ -454,14 +485,14 @@ summary: Write fenced code with highlighting, set its language, copy it from the
 
 # Code blocks
 
-A fenced code block starts and ends with a line of backticks. Margin highlights the code inside by its language, in the editor and the preview, using grey tones: keywords in bold, strings and punctuation lighter, comments in italic.
+A fenced code block starts and ends with a line of backticks. Margin highlights the code inside by its language, in the editor and the [preview](preview.md), using grey tones: keywords in bold, strings and punctuation lighter, comments in italic.
 
 ## Add a code block
 
 Do one of these:
 
 - Select lines and press ⇧⌘K. Margin puts fences around them. Its fence is one backtick longer than any run of backticks inside, so code that holds backticks stays whole.
-- Type \`/\` at the start of a line and choose Code block.
+- Type \`/\` at the start of a line and choose Code block in the [slash menu](slash-menu.md#insert-a-block-from-the-slash-menu).
 - Type three backticks and a language name, such as \` \`\`\`python \`, on a line of its own.
 
 To take the fences off a block, put the caret inside it and press ⇧⌘K.
@@ -477,7 +508,7 @@ Margin writes the name on the opening fence and keeps anything after it, such as
 
 ## Copy code from the preview
 
-In the preview, each code block has a row above it with its language and a Copy button. Click Copy to put the block's text on the clipboard, as written. The button reads Copied for a moment. Exports and print leave this row out.
+In the preview, each code block has a row above it with its language and a Copy button. Click Copy to put the block's text on the clipboard, as written. The button reads Copied for a moment. [Exports and print](export.md) leave this row out.
 
 ## Indent code by .editorconfig
 
@@ -497,7 +528,7 @@ The notice says "Formatted the code block by .editorconfig.", or that no \`.edit
 
 ## Paste code from a chat or a developer tool
 
-Code you copy from a chat app or a developer tool pastes as one fenced block. Margin keeps its language label as the fence's language and leaves out the text of copy buttons.
+Code you copy from a chat app or a developer tool [pastes](formatting.md#paste-formatted-text) as one fenced block. Margin keeps its language label as the fence's language and leaves out the text of copy buttons.
 
 ## Explain a block with AI
 
@@ -506,6 +537,12 @@ With AI on, Explain describes the code block at the caret. See [AI in a note](ai
 ## Run SQL
 
 A \` \`\`\`sql \` block can hold a database schema or queries you run against a database. See [SQL schema blocks](schema-blocks.md) and [Database connections](databases.md).
+
+## See also
+
+- [SQL schema blocks](schema-blocks.md), for what Margin reads and checks in a sql block
+- [Math in notes](calc.md), for calc blocks, which show an answer beside each line
+- [Plugins, macros and hooks](plugins.md), to draw a fenced block of your own language
 `,l=`---
 title: Database connections
 section: SQL and databases
@@ -515,11 +552,11 @@ summary: Connect PostgreSQL, MySQL and SQLite databases, run a note's SQL safely
 
 # Database connections
 
-Margin can run the SQL in a note against a database you set up. Connections are read-only until you allow writes, the database itself enforces that, and nothing runs until you ask. A statement never runs when a note opens, from the preview, or from an AI reply.
+Margin can run the [SQL in a note](schema-blocks.md) against a database you set up. Connections are read-only until you allow writes, the database itself enforces that, and nothing runs until you ask. A statement never runs when a note opens, from the preview, or from an [AI reply](ai.md#review-a-proposal).
 
 ## Add a connection
 
-1. Press ⌘, and choose **Databases**.
+1. Press ⌘, and choose [**Databases**](settings.md#databases).
 2. Click **Add Connection…**.
 3. Fill in the sheet:
 
@@ -541,11 +578,11 @@ Margin can run the SQL in a note against a database you set up. Connections are 
 
 You can edit or remove a connection from the same pane. Margin asks before it removes one, since its password goes with it.
 
-Margin keeps the list of connections in its Application Support folder, without passwords. Each password lives in the macOS Keychain.
+Margin keeps the list of connections in its [Application Support folder](privacy.md#where-margin-keeps-its-files), without passwords. Each password lives in the macOS Keychain.
 
 ## Name a connection in a note
 
-Add \`connection:\` to the note's front matter:
+Add \`connection:\` to the note's [front matter](properties-and-bases.md#edit-a-notes-properties):
 
 \`\`\`yaml
 ---
@@ -563,7 +600,7 @@ Results appear under the block and never go into the file. Margin shows at most 
 
 You can take the results with you:
 
-- Insert as Table puts the rows in the note as a Markdown table, in one step of undo.
+- Insert as Table puts the rows in the note as a [Markdown table](tables.md), in one step of undo.
 - Copy as CSV copies them. Margin puts an apostrophe before a value a spreadsheet would run as a formula.
 
 ## Connections start read only
@@ -601,6 +638,12 @@ Press ⇧⌘P and choose Compare with Database. Margin reads the connection's sc
 ## Read table sizes and plans
 
 For Read Table Sizes, Run Plan and Run Plan with ANALYZE, see [Review SQL](schema-review.md#read-sizes-and-plans-from-a-database).
+
+## See also
+
+- [SQL schema blocks](schema-blocks.md), to write the schema a connection is compared with
+- [Review SQL](schema-review.md), to read table sizes and live plans into Review
+- [Privacy and network use](privacy.md), for every connection Margin makes
 `,u=`---
 title: Edit Without Marks
 section: Writing
@@ -610,14 +653,14 @@ summary: Keep Markdown marks hidden on the line you are typing, edit tables as a
 
 # Edit Without Marks
 
-Margin normally hides Markdown marks on every line except the caret's. Edit Without Marks hides them on the caret's line too, so you write formatted text without seeing asterisks or pound signs. The file still holds every mark, and any Markdown app reads it as before.
+Margin normally [hides Markdown marks](editor.md#hide-markdown-marks) on every line except the caret's. Edit Without Marks hides them on the caret's line too, so you write formatted text without seeing asterisks or pound signs. The file still holds every mark, and any Markdown app reads it as before.
 
 ## Turn on Edit Without Marks
 
 Edit Without Marks works on top of hidden marks. If Hide Markdown Syntax is off, press ⇧⌘M first.
 
 - Press ⇧⌘P and choose Edit Without Marks.
-- Or open Settings and turn on "Hide it on the caret's line too".
+- Or open [Settings](settings.md#editor) and turn on "Hide it on the caret's line too".
 
 It is off at first. While hidden marks are off, the command is dimmed and the switch is grey.
 
@@ -630,7 +673,7 @@ Each hidden mark counts as one step for the arrow keys, so you never have to pre
 - Elsewhere, Delete and Forward Delete remove the visible character next to a hidden mark and leave the mark alone.
 - At the end of bold or linked text, what you type goes inside it. Press → once more to step out.
 
-The lines that hold find matches show their marks while the find bar is open.
+The lines that hold find matches show their marks while the [find bar](find-and-replace.md#find-text-in-a-note) is open.
 
 ## Edit a table as a grid
 
@@ -654,11 +697,17 @@ A line that holds only an image shows the image and no Markdown, even with the c
 
 ## Change a block from the format bar
 
-With Edit Without Marks on, the format bar also appears when you select text with the keys, such as Shift and an arrow, or with Expand selection. It does not appear for Select All.
+With Edit Without Marks on, the [format bar](formatting.md#use-the-format-bar) also appears when you select text with the keys, such as Shift and an arrow, or with Expand selection. It does not appear for Select All.
 
 At the bar's left, a block menu names the block the caret is in: Text, Heading 1, Heading 2, Heading 3, Bullet list, Numbered list, Task, Quote or Code block. Choose another kind to change every block the selection touches, in one step of undo. A numbered list counts from 1.
 
 With Edit Without Marks off, the format bar appears only after you select with the pointer.
+
+## See also
+
+- [Write and edit](editor.md), for hidden marks and the key that shows them
+- [Tables](tables.md), for every table key and command
+- [Themes and writing comfort](appearance.md), for Focus Mode, typewriter scrolling and line spacing
 `,d=`---
 title: Write and edit
 section: Writing
@@ -680,11 +729,11 @@ With marks hidden:
 - A task's \`[ ]\` or \`[x]\` draws as a checkbox you can click.
 - A quote's \`>\` draws as a bar at the left of the line.
 - A \`---\` line draws as a rule across the text.
-- A wikilink shows its alias or its title, without the brackets.
+- A [wikilink](links.md#link-to-another-note) shows its alias or its title, without the brackets.
 
-Code fences, front matter, tables, math, HTML and footnote marks always show.
+[Code fences](code-blocks.md), front matter, [tables](tables.md), math, HTML and footnote marks always show.
 
-To show every mark, dimmed, press ⇧⌘M, or turn off Hide Markdown syntax in Settings. Press ⇧⌘M again to hide them. Hiding marks never changes the file, so saving, undo, find, copy and every export see the same Markdown.
+To show every mark, dimmed, press ⇧⌘M, or turn off Hide Markdown syntax in [Settings](settings.md#editor). Press ⇧⌘M again to hide them. Hiding marks never changes the file, so saving, undo, find, copy and every [export](export.md) see the same Markdown.
 
 When you click at the very end of a link, a code span or bold text, the caret lands outside its hidden marks, so what you type next is not part of it.
 
@@ -704,7 +753,7 @@ Press ⌃⇧⌘→ to expand the selection to the next larger piece that holds i
 
 ## Move a block
 
-Press ⌃⇧⌘↑ or ⌃⇧⌘↓ to move the block at the caret past the block above or below it. A block is a paragraph, a code block, a table, a quote or a whole list. Inside a list, the block is the item and whatever is nested under it, and it stays in its list. On a heading, the block is the heading's whole section.
+Press ⌃⇧⌘↑ or ⌃⇧⌘↓ to move the block at the caret past the block above or below it. A block is a paragraph, a code block, a table, a quote or a whole list. Inside a list, the block is the item and whatever is nested under it, and it stays in its list. On a heading, the block is the heading's whole [section](outline-and-sections.md#move-a-section).
 
 The blank lines between blocks stay where they were, numbered lists keep their numbers in order, and each move is one step of undo.
 
@@ -741,11 +790,11 @@ Margin never runs Format document on its own. Opening, switching modes and savin
 
 A line that ends in a hard line break shows ↵ after its text. Point at the mark to see what makes the break, such as two spaces, and what happens without it.
 
-To list every break in the note, press ⇧⌘P and choose Line breaks. The list shows three groups: hard breaks, lines the preview joins into one paragraph, and lines that end in spaces that make no break. Choose a row to go to it. The last line says what one Return does in the note's flavor. Choose Line breaks again to close the list.
+To list every break in the note, press ⇧⌘P and choose Line breaks. The list shows three groups: hard breaks, lines the [preview](preview.md) joins into one paragraph, and lines that end in spaces that make no break. Choose a row to go to it. The last line says what one Return does in the note's flavor. Choose Line breaks again to close the list.
 
 ## Count words
 
-The footer shows the note's word count, character count and reading time. Select text to count only the selection, under a Selection label. The counts update when you pause typing.
+The [footer](window-tour.md#the-footer) shows the note's word count, character count and reading time. Select text to count only the selection, under a Selection label. The counts update when you pause typing.
 
 ## Follow the heading path
 
@@ -778,6 +827,12 @@ The list does not open after a digit, inside a word, or in code, front matter or
 ## Start in an empty note
 
 An empty note shows "Start writing, or type / to insert a block". Type \`/\` at the start of a line to open the [slash menu](slash-menu.md).
+
+## See also
+
+- [Format text](formatting.md), for the formatting keys, the format bar and paste
+- [Find and replace](find-and-replace.md), to find and replace text in a note
+- [Keyboard shortcuts](keyboard-shortcuts.md), for every editing key, and how to change one
 `,f=`---
 title: Export, print and share
 section: Reading and sharing
@@ -787,11 +842,11 @@ summary: Export notes as HTML, PDF, Markdown or plain text, add headers and cove
 
 # Export, print and share
 
-Margin exports what the preview shows, with math, highlighted code, diagrams and calculation answers. Exports and printed pages are always black on white, whatever theme or appearance you use on screen.
+Margin exports what the preview shows, with math, highlighted code, diagrams and [calculation answers](calc.md#see-answers-in-the-preview-and-exports). Exports and printed pages are always black on white, whatever [theme](appearance.md#choose-a-theme) or appearance you use on screen.
 
 ## Export a note
 
-1. Click ⋯ in the editor header and choose Export…, or choose Export… in the command palette.
+1. Click ⋯ in the [editor header](window-tour.md#the-editor-header) and choose Export…, or choose Export… in the command palette.
 2. In the save panel, choose a format: HTML, PDF, plain text or Markdown.
 3. Choose where to save it and click Save.
 
@@ -804,7 +859,7 @@ Margin exports what the preview shows, with math, highlighted code, diagrams and
 
 The Markdown export copies each image the note shows from the notes folder into \`attachments/\` and rewrites the links to match. It never changes the note itself. Choose a place outside your notes folder, or Margin says "Choose a folder outside the notes folder." If a folder of that name already exists and you click Replace, Margin moves the old one to the Trash first.
 
-In an HTML or PDF export, task checkboxes are shown but cannot be clicked. An image over 20 MB stays a link. With Load remote images off in Settings, the export loads no image from the web, and neither does a browser that opens the file later.
+In an HTML or PDF export, task checkboxes are shown but cannot be clicked. An image over 20 MB stays a link. With [Load remote images](images.md#show-images-from-the-web) off in Settings, the export loads no image from the web, and neither does a browser that opens the file later.
 
 The HTML export declares the note's language, from its \`lang\` property or else your Mac's language.
 
@@ -826,7 +881,7 @@ Plain text keeps your words, list markers, task boxes and table cells, with a ta
 | \`\${pageCount}\` or \`\${totalPages}\` | The number of pages |
 | \`\${status}\` | Any other front matter property, by its name |
 
-Margin draws the header near the top of each page and the footer near the bottom, centered in small grey type. Both start empty. To use a different header or footer for one note, give it \`header\` and \`footer\` properties. An empty quoted value, \`header: ""\`, leaves the header off that note.
+Margin draws the header near the top of each page and the footer near the bottom, centered in small grey type. Both start empty. To use a different header or footer for one note, give it \`header\` and \`footer\` [properties](properties-and-bases.md#edit-a-notes-properties). An empty quoted value, \`header: ""\`, leaves the header off that note.
 
 ## Add a cover page
 
@@ -848,7 +903,7 @@ In your own template, \`@page { margin: 72pt; }\` sets the PDF's margins, from 3
 
 ## Export one section
 
-1. Put the caret in a section under a heading.
+1. Put the caret in a [section](outline-and-sections.md) under a heading.
 2. Press ⇧⌘P and choose Export Section….
 3. Choose HTML, PDF, plain text or Markdown, and save.
 
@@ -870,7 +925,7 @@ Search or choose a saved search first, then press ⇧⌘P and choose Export List
 
 ## Export a diagram
 
-1. Put the caret in a \` \`\`\`mermaid \` block, or in a \` \`\`\`sql \` block that defines a table.
+1. Put the caret in a \` \`\`\`mermaid \` block, or in a \` \`\`\`sql \` block that [defines a table](schema-blocks.md#see-the-diagram).
 2. Press ⇧⌘P and choose Export Diagram….
 3. Choose SVG or PNG from the Format menu and save.
 
@@ -878,7 +933,7 @@ In a note with only one diagram, the caret can be anywhere. The file is named li
 
 ## Keep a section out of one format
 
-In the Pandoc and All flavors, you can mark a section to appear only in PDFs or only in HTML:
+In the Pandoc and All [flavors](flavors.md#what-each-flavor-reads), you can mark a section to appear only in PDFs or only in HTML:
 
 \`\`\`markdown
 ::: {.content-visible when-format="pdf"}
@@ -910,6 +965,12 @@ Copy as HTML is in the note menu (⋯). All three are in the command palette.
 Margin shares two things, the note as formatted text with its images and answers, and the note's \`.md\` file. Mail and Messages show the formatted text, and AirDrop sends the file.
 
 To present a note as slides, see [Read the preview](preview.md#present-a-note-as-slides).
+
+## See also
+
+- [Read the preview](preview.md), for what an export draws, and to present a note as slides
+- [Check a note](checks.md), to check accessibility before you export HTML
+- [Images and attachments](images.md), for captions that export as figures
 `,p=`---
 title: Find and create notes
 section: Notes
@@ -923,7 +984,7 @@ One field both searches and creates. Type a few letters to find a note. If no no
 
 ## Search your notes
 
-1. Press ⌃⌥N to open the panel. The search field has the keys. If you are in the editor, press ⌘L to go back to the field.
+1. Press ⌃⌥N to open the [panel](panel.md#open-the-panel). The search field has the keys. If you are in the editor, press ⌘L to go back to the field.
 2. Type. The list filters with every key you press.
 
 Search looks at file names, folder paths and the full text of every note. It works this way:
@@ -954,7 +1015,7 @@ Do one of these:
 - Choose New Note from the status item's menu.
 - ⌘-click a wikilink to a note that does not exist yet. See [Links and wikilinks](links.md#open-a-link).
 
-The new note opens empty, with the caret in the editor. Margin names the file for the title. It writes \`/\` and \`:\` as \`-\`, and adds a number when the name is taken, as in "Groceries 2.md". If the list is scoped to a folder, the note goes in that folder. Otherwise it goes at the top of the notes folder.
+The new note opens empty, with the caret in the editor. Margin [names the file](notes-folder.md#which-files-margin-lists) for the title. It writes \`/\` and \`:\` as \`-\`, and adds a number when the name is taken, as in "Groceries 2.md". If the list is [scoped to a folder](manage-notes.md#scope-the-list-to-a-folder), the note goes in that folder. Otherwise it goes at the top of the notes folder.
 
 To start a note from a template, see [Slash menu, snippets and templates](slash-menu.md#start-a-note-from-a-template).
 
@@ -1018,6 +1079,12 @@ Start the search with \`#\` to search headings alone, across every note. Margin 
 ## Search by meaning
 
 Start the search with \`?\` to search by meaning instead of by words. This needs Find by meaning turned on. See [AI across notes](ai-across-notes.md#search-by-meaning).
+
+## See also
+
+- [Find and replace](find-and-replace.md), to find text inside a note, or replace it across notes
+- [Tags, properties and bases](properties-and-bases.md), to tag notes and keep a search as a base
+- [Open tasks across notes](tasks.md), to list every unchecked task in one place
 `,m=`---
 title: Find and replace
 section: Writing
@@ -1043,7 +1110,7 @@ Find ignores case and accents, as note search does. To search for text you have 
 2. Type what to find, and what to put in its place.
 3. Click Replace to change the current match and go to the next, or Replace All to change every match.
 
-Replace All is one step of undo. A read-only note can be searched but not changed.
+Replace All is one step of undo. A [read-only note](safety.md#notes-you-can-read-but-not-edit) can be searched but not changed.
 
 ## Use a regular expression
 
@@ -1071,7 +1138,7 @@ For example, find \`(\\w+) (\\w+)\` and replace with \`$2 $1\` to swap two words
 2. Type what to find and what to replace it with. As you type, Margin counts the matches, such as "3 matches in 2 notes", and previews each changed line under each note's title. The text found is struck through and the replacement follows it.
 3. Click Replace.
 
-Margin saves the open note first, so text you just typed is replaced too. A notice says, for example, \`Replaced "oat" in 2 notes\`. Click Undo in the notice, or press ⌘Z, to put every note back, except any note that changed since.
+Margin saves the open note first, so text you just typed is replaced too. A [notice](window-tour.md#notices) says, for example, \`Replaced "oat" in 2 notes\`. Click Undo in the notice, or press ⌘Z, to put every note back, except any note that changed since.
 
 Find matches text as typed, anywhere in a word, ignoring case and accents. Margin leaves out a note that opens read-only, and holds back a note that changed on disk since it was read, with the reason. The preview stops at 100 lines and says how many more there are.
 
@@ -1084,7 +1151,13 @@ A pattern that does not compile shows Invalid pattern in the count and cannot ru
 ## Find a heading in any note
 
 To jump to a heading in any note, start a search in the search field with \`#\`. See [Find and create notes](find-and-create.md#search-headings).
-`,h="---\ntitle: Markdown flavors\nsection: Reading and sharing\norder: 2\nsummary: Choose which Markdown flavor Margin reads a note in, and see what another flavor would read differently.\n---\n\n# Markdown flavors\n\nA flavor is the set of Markdown extensions Margin reads in a note. The editor's highlighting and the preview always use the same flavor, so what you see while typing matches what renders. Margin reads six flavors: CommonMark, GitHub, Obsidian, Pandoc, MultiMarkdown and All. All is the default.\n\n## Set the default flavor\n\n1. Press ⌘, to open Settings.\n2. Under Editor, choose a Default Markdown flavor.\n\nEvery note without a flavor of its own uses it.\n\n## Set a note's flavor\n\nAdd a `flavor` property to the note's front matter:\n\n```yaml\n---\nflavor: github\n---\n```\n\nThe values are `commonmark`, `github`, `obsidian`, `pandoc`, `multimarkdown` and `all`. The preview and highlighting switch as soon as you type it.\n\n## What each flavor reads\n\nEvery flavor reads CommonMark 0.31.2: headings, lists, code, links and HTML blocks. Every flavor also highlights fenced code by its language, and shows raw HTML after removing anything unsafe.\n\n| Extension | Syntax | CommonMark | GitHub | Obsidian | Pandoc | MultiMarkdown | All |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| Tables | pipe tables | | yes | yes | yes | | |\n| Tables with merged cells and captions | MultiMarkdown tables | | | | | yes | yes |\n| Strikethrough | `~~x~~` | | yes | yes | yes | yes | yes |\n| Single-tilde strikethrough | `~x~` | | yes | | | | yes |\n| Task lists | `- [ ]`, `- [x]` | | yes | yes | yes | | yes |\n| Bare web addresses as links | `www.` and URLs, emails | | yes | yes | | | yes |\n| Footnotes | `[^1]`, inline `^[x]` | | yes | yes | yes | yes | yes |\n| Front matter | YAML `---`, TOML `+++` | | yes | yes | yes | yes | yes |\n| Math | `$x$`, `$$x$$`, `\\(x\\)`, `\\[x\\]`, ` ```math ` | | yes | yes | yes | yes | yes |\n| Mermaid diagrams | ` ```mermaid ` | | yes | yes | | | yes |\n| GitHub alerts | `> [!NOTE]` | | yes | | | | yes |\n| Callouts, foldable | `> [!tip]- Title` | | | yes | | | yes |\n| Admonitions | `!!! note \"Title\"`, `??? note`, `:::note` | | | | | | yes |\n| Wikilinks and embeds | `[[Note]]`, `[[Note\\|alias]]`, `[[Note#Heading]]`, `![[image.png]]` | | | yes | | | yes |\n| Tags | `#tag` | | | yes | | | yes |\n| Comments | `%%hidden%%` | | | yes | | | yes |\n| Highlight | `==x==` | | | yes | | yes | yes |\n| Superscript | `^x^` | | | | yes | yes | yes |\n| Subscript | `~x~` | | | | yes | yes | |\n| Definition lists | `Term` then `: Definition` | | | | yes | yes | yes |\n| Abbreviations | `*[HTML]: Hyper Text` | | | | | yes | yes |\n| Inserted text | `++x++` | | | | | | yes |\n| Emoji shortcodes | `:tada:` | | yes | | | | yes |\n| Attributes | `{#id .class}` | | | | yes | | yes |\n| Cross-references | `{#fig:id}`, `{#eq:id}`, `{#tbl:id}`, `@fig:id` | | | | yes | | yes |\n| Heading anchors | automatic ids | | yes | yes | yes | yes | yes |\n| Table of contents | `[TOC]`, `[[_TOC_]]`, `{{TOC}}` | | | | | yes | yes |\n| A single Return is a line break | | | | yes | | | |\n| Smart quotes and dashes | | | | | yes | | |\n| CriticMarkup | `{++ ++}`, `{-- --}`, `{~~ ~> ~~}`, `{== ==}`, `{>> <<}` | | | | | yes | yes |\n| Sections for one export format | `::: {.content-visible when-format=\"pdf\"}` | | | | yes | | yes |\n\nAttributes read only an id, a class, a width and a height.\n\n## When flavors disagree\n\n- `~x~` is strikethrough in GitHub and subscript in Pandoc and MultiMarkdown. All follows GitHub. Choose Pandoc or MultiMarkdown for subscript.\n- `> [!type]` is a GitHub alert in GitHub and an Obsidian callout in Obsidian and All. Callouts take GitHub's five alert types too, so a GitHub note reads the same in All.\n- A single Return makes a line break only in Obsidian.\n- Smart quotes and dashes are on only in Pandoc, because they rewrite the quotes and dashes you typed.\n- A `$$` block or a `%%` comment that never closes runs to the end of its container, the way an unclosed code fence does.\n- A `---` at the top of a note with no closing line is a horizontal rule, not front matter.\n\n## Compare flavors\n\nTo see what another flavor would read differently in the open note:\n\n1. Press ⇧⌘P and choose Compare flavors.\n2. The list shows each flavor the note is not read in, with how many places would render differently and the line of the first.\n3. Choose a row to see which extensions cause the differences, each with a count and its first line.\n4. Press Return to go to the first place, or press ⌘↩ to use that flavor for this note.\n\nUse for this note sets `flavor:` in the note's front matter, and adds front matter if the note has none, in one step of undo. It is not offered for CommonMark, which shows front matter as text, for a note with TOML front matter, or for a read-only note. The list's last line names the flavor the note is read in now.\n\nMargin does not compare a note over 100,000 characters.\n\n## What Margin does not render\n\nThese show as plain code or text:\n\n- Pandoc citations.\n- MDX's JSX. The Markdown around it still renders.\n- R Markdown and Quarto code, which Margin does not run.\n- PlantUML and Graphviz diagrams, which need tools Margin does not include.\n",ee=`---
+
+## See also
+
+- [Tags, properties and bases](properties-and-bases.md), to rename a tag or property across notes
+- [AI across notes](ai-across-notes.md), to describe a change and have AI propose it in several notes
+- [Keyboard shortcuts](keyboard-shortcuts.md), for the find keys and how to change them
+`,h="---\ntitle: Markdown flavors\nsection: Reading and sharing\norder: 2\nsummary: Choose which Markdown flavor Margin reads a note in, and see what another flavor would read differently.\n---\n\n# Markdown flavors\n\nA flavor is the set of Markdown extensions Margin reads in a note. The editor's highlighting and the [preview](preview.md) always use the same flavor, so what you see while typing matches what renders. Margin reads six flavors: CommonMark, GitHub, Obsidian, Pandoc, MultiMarkdown and All. All is the default.\n\n## Set the default flavor\n\n1. Press ⌘, to open [Settings](settings.md#editor).\n2. Under Editor, choose a Default Markdown flavor.\n\nEvery note without a flavor of its own uses it.\n\n## Set a note's flavor\n\nAdd a `flavor` property to the note's [front matter](properties-and-bases.md#edit-a-notes-properties):\n\n```yaml\n---\nflavor: github\n---\n```\n\nThe values are `commonmark`, `github`, `obsidian`, `pandoc`, `multimarkdown` and `all`. The preview and highlighting switch as soon as you type it.\n\n## What each flavor reads\n\nEvery flavor reads CommonMark 0.31.2: headings, lists, code, links and HTML blocks. Every flavor also highlights [fenced code](code-blocks.md) by its language, and shows raw HTML after removing anything unsafe.\n\n| Extension | Syntax | CommonMark | GitHub | Obsidian | Pandoc | MultiMarkdown | All |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| [Tables](tables.md) | pipe tables | | yes | yes | yes | | |\n| Tables with merged cells and captions | MultiMarkdown tables | | | | | yes | yes |\n| Strikethrough | `~~x~~` | | yes | yes | yes | yes | yes |\n| Single-tilde strikethrough | `~x~` | | yes | | | | yes |\n| Task lists | `- [ ]`, `- [x]` | | yes | yes | yes | | yes |\n| Bare web addresses as links | `www.` and URLs, emails | | yes | yes | | | yes |\n| Footnotes | `[^1]`, inline `^[x]` | | yes | yes | yes | yes | yes |\n| Front matter | YAML `---`, TOML `+++` | | yes | yes | yes | yes | yes |\n| Math | `$x$`, `$$x$$`, `\\(x\\)`, `\\[x\\]`, ` ```math ` | | yes | yes | yes | yes | yes |\n| Mermaid diagrams | ` ```mermaid ` | | yes | yes | | | yes |\n| GitHub alerts | `> [!NOTE]` | | yes | | | | yes |\n| Callouts, foldable | `> [!tip]- Title` | | | yes | | | yes |\n| Admonitions | `!!! note \"Title\"`, `??? note`, `:::note` | | | | | | yes |\n| [Wikilinks and embeds](links.md) | `[[Note]]`, `[[Note\\|alias]]`, `[[Note#Heading]]`, `![[image.png]]` | | | yes | | | yes |\n| Tags | `#tag` | | | yes | | | yes |\n| Comments | `%%hidden%%` | | | yes | | | yes |\n| Highlight | `==x==` | | | yes | | yes | yes |\n| Superscript | `^x^` | | | | yes | yes | yes |\n| Subscript | `~x~` | | | | yes | yes | |\n| Definition lists | `Term` then `: Definition` | | | | yes | yes | yes |\n| Abbreviations | `*[HTML]: Hyper Text` | | | | | yes | yes |\n| Inserted text | `++x++` | | | | | | yes |\n| Emoji shortcodes | `:tada:` | | yes | | | | yes |\n| Attributes | `{#id .class}` | | | | yes | | yes |\n| Cross-references | `{#fig:id}`, `{#eq:id}`, `{#tbl:id}`, `@fig:id` | | | | yes | | yes |\n| Heading anchors | automatic ids | | yes | yes | yes | yes | yes |\n| [Table of contents](outline-and-sections.md#add-a-table-of-contents) | `[TOC]`, `[[_TOC_]]`, `{{TOC}}` | | | | | yes | yes |\n| A single Return is a line break | | | | yes | | | |\n| Smart quotes and dashes | | | | | yes | | |\n| CriticMarkup | `{++ ++}`, `{-- --}`, `{~~ ~> ~~}`, `{== ==}`, `{>> <<}` | | | | | yes | yes |\n| [Sections for one export format](export.md#keep-a-section-out-of-one-format) | `::: {.content-visible when-format=\"pdf\"}` | | | | yes | | yes |\n\nAttributes read only an id, a class, a width and a height.\n\n## When flavors disagree\n\n- `~x~` is strikethrough in GitHub and subscript in Pandoc and MultiMarkdown. All follows GitHub. Choose Pandoc or MultiMarkdown for subscript.\n- `> [!type]` is a GitHub alert in GitHub and an Obsidian callout in Obsidian and All. Callouts take GitHub's five alert types too, so a GitHub note reads the same in All.\n- A single Return makes a line break only in Obsidian.\n- Smart quotes and dashes are on only in Pandoc, because they rewrite the quotes and dashes you typed.\n- A `$$` block or a `%%` comment that never closes runs to the end of its container, the way an unclosed code fence does.\n- A `---` at the top of a note with no closing line is a horizontal rule, not front matter.\n\n## Compare flavors\n\nTo see what another flavor would read differently in the open note:\n\n1. Press ⇧⌘P and choose Compare flavors.\n2. The list shows each flavor the note is not read in, with how many places would render differently and the line of the first.\n3. Choose a row to see which extensions cause the differences, each with a count and its first line.\n4. Press Return to go to the first place, or press ⌘↩ to use that flavor for this note.\n\nUse for this note sets `flavor:` in the note's front matter, and adds front matter if the note has none, in one step of undo. It is not offered for CommonMark, which shows front matter as text, for a note with TOML front matter, or for a read-only note. The list's last line names the flavor the note is read in now.\n\nMargin does not compare a note over 100,000 characters.\n\n## What Margin does not render\n\nThese show as plain code or text:\n\n- Pandoc citations.\n- MDX's JSX. The Markdown around it still renders.\n- R Markdown and Quarto code, which Margin does not run.\n- PlantUML and Graphviz diagrams, which need tools Margin does not include.\n\n## See also\n\n- [Read the preview](preview.md), for how math, diagrams, callouts and cross-references draw\n- [Write and edit](editor.md), for highlighting and hidden marks as you type\n- [Export, print and share](export.md), to export a note as HTML, PDF or Markdown\n",ee=`---
 title: Format text
 section: Writing
 order: 2
@@ -1093,7 +1166,7 @@ summary: Apply bold, headings, lists and links with keys or the format bar, and 
 
 # Format text
 
-Margin writes formatting as Markdown marks, so \`**bold**\` is what lands in the file. Use the keys or the format bar to add marks, and the same keys again to take them off.
+Margin writes formatting as [Markdown marks](editor.md#hide-markdown-marks), so \`**bold**\` is what lands in the file. Use the keys or the format bar to add marks, and the same keys again to take them off.
 
 ## Use the formatting keys
 
@@ -1114,17 +1187,17 @@ Margin writes formatting as Markdown marks, so \`**bold**\` is what lands in the
 
 A key wraps the selection in marks, or puts the marks in at the caret. Press it on text that already has the marks to take them off. Spaces at the edges of a selection stay outside the marks.
 
-The heading, list and task keys act on every line you select, and skip lines inside a code block. A list key takes the list off when every selected line already has it. ⇧⌘K inside a fenced block takes the fences off.
+The heading, list and task keys act on every line you select, and skip lines inside a [code block](code-blocks.md). A list key takes the list off when every selected line already has it. ⇧⌘K inside a fenced block takes the fences off.
 
 ## Use the format bar
 
-When you select text in ordinary prose by dragging or double-clicking, the format bar appears above it. It holds Bold, Italic, Strikethrough, Code and Link, and an AI button when AI is on. A button looks pressed when the whole selection already has that format. Rest the pointer on a button to see its name and keys, such as "Bold ⌘B".
+When you select text in ordinary prose by dragging or double-clicking, the format bar appears above it. It holds Bold, Italic, Strikethrough, Code and Link, and an AI button when [AI](ai.md#run-an-ai-command) is on. A button looks pressed when the whole selection already has that format. Rest the pointer on a button to see its name and keys, such as "Bold ⌘B".
 
 Each button runs the same command as its key, so one ⌘Z undoes it. The bar hides when you press a key, press Esc, scroll or click elsewhere. It does not appear over code, math or front matter, or for a selection made with the keys, unless [Edit Without Marks](edit-without-marks.md#change-a-block-from-the-format-bar) is on.
 
 ## Arrange the format bar
 
-1. Press ⌘, and open the Menus pane.
+1. Press ⌘, and open the [Menus pane](settings.md#menus).
 2. In the list of format bar buttons, select the checkbox of each button you want to show. Bold, Italic, Strikethrough, Code and Link show at first. Headings 1 to 6, Paragraph, Bullet list, Numbered list, Task item and Fenced code block are there to add.
 3. Use Move Up and Move Down to change the order.
 
@@ -1159,6 +1232,12 @@ Press ⌥⇧⌘V to paste the clipboard's plain text with no conversion.
 ## Turn a selection into a link
 
 Select text and press ⌘K, or paste a web address over it. See [Links and wikilinks](links.md#add-a-link).
+
+## See also
+
+- [Keyboard shortcuts](keyboard-shortcuts.md), for every key, and how to change one
+- [Slash menu, snippets and templates](slash-menu.md), to insert headings, lists and other blocks by name
+- [Import notes and documents](import.md), to turn whole documents into notes
 `,g=`---
 title: Images and attachments
 section: Writing
@@ -1186,7 +1265,7 @@ Margin copies the image into the attachments folder, as it does for a paste, and
 
 ## See images in the editor
 
-A line that holds an image, \`![alt](path)\` or \`![[image.png]]\`, shows the image under the line, up to 320 pixels tall. With Markdown marks hidden, the syntax hides when the caret is elsewhere, so the image stands alone.
+A line that holds an image, \`![alt](path)\` or \`![[image.png]]\`, shows the image under the line, up to 320 pixels tall. With [Markdown marks hidden](editor.md#hide-markdown-marks), the syntax hides when the caret is elsewhere, so the image stands alone.
 
 An image that does not load shows "Image not found" and its path. If you copy the file in later, the image appears the next time its line redraws.
 
@@ -1207,13 +1286,13 @@ To number figures, such as "Figure 1", see [Read the preview](preview.md#number-
 
 ## Show images from the web
 
-Margin shows images from web addresses in the editor and the preview while Load remote images is on in Settings, which it is at first. Turn it off, and Margin loads no image from the web, in the editor, the preview or an export.
+Margin shows images from web addresses in the editor and the preview while Load remote images is on in [Settings](settings.md#editor), which it is at first. Turn it off, and Margin [loads no image from the web](privacy.md#when-margin-goes-online), in the editor, the preview or an export.
 
 ## Restore a missing attachment
 
 Margin never deletes an attachment itself, but a file can go missing through Finder, a sync service or another app. If a backup still holds it, you can get it back.
 
-1. Press ⇧⌘P and choose Note Health.
+1. Press ⇧⌘P and choose [Note Health](links.md#fix-broken-links).
 2. A missing image or file that a backup holds shows a Restore button. Its tooltip names the backup, such as "From the backup of Today 10:30".
 3. Click Restore.
 
@@ -1222,6 +1301,12 @@ Margin puts the file back at its old path without overwriting anything, and says
 ## Export a note with its images
 
 To send a note somewhere else with its pictures, export it as Markdown. Margin copies each image into an \`attachments/\` folder beside the note. See [Export, print and share](export.md#export-a-note).
+
+## See also
+
+- [Check a note](checks.md), to find every image that has no alt text
+- [Edit Without Marks](edit-without-marks.md), to work with an image line as one block
+- [Export, print and share](export.md), to export a note with its images bundled
 `,_=`---
 title: Import notes and documents
 section: Notes
@@ -1238,11 +1323,11 @@ Import… turns other files into Markdown notes in your notes folder. It copies 
 1. Press ⇧⌘P and choose Import….
 2. Choose one or more files. Margin takes HTML, plain text, RTF, RTFD, OpenDocument and Word files.
 
-Each file becomes a note named for the file, in the folder the list shows. The last one opens.
+Each file becomes a note named for the file, in the [folder the list shows](manage-notes.md#scope-the-list-to-a-folder). The last one opens.
 
 ## What an imported note holds
 
-An imported note opens with a callout that says where it came from, such as \`> [!note] Imported from Trip.rtf\`. Under it:
+An imported note opens with a [callout](preview.md#use-alerts-and-callouts) that says where it came from, such as \`> [!note] Imported from Trip.rtf\`. Under it:
 
 - A \`Not kept:\` line counts what Markdown could not hold.
 - A line notes any headings Margin worked out from text size.
@@ -1250,7 +1335,7 @@ An imported note opens with a callout that says where it came from, such as \`> 
 
 A plain text file gets no callout.
 
-Margin copies the original into the attachments folder, under its own name, and writes the document's images there too. The file you chose stays where it was.
+Margin copies the original into the [attachments folder](notes-folder.md#set-the-attachments-folder), under its own name, and writes the document's images there too. The file you chose stays where it was.
 
 Margin keeps paragraphs, headings, nested lists, tables, links, bold, italic, struck text, code and images. It counts and drops text color, highlight, underline that is not a link's, raised and lowered text, paragraph alignment, merged table cells and embedded items, and keeps their text. It never keeps fonts, sizes or layout. In an HTML file, images stay where the file pointed.
 
@@ -1264,7 +1349,7 @@ Margin reads \`.docx\` files itself, so a Word file keeps more:
 - Lists keep their depth and their kind.
 - Links keep their addresses. A link to a bookmark inside the file stays as its text.
 - Footnotes and endnotes become Markdown footnotes.
-- Images keep their descriptions as alt text.
+- Images keep their descriptions as [alt text](images.md#add-alt-text-and-a-caption).
 - Text deleted under tracked changes is left out, and text inserted is kept.
 
 The callout also counts tracked changes, comments, headers and footers that hold text, and drawn items such as shapes, text boxes, charts and equations.
@@ -1284,7 +1369,7 @@ Margin cleans up as it copies:
 - It leaves out files and folders whose names start with a dot, \`__MACOSX\`, \`node_modules\`, a TextBundle's \`info.json\`, and symbolic links.
 - It drops one outer folder that wraps everything, as many zips add.
 - It takes the 32-character id off the end of names that Notion exports.
-- It points each Markdown link and image at its file's new place.
+- It points each Markdown [link](links.md) and image at its file's new place.
 
 A note named "Imported from" and the folder's name opens when the import is done. It counts the notes and files that came, the names that lost an id, the links Margin rewrote, the links that point at a file that did not come, and the files left behind.
 
@@ -1293,7 +1378,7 @@ A note named "Imported from" and the folder's name opens when the import is done
 1. In Evernote, export your notes as an \`.enex\` file.
 2. In Margin, press ⇧⌘P, choose Import… and choose the \`.enex\` file.
 
-The notes land in a new folder named for the file. Each note is named for its title, has its tags as a \`tags:\` list in its front matter, and is dated as Evernote last changed it. Images show in the note, other files become links, and to-dos become tasks. Images and files go into the attachments folder.
+The notes land in a new folder named for the file. Each note is named for its title, has its [tags](properties-and-bases.md#add-tags) as a \`tags:\` list in its front matter, and is dated as Evernote last changed it. Images show in the note, other files become links, and to-dos become [tasks](lists-and-tasks.md). Images and files go into the attachments folder.
 
 Margin leaves out encrypted passages. Links between Evernote notes stay as written, since the export has no way to tell which note a link meant. The "Imported from" note counts the notes, the images and files, the encrypted passages and those links.
 
@@ -1304,6 +1389,12 @@ Margin leaves out encrypted passages. Links between Evernote notes stay as writt
 - When Margin cannot import a file, a notice says why and no note is written.
 
 To paste formatted text instead of importing a file, see [Format text](formatting.md#paste-formatted-text).
+
+## See also
+
+- [Format text](formatting.md), to paste formatted text instead of importing a file
+- [Set up your notes folder](notes-folder.md), for where imported notes and their originals go
+- [Export, print and share](export.md), to send notes back out as HTML, PDF or Markdown
 `,te=`---
 title: Install Margin
 section: Get started
@@ -1348,14 +1439,14 @@ Homebrew puts Margin in your Applications folder and the \`margin\` command on y
 ## Open Margin for the first time
 
 1. Open Margin from the Applications folder. Its icon appears in the menu bar.
-2. Click the icon, or press ⌃⌥N. The panel drops down from the menu bar.
+2. Click the icon, or press ⌃⌥N. The [panel](panel.md#open-the-panel) drops down from the menu bar.
 3. Margin asks for a notes folder inside the panel and suggests \`~/Documents/Margin\`. Confirm it, or choose another folder. See [Set up your notes folder](notes-folder.md).
 
-The first time you open Margin from the Applications folder, it turns on Launch at Login. If macOS holds the request for approval, Margin tells you to allow it in System Settings, under General and then Login Items. If you turn Launch at Login off later, in Settings or in the status item's menu, it stays off.
+The first time you open Margin from the Applications folder, it turns on Launch at Login. If macOS holds the request for approval, Margin tells you to allow it in System Settings, under General and then Login Items. If you turn Launch at Login off later, in [Settings](settings.md#startup-and-the-panel) or in the status item's menu, it stays off.
 
 ## Update Margin
 
-Run \`brew upgrade\` in Terminal. Homebrew installs the new version. Margin itself never checks the network for updates.
+Run \`brew upgrade\` in Terminal. Homebrew installs the new version. Margin itself [never checks the network](privacy.md#when-margin-goes-online) for updates.
 
 ## Uninstall Margin
 
@@ -1363,7 +1454,13 @@ Run \`brew upgrade\` in Terminal. Homebrew installs the new version. Margin itse
 - To also remove Margin's own data, run \`brew uninstall --zap --cask margin\`. This moves Margin's Application Support folder, its caches, its preferences and its WebKit data to the Trash.
 
 Your notes folder stays where it is either way. Margin keeps its [snapshots and backups](safety.md#backups) in the Application Support folder, so \`--zap\` moves those to the Trash too. Copy them somewhere else first if you want to keep them.
-`,ne='---\ntitle: Keyboard shortcuts\nsection: Reference\norder: 1\nsummary: Look up every default key in Margin by area, and change any of them in Settings or keybindings.json.\n---\n\n# Keyboard shortcuts\n\nThese are Margin\'s default keys, grouped as the shortcut sheet groups them. Press ⌘/ in Margin to see the same list with any keys you have changed. The id beside each command is the name to use in `keybindings.json` and `.margin/hooks.json`.\n\nA key that macOS\'s text system already uses inside a text view keeps its macOS meaning in the editor. The Shortcuts pane in Settings tells you when that happens.\n\n## Global\n\n| Keys | Command |\n| --- | --- |\n| ⌃⌥N | Open or close the panel from any app. Change it in Settings. |\n\n## Note\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘N | New Note | `native.newNote` |\n| ⌘R | Rename Note | `native.renameNote` |\n| ⌘⌫ | Move to Trash, from the list or search field | `native.trashNote` |\n| ⌥⌘P | Pin Note | `native.togglePinNote` |\n| ⇧⌘R | Reveal in Finder | `native.revealNote` |\n| ⌘L | Find Notes, which puts the keys in the search field | `native.focusSearch` |\n| ⌘↩ | Create Note from Search | `native.createFromSearch` |\n| ⌘P | Print… | `native.printNote` |\n\n## View\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘\\ | Show or Hide Note List | `native.toggleList` |\n| ⌃⌘S | Show or Hide Folders | `native.toggleFolders` |\n| ⌘1 | Editor | `native.showEditor` |\n| ⌘2 | Editor and Preview | `native.showEditorAndPreview` |\n| ⌘3 | Preview | `native.showPreview` |\n| ⌘+ or ⌘= | Bigger | `native.biggerText` |\n| ⌘- | Smaller | `native.smallerText` |\n| ⌘0 | Actual Size | `native.actualSizeText` |\n| ⇧⌘M | Hide Markdown Syntax | `native.toggleHideSyntax` |\n| ⌘D | Focus Mode | `native.toggleFocusMode` |\n| ⌥⌘T | Typewriter Scrolling | `native.toggleTypewriter` |\n| ⌘[ | Back | `native.goBack` |\n| ⌘] | Forward | `native.goForward` |\n| ⌘/ | Keyboard Shortcuts | `native.showShortcuts` |\n| ⇧⌘P | Command Palette… | `native.showPalette` |\n| ⌥⌘[ | Fold section | `editor.foldSection` |\n| ⌥⌘] | Unfold section | `editor.unfoldSection` |\n\n## Window\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘W | Close Panel | `native.closePanel` |\n| ⌃⌘P | Pin Panel | `native.togglePin` |\n| ⌃⌘F, Globe-F or ⇧⌘F | Enter Full Screen | `native.toggleFullScreen` |\n| ⌘T | New Tab | `editor.newTab` |\n| ⇧⌘W | Close Tab | `editor.closeTab` |\n| ⇧⌘] | Next Tab | `editor.nextTab` |\n| ⇧⌘[ | Previous Tab | `editor.previousTab` |\n\n## Edit\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘Z | Undo | `native.undo` |\n| ⇧⌘Z | Redo | `native.redo` |\n| ⌘X | Cut | `native.cut` |\n| ⌘C | Copy | `native.copy` |\n| ⌘V | Paste | `native.paste` |\n| ⌥⇧⌘V | Paste and Match Style, which pastes plain text | `native.pasteAsPlainText` |\n| ⌘A | Select All | `native.selectAll` |\n| ⌥⌘C | Copy as HTML | `native.copyAsHTML` |\n| ⌥⇧⌘C | Copy Answer | `editor.copyAnswer` |\n| ⌃⇧⌘→ | Expand selection | `editor.expandSelection` |\n| ⌃⇧⌘← | Shrink selection | `editor.shrinkSelection` |\n\n## Search field\n\nThese keys work while the search field has the keys, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↓ | Select the next note |\n| ↑ | Select the previous note |\n| ↩ | Open the note, or create one |\n| Esc | Clear the search, then close the panel |\n\n## Format\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘B | Bold | `editor.bold` |\n| ⌘I | Italic | `editor.italic` |\n| ⇧⌘X | Strikethrough | `editor.strikethrough` |\n| ⇧⌘C | Inline code | `editor.inlineCode` |\n\n## Blocks\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌥⌘1 to ⌥⌘6 | Heading 1 to Heading 6 | `editor.heading1` to `editor.heading6` |\n| ⌥⌘0 | Paragraph | `editor.paragraph` |\n| ⇧⌘8 | Bullet list | `editor.bulletList` |\n| ⇧⌘7 | Numbered list | `editor.numberedList` |\n| ⇧⌘T | Task item | `editor.taskItem` |\n| ⇧⌘L | Toggle the checkbox | `editor.toggleCheckbox` |\n| ⇧⌘K | Fenced code block | `editor.fence` |\n| ⌥⌘↑ | Move section up | `editor.moveSectionUp` |\n| ⌥⌘↓ | Move section down | `editor.moveSectionDown` |\n| ⌃⇧⌘↑ | Move block up | `editor.moveBlockUp` |\n| ⌃⇧⌘↓ | Move block down | `editor.moveBlockDown` |\n| ⇧⌘↩ | Run SQL block | `editor.runQuery` |\n\n## Lists\n\nThese keys act where the caret is, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↩ | Continue a list or quote |\n| ⌫ | Remove a list, quote or heading mark |\n| Tab | Nest a list item |\n| ⇧Tab | Unnest a list item |\n\n## Links\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘K | Link | `editor.link` |\n| ⌘-click | Open a link. Cannot be changed. | |\n| `[[` | Link to a note. Cannot be changed. | |\n\n## Find\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘F | Find | `editor.find` |\n| ⌥⌘F | Find and replace | `editor.findReplace` |\n| ⌘G | Find next | `editor.findNext` |\n| ⇧⌘G | Find previous | `editor.findPrevious` |\n| ⌘E | Use selection for find | `editor.useSelection` |\n| ⌥⌘R | Regular expressions in find | `editor.findPattern` |\n| ⇧⌘O | Outline | `editor.outline` |\n| Esc | Close find or outline. Cannot be changed. | |\n\n## AI\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘J | AI Commands, while AI is on | `ai.menu` |\n\n## Margin\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘, | Settings… | `native.showSettings` |\n| ⌘Q | Quit Margin | `native.terminate` |\n\n## Keys inside lists and sheets\n\nSome lists have keys of their own, which work only while the list is open. Each page lists them:\n\n- The Review list\'s Explain, Apply Fix, Dismiss and Propose Fix. See [Review SQL](schema-review.md).\n- Use for this note in Compare flavors. See [Markdown flavors](flavors.md#compare-flavors).\n- Accepting an AI proposal. See [AI in a note](ai.md#review-a-proposal).\n- Moving through slides. See [Read the preview](preview.md#present-a-note-as-slides).\n\n## Change a shortcut\n\n1. Press ⌘, and open the Shortcuts pane.\n2. Find the command. The filter ignores case and accents.\n3. Click the command\'s keys and press the new chord. A chord needs ⌘, ⌃ or ⌥.\n\nPress Esc to cancel, or Delete to remove the command\'s key. Click Reset beside a command to give it back its default key, or Reset All to restore every default. When two commands share a chord, the pane names both. Every command except the fixed ones above is listed, including those with no default key.\n\n## Edit keybindings.json\n\nMargin keeps your changes in `~/Library/Application Support/Margin/keybindings.json`. You can edit it by hand:\n\n```json\n{\n  "version": 1,\n  "bindings": {\n    "editor.formatDocument": [{ "key": "f", "mods": ["ctrl", "alt"] }],\n    "editor.findPattern": null\n  }\n}\n```\n\nThis file gives Format document the keys ⌃⌥F and takes ⌥⌘R away from Regular expressions in find. `null` removes a command\'s key. The modifiers are `cmd`, `ctrl`, `alt`, `shift` and `fn`. Margin reads the file when it starts and whenever the file changes. If the file has a mistake, Margin keeps the default keys and the Shortcuts pane shows the reason. Before Settings writes over a file that does not read, it moves it to `keybindings.json.bad`, so your work is not lost.\n\n## Commands with no default key\n\nThese commands are in the palette and have no key until you give them one. Use their ids in `keybindings.json` or `.margin/hooks.json`.\n\n| Command | Id |\n| --- | --- |\n| Properties | `note.properties` |\n| New Note from Template… | `note.newFromTemplate` |\n| Note Health | `native.showNoteHealth` |\n| Share… | `native.shareNote` |\n| Import… | `native.importDocument` |\n| Insert Image… | `native.insertImage` |\n| Export… | `native.exportNote` |\n| Export Diagram… | `native.exportDiagram` |\n| Export Notes Folder… | `native.exportNotesFolder` |\n| Export Listed Notes… | `native.exportListedNotes` |\n| Rename Tag… | `native.renameTag` |\n| Rename Property… | `native.renameProperty` |\n| Set Property on Listed Notes… | `native.setPropertyOnListedNotes` |\n| Replace in Notes… | `native.replaceInNotes` |\n| Copy as Markdown | `native.copyAsMarkdown` |\n| Copy as Plain Text | `native.copyAsPlainText` |\n| Larger Panel | `native.largerPanel` |\n| Smaller Panel | `native.smallerPanel` |\n| Default Panel Size | `native.defaultPanelSize` |\n| Edit Without Marks | `native.toggleEditWithoutMarks` |\n| Show Authorship | `native.toggleAuthorship` |\n| Unfold all sections | `editor.unfoldAll` |\n| Show in preview | `editor.showInPreview` |\n| Line breaks | `editor.lineBreaks` |\n| Compare flavors | `editor.compareFlavors` |\n| Start Presentation | `editor.startPresentation` |\n| Pin Reference Note… | `editor.pinReference` |\n| Unpin Reference Note | `editor.unpinReference` |\n| Layouts… | `editor.layouts` |\n| Save Layout… | `editor.saveLayout` |\n| Browse Backups… | `editor.browseBackups` |\n| Open Tasks… | `editor.openTasks` |\n| Format document | `editor.formatDocument` |\n| Format Code Blocks | `editor.formatCodeBlocks` |\n| Check Front Matter | `editor.checkFrontMatter` |\n| Check Style | `editor.checkStyle` |\n| Check Agent Files | `editor.checkAgentFiles` |\n| Agent Context | `editor.agentContext` |\n| Check Accessibility | `editor.checkAccessibility` |\n| Record Macro | `macro.record` |\n| Stop Recording | `macro.stop` |\n| Copy Unformatted Answer | `calc.copyUnformattedAnswer` |\n| Copy with Answers | `calc.copyWithAnswers` |\n| Insert Answer | `calc.insertAnswer` |\n| Alt text and caption… | `editor.imageText` |\n| Rename heading… | `editor.renameHeading` |\n| Move Section to New Note… | `editor.moveSection` |\n| Promote Section | `editor.promoteSection` |\n| Demote Section | `editor.demoteSection` |\n| Set Code Language… | `editor.setCodeLanguage` |\n| Export Section… | `editor.exportSection` |\n| Restore Section from Snapshot… | `editor.restoreSection` |\n| Compare with Snapshot… | `editor.compareWithSnapshot` |\n| Go to Definition | `schema.goToDefinition` |\n| Find References | `schema.findReferences` |\n| Expand Abbreviation | `schema.expandAbbreviation` |\n| Copy as SQLite | `schema.copyAsSQLite` |\n| Copy as MySQL | `schema.copyAsMySQL` |\n| Copy as DBML | `schema.copyAsDBML` |\n| Copy as Data Dictionary | `schema.copyAsDictionary` |\n| Rename Table or Column… | `schema.rename` |\n| Review | `schema.review` |\n| Import Schema | `database.importSchema` |\n| Compare with Database | `database.compare` |\n| Read Table Sizes | `database.readSizes` |\n| Run Plan | `database.runPlan` |\n| Run Plan with ANALYZE | `database.runPlanAnalyze` |\n| Add Table Row Above | `table.insertRowAbove` |\n| Add Table Row Below | `table.insertRowBelow` |\n| Delete Table Row | `table.deleteRow` |\n| Duplicate Table Row | `table.duplicateRow` |\n| Move Table Row Up | `table.moveRowUp` |\n| Move Table Row Down | `table.moveRowDown` |\n| Add Table Column Before | `table.insertColumnLeft` |\n| Add Table Column After | `table.insertColumnRight` |\n| Delete Table Column | `table.deleteColumn` |\n| Duplicate Table Column | `table.duplicateColumn` |\n| Move Table Column Left | `table.moveColumnLeft` |\n| Move Table Column Right | `table.moveColumnRight` |\n| Align Table Column Left | `table.alignLeft` |\n| Align Table Column Center | `table.alignCenter` |\n| Align Table Column Right | `table.alignRight` |\n| Clear Table Column Alignment | `table.alignNone` |\n| Sort Table by Column, Ascending | `table.sortAscending` |\n| Sort Table by Column, Descending | `table.sortDescending` |\n| Convert Table to CSV | `table.toCsv` |\n| Convert CSV or TSV to Table | `table.fromDelimited` |\n',re=`---
+
+## See also
+
+- [Set up your notes folder](notes-folder.md), to choose the folder Margin reads and which files it lists
+- [Open and close the panel](panel.md), to open, pin, resize and quit the panel
+- [A tour of the window](window-tour.md), for the search field, the note list, the editor and the command palette
+`,ne='---\ntitle: Keyboard shortcuts\nsection: Reference\norder: 1\nsummary: Look up every default key in Margin by area, and change any of them in Settings or keybindings.json.\n---\n\n# Keyboard shortcuts\n\nThese are Margin\'s default keys, grouped as the [shortcut sheet](window-tour.md#the-shortcut-sheet) groups them. Press ⌘/ in Margin to see the same list with any keys you have changed. The id beside each command is the name to use in `keybindings.json` and `.margin/hooks.json`.\n\nA key that macOS\'s text system already uses inside a text view keeps its macOS meaning in the editor. The [Shortcuts pane](settings.md#shortcuts) in Settings tells you when that happens.\n\n## Global\n\n| Keys | Command |\n| --- | --- |\n| ⌃⌥N | Open or close the panel from any app. [Change it in Settings](panel.md#change-the-global-shortcut). |\n\n## Note\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘N | New Note | `native.newNote` |\n| ⌘R | Rename Note | `native.renameNote` |\n| ⌘⌫ | Move to Trash, from the list or search field | `native.trashNote` |\n| ⌥⌘P | Pin Note | `native.togglePinNote` |\n| ⇧⌘R | Reveal in Finder | `native.revealNote` |\n| ⌘L | Find Notes, which puts the keys in the search field | `native.focusSearch` |\n| ⌘↩ | Create Note from Search | `native.createFromSearch` |\n| ⌘P | Print… | `native.printNote` |\n\n## View\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘\\ | Show or Hide Note List | `native.toggleList` |\n| ⌃⌘S | Show or Hide Folders | `native.toggleFolders` |\n| ⌘1 | Editor | `native.showEditor` |\n| ⌘2 | Editor and Preview | `native.showEditorAndPreview` |\n| ⌘3 | Preview | `native.showPreview` |\n| ⌘+ or ⌘= | Bigger | `native.biggerText` |\n| ⌘- | Smaller | `native.smallerText` |\n| ⌘0 | Actual Size | `native.actualSizeText` |\n| ⇧⌘M | Hide Markdown Syntax | `native.toggleHideSyntax` |\n| ⌘D | Focus Mode | `native.toggleFocusMode` |\n| ⌥⌘T | Typewriter Scrolling | `native.toggleTypewriter` |\n| ⌘[ | Back | `native.goBack` |\n| ⌘] | Forward | `native.goForward` |\n| ⌘/ | Keyboard Shortcuts | `native.showShortcuts` |\n| ⇧⌘P | Command Palette… | `native.showPalette` |\n| ⌥⌘[ | Fold section | `editor.foldSection` |\n| ⌥⌘] | Unfold section | `editor.unfoldSection` |\n\n## Window\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘W | Close Panel | `native.closePanel` |\n| ⌃⌘P | Pin Panel | `native.togglePin` |\n| ⌃⌘F, Globe-F or ⇧⌘F | Enter Full Screen | `native.toggleFullScreen` |\n| ⌘T | New Tab | `editor.newTab` |\n| ⇧⌘W | Close Tab | `editor.closeTab` |\n| ⇧⌘] | Next Tab | `editor.nextTab` |\n| ⇧⌘[ | Previous Tab | `editor.previousTab` |\n\n## Edit\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘Z | Undo | `native.undo` |\n| ⇧⌘Z | Redo | `native.redo` |\n| ⌘X | Cut | `native.cut` |\n| ⌘C | Copy | `native.copy` |\n| ⌘V | Paste | `native.paste` |\n| ⌥⇧⌘V | Paste and Match Style, which pastes plain text | `native.pasteAsPlainText` |\n| ⌘A | Select All | `native.selectAll` |\n| ⌥⌘C | Copy as HTML | `native.copyAsHTML` |\n| ⌥⇧⌘C | Copy Answer | `editor.copyAnswer` |\n| ⌃⇧⌘→ | Expand selection | `editor.expandSelection` |\n| ⌃⇧⌘← | Shrink selection | `editor.shrinkSelection` |\n\n## Search field\n\nThese keys work while the [search field](find-and-create.md#search-your-notes) has the keys, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↓ | Select the next note |\n| ↑ | Select the previous note |\n| ↩ | Open the note, or create one |\n| Esc | Clear the search, then close the panel |\n\n## Format\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘B | Bold | `editor.bold` |\n| ⌘I | Italic | `editor.italic` |\n| ⇧⌘X | Strikethrough | `editor.strikethrough` |\n| ⇧⌘C | Inline code | `editor.inlineCode` |\n\n## Blocks\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌥⌘1 to ⌥⌘6 | Heading 1 to Heading 6 | `editor.heading1` to `editor.heading6` |\n| ⌥⌘0 | Paragraph | `editor.paragraph` |\n| ⇧⌘8 | Bullet list | `editor.bulletList` |\n| ⇧⌘7 | Numbered list | `editor.numberedList` |\n| ⇧⌘T | Task item | `editor.taskItem` |\n| ⇧⌘L | Toggle the checkbox | `editor.toggleCheckbox` |\n| ⇧⌘K | Fenced code block | `editor.fence` |\n| ⌥⌘↑ | Move section up | `editor.moveSectionUp` |\n| ⌥⌘↓ | Move section down | `editor.moveSectionDown` |\n| ⌃⇧⌘↑ | Move block up | `editor.moveBlockUp` |\n| ⌃⇧⌘↓ | Move block down | `editor.moveBlockDown` |\n| ⇧⌘↩ | Run SQL block | `editor.runQuery` |\n\n## Lists\n\nThese keys act where the caret is, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↩ | Continue a list or quote |\n| ⌫ | Remove a list, quote or heading mark |\n| Tab | Nest a list item |\n| ⇧Tab | Unnest a list item |\n\n## Links\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘K | Link | `editor.link` |\n| ⌘-click | Open a link. Cannot be changed. | |\n| `[[` | Link to a note. Cannot be changed. | |\n\n## Find\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘F | Find | `editor.find` |\n| ⌥⌘F | Find and replace | `editor.findReplace` |\n| ⌘G | Find next | `editor.findNext` |\n| ⇧⌘G | Find previous | `editor.findPrevious` |\n| ⌘E | Use selection for find | `editor.useSelection` |\n| ⌥⌘R | Regular expressions in find | `editor.findPattern` |\n| ⇧⌘O | Outline | `editor.outline` |\n| Esc | Close find or outline. Cannot be changed. | |\n\n## AI\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘J | AI Commands, while AI is on | `ai.menu` |\n\n## Margin\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘, | Settings… | `native.showSettings` |\n| ⌘Q | Quit Margin | `native.terminate` |\n\n## Keys inside lists and sheets\n\nSome lists have keys of their own, which work only while the list is open. Each page lists them:\n\n- The Review list\'s Explain, Apply Fix, Dismiss and Propose Fix. See [Review SQL](schema-review.md).\n- Use for this note in Compare flavors. See [Markdown flavors](flavors.md#compare-flavors).\n- Accepting an AI proposal. See [AI in a note](ai.md#review-a-proposal).\n- Moving through slides. See [Read the preview](preview.md#present-a-note-as-slides).\n\n## Change a shortcut\n\n1. Press ⌘, and open the Shortcuts pane.\n2. Find the command. The filter ignores case and accents.\n3. Click the command\'s keys and press the new chord. A chord needs ⌘, ⌃ or ⌥.\n\nPress Esc to cancel, or Delete to remove the command\'s key. Click Reset beside a command to give it back its default key, or Reset All to restore every default. When two commands share a chord, the pane names both. Every command except the fixed ones above is listed, including those with no default key.\n\n## Edit keybindings.json\n\nMargin keeps your changes in `~/Library/Application Support/Margin/keybindings.json`. You can edit it by hand:\n\n```json\n{\n  "version": 1,\n  "bindings": {\n    "editor.formatDocument": [{ "key": "f", "mods": ["ctrl", "alt"] }],\n    "editor.findPattern": null\n  }\n}\n```\n\nThis file gives [Format document](editor.md#tidy-a-note) the keys ⌃⌥F and takes ⌥⌘R away from [Regular expressions in find](find-and-replace.md#use-a-regular-expression). `null` removes a command\'s key. The modifiers are `cmd`, `ctrl`, `alt`, `shift` and `fn`. Margin reads the file when it starts and whenever the file changes. If the file has a mistake, Margin keeps the default keys and the Shortcuts pane shows the reason. Before Settings writes over a file that does not read, it moves it to `keybindings.json.bad`, so your work is not lost.\n\n## Commands with no default key\n\nThese commands are in the palette and have no key until you give them one. Use their ids in `keybindings.json` or `.margin/hooks.json`.\n\n| Command | Id |\n| --- | --- |\n| Properties | `note.properties` |\n| New Note from Template… | `note.newFromTemplate` |\n| Note Health | `native.showNoteHealth` |\n| Share… | `native.shareNote` |\n| Import… | `native.importDocument` |\n| Insert Image… | `native.insertImage` |\n| Export… | `native.exportNote` |\n| Export Diagram… | `native.exportDiagram` |\n| Export Notes Folder… | `native.exportNotesFolder` |\n| Export Listed Notes… | `native.exportListedNotes` |\n| Rename Tag… | `native.renameTag` |\n| Rename Property… | `native.renameProperty` |\n| Set Property on Listed Notes… | `native.setPropertyOnListedNotes` |\n| Replace in Notes… | `native.replaceInNotes` |\n| Copy as Markdown | `native.copyAsMarkdown` |\n| Copy as Plain Text | `native.copyAsPlainText` |\n| Larger Panel | `native.largerPanel` |\n| Smaller Panel | `native.smallerPanel` |\n| Default Panel Size | `native.defaultPanelSize` |\n| Edit Without Marks | `native.toggleEditWithoutMarks` |\n| Show Authorship | `native.toggleAuthorship` |\n| Unfold all sections | `editor.unfoldAll` |\n| Show in preview | `editor.showInPreview` |\n| Line breaks | `editor.lineBreaks` |\n| Compare flavors | `editor.compareFlavors` |\n| Start Presentation | `editor.startPresentation` |\n| Pin Reference Note… | `editor.pinReference` |\n| Unpin Reference Note | `editor.unpinReference` |\n| Layouts… | `editor.layouts` |\n| Save Layout… | `editor.saveLayout` |\n| Browse Backups… | `editor.browseBackups` |\n| Open Tasks… | `editor.openTasks` |\n| Format document | `editor.formatDocument` |\n| Format Code Blocks | `editor.formatCodeBlocks` |\n| Check Front Matter | `editor.checkFrontMatter` |\n| Check Style | `editor.checkStyle` |\n| Check Agent Files | `editor.checkAgentFiles` |\n| Agent Context | `editor.agentContext` |\n| Check Accessibility | `editor.checkAccessibility` |\n| Record Macro | `macro.record` |\n| Stop Recording | `macro.stop` |\n| Copy Unformatted Answer | `calc.copyUnformattedAnswer` |\n| Copy with Answers | `calc.copyWithAnswers` |\n| Insert Answer | `calc.insertAnswer` |\n| Alt text and caption… | `editor.imageText` |\n| Rename heading… | `editor.renameHeading` |\n| Move Section to New Note… | `editor.moveSection` |\n| Promote Section | `editor.promoteSection` |\n| Demote Section | `editor.demoteSection` |\n| Set Code Language… | `editor.setCodeLanguage` |\n| Export Section… | `editor.exportSection` |\n| Restore Section from Snapshot… | `editor.restoreSection` |\n| Compare with Snapshot… | `editor.compareWithSnapshot` |\n| Go to Definition | `schema.goToDefinition` |\n| Find References | `schema.findReferences` |\n| Expand Abbreviation | `schema.expandAbbreviation` |\n| Copy as SQLite | `schema.copyAsSQLite` |\n| Copy as MySQL | `schema.copyAsMySQL` |\n| Copy as DBML | `schema.copyAsDBML` |\n| Copy as Data Dictionary | `schema.copyAsDictionary` |\n| Rename Table or Column… | `schema.rename` |\n| Review | `schema.review` |\n| Import Schema | `database.importSchema` |\n| Compare with Database | `database.compare` |\n| Read Table Sizes | `database.readSizes` |\n| Run Plan | `database.runPlan` |\n| Run Plan with ANALYZE | `database.runPlanAnalyze` |\n| Add Table Row Above | `table.insertRowAbove` |\n| Add Table Row Below | `table.insertRowBelow` |\n| Delete Table Row | `table.deleteRow` |\n| Duplicate Table Row | `table.duplicateRow` |\n| Move Table Row Up | `table.moveRowUp` |\n| Move Table Row Down | `table.moveRowDown` |\n| Add Table Column Before | `table.insertColumnLeft` |\n| Add Table Column After | `table.insertColumnRight` |\n| Delete Table Column | `table.deleteColumn` |\n| Duplicate Table Column | `table.duplicateColumn` |\n| Move Table Column Left | `table.moveColumnLeft` |\n| Move Table Column Right | `table.moveColumnRight` |\n| Align Table Column Left | `table.alignLeft` |\n| Align Table Column Center | `table.alignCenter` |\n| Align Table Column Right | `table.alignRight` |\n| Clear Table Column Alignment | `table.alignNone` |\n| Sort Table by Column, Ascending | `table.sortAscending` |\n| Sort Table by Column, Descending | `table.sortDescending` |\n| Convert Table to CSV | `table.toCsv` |\n| Convert CSV or TSV to Table | `table.fromDelimited` |\n\n## See also\n\n- [Plugins, macros and hooks](plugins.md), to run a command by its id when a note saves or opens\n- [Settings](settings.md), for the Shortcuts pane and every other setting\n- [Troubleshooting](troubleshooting.md), when a shortcut does nothing\n',re=`---
 title: Links and wikilinks
 section: Writing
 order: 4
@@ -1372,7 +1469,7 @@ summary: Link to web pages and other notes, preview and follow links, and see wh
 
 # Links and wikilinks
 
-Margin reads two kinds of links between notes: wikilinks such as \`[[Plan]]\`, and ordinary Markdown links to a \`.md\` file. It keeps a map of every link in your notes, so it can show what links to a note, fix links when you rename one, and find links that lead nowhere.
+Margin reads two kinds of links between notes: wikilinks such as \`[[Plan]]\`, and ordinary Markdown links to a \`.md\` file. It keeps a map of every link in your notes, so it can show what links to a note, fix links when you [rename one](manage-notes.md#rename-a-note), and find links that lead nowhere.
 
 ## Add a link
 
@@ -1395,11 +1492,11 @@ A wikilink can point at a heading, \`[[Plan#Budget]]\`, or show other text, \`[[
 
 ## Open a link
 
-⌘-click a link in the editor, or click it in the preview.
+⌘-click a link in the editor, or click it in the [preview](preview.md#click-in-the-preview).
 
 - A web address opens in your default browser.
 - A wikilink or a relative \`.md\` link opens that note in Margin.
-- A wikilink to a note that does not exist creates the note at the top of your notes folder.
+- A wikilink to a note that does not exist [creates the note](find-and-create.md#create-a-note) at the top of your notes folder.
 - A linked image follows its link, and a reference link follows its definition.
 
 Press ⌘[ to go back to the note you came from.
@@ -1418,7 +1515,7 @@ An embed among other words stays a link. A note cannot embed itself, and an embe
 
 ## See which notes link here
 
-When other notes link to the open note, the footer says so, such as "3 notes link here". Click it to list those notes. Use the arrow keys and Return, or click, to open one. Press Esc to close the list.
+When other notes link to the open note, the [footer](window-tour.md#the-footer) says so, such as "3 notes link here". Click it to list those notes. Use the arrow keys and Return, or click, to open one. Press Esc to close the list.
 
 ## Find unlinked mentions
 
@@ -1428,7 +1525,7 @@ A mention is the note's title as whole words, ignoring case and accents. So \`Pl
 
 ## Link the mentions in a note
 
-In the footer's list, click the Link button beside a note under Unlinked mentions. Margin makes each mention in that note a wikilink and keeps the sentence reading as before. A mention written "plan" becomes \`[[Plan|plan]]\`. Margin takes a snapshot of the note first, then says, for example, "Linked 2 mentions of Plan in Draft".
+In the footer's list, click the Link button beside a note under Unlinked mentions. Margin makes each mention in that note a wikilink and keeps the sentence reading as before. A mention written "plan" becomes \`[[Plan|plan]]\`. Margin takes a [snapshot](safety.md#snapshots) of the note first, then says, for example, "Linked 2 mentions of Plan in Draft".
 
 ## Fix broken links
 
@@ -1437,13 +1534,19 @@ In the footer's list, click the Link button beside a note under Unlinked mention
 3. Click a row to go to its line, or use its buttons:
    - Create Note makes and opens a missing note.
    - Remove Link keeps the link's text, or removes an image or an embed.
-   - Restore brings back a missing file from a backup, when one holds it.
+   - Restore brings back [a missing file](images.md#restore-a-missing-attachment) from a backup, when one holds it.
 
-The list updates as you edit. A note with no problems shows "No broken links or missing images." Press Esc or click Done to close it. Margin does not check web links, since it does not go online to test them.
+The list updates as you edit. A note with no problems shows "No broken links or missing images." Press Esc or click Done to close it. Margin does not check web links, since it [does not go online](privacy.md#when-margin-goes-online) to test them.
 
 ## Rename a heading without breaking links
 
 To rename a heading and update every link that points at it, see [Outline, headings and sections](outline-and-sections.md#rename-a-heading).
+
+## See also
+
+- [Outline, headings and sections](outline-and-sections.md), to rename headings and move sections without breaking links
+- [Rename, delete and organize notes](manage-notes.md), to rename or merge notes with their links updated
+- [Tags, properties and bases](properties-and-bases.md), to group notes by tag and property
 `,ie=`---
 title: Lists and tasks
 section: Writing
@@ -1494,13 +1597,13 @@ Do any of these:
 
 - Click the task's checkbox in the editor. The caret stays where it was.
 - Put the caret on the task's line and press ⇧⌘L.
-- Click the checkbox in the preview.
+- Click the checkbox in the [preview](preview.md#click-in-the-preview).
 
-A checked task's text turns grey. Each change is one step of undo. A right-click or Control-click on a checkbox opens the menu and leaves the task as it was. In a read-only note, the preview's checkboxes do nothing.
+A checked task's text turns grey. Each change is one step of undo. A right-click or Control-click on a checkbox opens the menu and leaves the task as it was. In a [read-only note](safety.md#notes-you-can-read-but-not-edit), the preview's checkboxes do nothing.
 
 ## Paste into a list
 
-When you paste several lines into a list item, Margin continues the list.
+When you [paste](formatting.md#paste-formatted-text) several lines into a list item, Margin continues the list.
 
 - Each pasted line becomes an item with the list's marker and indent, and an empty checkbox in a task list.
 - A pasted list keeps its nesting and its own checkboxes, and takes your list's marker.
@@ -1513,6 +1616,12 @@ One ⌘Z takes the whole paste back. A single plain line pastes as it is.
 ## Find open tasks in every note
 
 To see every unchecked task in your notes in one list, with due dates and owners, see [Open tasks across notes](tasks.md).
+
+## See also
+
+- [Open tasks across notes](tasks.md), to list every open task with its due date and owner
+- [Write and edit](editor.md), to move a list item with ⌃⇧⌘↑ and ⌃⇧⌘↓
+- [Slash menu, snippets and templates](slash-menu.md), to insert a list or a task by name
 `,ae=`---
 title: Rename, delete and organize notes
 section: Notes
@@ -1522,11 +1631,11 @@ summary: Rename and delete notes, pin the ones you use most, scope the list to a
 
 # Rename, delete and organize notes
 
-Margin's note list is your folder of Markdown files, newest first. Rename a note and Margin renames its file and offers to fix the links to it. Delete a note and it goes to the Trash, where you can get it back.
+Margin's note list is your folder of Markdown files, newest first. Rename a note and Margin renames its file and offers to fix the [links](links.md) to it. Delete a note and it goes to the Trash, where you can get it back.
 
 ## Rename a note
 
-1. Select the note and press ⌘R. You can also double-click it in the list, or click its title in the editor header.
+1. Select the note and press ⌘R. You can also double-click it in the list, or click its title in the [editor header](window-tour.md#the-editor-header).
 2. The title appears in the search field. Edit it and press Return. Press Esc to keep the old name.
 
 When other notes link to the old title, Margin says how many links will change and asks before it changes any of them. Updated links keep what they had:
@@ -1550,7 +1659,7 @@ You can also choose Move to Trash from the note menu (⋯) or from a row's right
 
 Select a note and press ⌥⌘P, or choose Pin Note from the note menu (⋯) or the row's right-click menu. The note moves to a Pinned section at the top of the list and shows a pin beside its time. Press ⌥⌘P again to unpin it.
 
-Pins change nothing in the note's file. Margin keeps them in its own Application Support folder, and a pin follows a note you rename or move inside Margin. Pins do not change the order of search results.
+Pins change nothing in the note's file. Margin keeps them in its own [Application Support folder](privacy.md#where-margin-keeps-its-files), and a pin follows a note you rename or move inside Margin. Pins do not change the order of search results.
 
 ## Browse notes by date
 
@@ -1563,7 +1672,7 @@ The folder menu sits above the list and reads All Notes until you choose a folde
 1. Click the folder menu.
 2. Choose a folder. The list and search now cover that folder and the folders inside it.
 
-New notes go into the folder you chose. Choose All Notes to see every note again. The All Notes item shows the path of your notes folder, and the menu ends with Show Notes Folder in Finder. Saved searches also appear in this menu. See [Tags, properties and bases](properties-and-bases.md#use-a-base-as-a-saved-search).
+New notes go into the folder you chose. Choose All Notes to see every note again. The All Notes item shows the path of your [notes folder](notes-folder.md), and the menu ends with Show Notes Folder in Finder. Saved searches also appear in this menu. See [Tags, properties and bases](properties-and-bases.md#use-a-base-as-a-saved-search).
 
 ## Show the folder column
 
@@ -1602,11 +1711,18 @@ Merge Note Into… adds the open note's text to the end of another note, moves t
 3. Choose the note to merge into.
 4. Read the sheet, such as "Merge Harbour into Plan". It says how many links in how many notes will change. Click Merge.
 
-The chosen note gets its own text, a blank line, and then the open note's text. Margin opens it, and tabs, the reference pane and Back now lead to it. Each link to the merged note, in any note, now points at the chosen note and keeps its heading, alias and embed mark. Margin takes a snapshot before it writes.
+The chosen note gets its own text, a blank line, and then the open note's text. Margin opens it, and [tabs](tabs-and-layouts.md), the reference pane and Back now lead to it. Each link to the merged note, in any note, now points at the chosen note and keeps its heading, alias and embed mark. Margin takes a [snapshot](safety.md#snapshots) before it writes.
 
 If either note opens read-only, could not be read, or changed on disk meanwhile, Margin leaves both notes as they were and says why.
 
 To split a section out into a note of its own, see [Outline, headings and sections](outline-and-sections.md#move-a-section-to-a-new-note).
+
+## See also
+
+- [Find and create notes](find-and-create.md), to search the list and make new notes
+- [Links and wikilinks](links.md), to see which notes link to a note and fix broken links
+- [Outline, headings and sections](outline-and-sections.md), to split a section into a note of its own
+- [How Margin keeps your notes safe](safety.md), for snapshots, backups and edits from other apps
 `,oe=`---
 title: Set up your notes folder
 section: Get started
@@ -1625,14 +1741,14 @@ The first time you open the panel, Margin asks for a notes folder inside the pan
 1. Accept the suggested folder, \`~/Documents/Margin\`, or choose another one.
 2. Confirm. Margin creates the folder if it does not exist.
 
-An empty folder shows "No notes yet" with three hints: the panel hotkey, ⌘/ for every shortcut, and ⌘, for Settings. Margin writes no welcome note. Type a title in the search field and press Return to make your first note.
+An empty folder shows "No notes yet" with three hints: the panel hotkey, ⌘/ for every shortcut, and ⌘, for [Settings](settings.md#notes-folder-and-files). Margin writes no welcome note. Type a title in the search field and press Return to make your first note.
 
 ## Change the folder
 
 1. Press ⌘, to open Settings.
 2. Next to Notes folder, click Choose… and pick a folder.
 
-Click Show in Finder beside it to open the folder. You can also open it from the status item's menu with Open Notes Folder in Finder, or from the end of the folder menu above the note list with Show Notes Folder in Finder.
+Click Show in Finder beside it to open the folder. You can also open it from the status item's menu with Open Notes Folder in Finder, or from the end of the [folder menu](manage-notes.md#scope-the-list-to-a-folder) above the note list with Show Notes Folder in Finder.
 
 To sync notes between Macs, choose a folder that a sync service already syncs, such as one in iCloud Drive. Margin has no sync service of its own.
 
@@ -1652,7 +1768,7 @@ A note's file name is its title. The note "Groceries" is the file \`Groceries.md
 
 ## Set the attachments folder
 
-Margin saves pasted and dropped images, and the originals of imported documents, in an attachments folder. The default is \`attachments/\` at the top of the notes folder.
+Margin saves [pasted and dropped images](images.md#add-an-image), and the originals of [imported documents](import.md), in an attachments folder. The default is \`attachments/\` at the top of the notes folder.
 
 To change it, open Settings and type a new name under Attachments folder name. Margin refuses a name that a folder of notes already has, because the list leaves the attachments folder's files out.
 
@@ -1668,15 +1784,21 @@ Some features read settings from a hidden \`.margin\` folder inside your notes f
 | \`.margin/authorship/\` | The record of AI text you accepted. Margin writes it. |
 | \`.margin/templates/\` | Your note templates. See [Slash menu, snippets and templates](slash-menu.md#add-your-own-templates). |
 | \`.margin/snippets.json\` | Your snippets. |
-| \`.margin/schema.json\` | Naming conventions and column groups for SQL. See [SQL schema blocks](schema-blocks.md#set-naming-conventions-and-column-groups). |
-| \`.margin/themes/\` | Your editor themes, one CSS file each. |
-| \`.margin/export/\` | Your export templates, one CSS file each. |
-| \`.margin/frontmatter.json\` | Which JSON Schema checks which notes' front matter. |
-| \`.margin/plugins/\` | Plugins, one folder each. |
+| \`.margin/schema.json\` | Naming conventions and column groups for SQL. Open Schema Settings in the command palette opens it, and writes it with the defaults when it is missing. See [SQL schema blocks](schema-blocks.md#set-naming-conventions-and-column-groups). |
+| \`.margin/themes/\` | Your editor themes, one CSS file each. See [Themes and writing comfort](appearance.md#make-your-own-theme). |
+| \`.margin/export/\` | Your export templates, one CSS file each. See [Export, print and share](export.md#use-an-export-template). |
+| \`.margin/frontmatter.json\` | Which JSON Schema checks which notes' front matter. See [Check a note](checks.md#check-front-matter-against-a-schema). |
+| \`.margin/plugins/\` | Plugins, one folder each. See [Plugins, macros and hooks](plugins.md). |
 | \`.margin/macros/\` | Recorded macros. |
 | \`.margin/hooks.json\` | Commands to run when a note saves or opens. |
 
 Margin keeps everything else, such as pins, layouts, snapshots and backups, in \`~/Library/Application Support/Margin/\`, outside your notes. See [Privacy and network use](privacy.md#where-margin-keeps-its-files).
+
+## See also
+
+- [How Margin keeps your notes safe](safety.md), for how Margin saves the folder's files and backs them up
+- [Find and create notes](find-and-create.md), to search the folder and add notes to it
+- [Open and close the panel](panel.md), to open the panel from any app with its hotkey
 `,se=`---
 title: Outline, headings and sections
 section: Organize
@@ -1686,7 +1808,7 @@ summary: Jump to any heading, fold and move sections, and rename or split sectio
 
 # Outline, headings and sections
 
-A section is a heading and everything under it, down to the next heading of the same level or higher. Margin lets you jump between sections, fold them, move them and split them into notes of their own, and keeps links pointing at the right place as you do.
+A section is a heading and everything under it, down to the next heading of the same level or higher. Margin lets you jump between sections, fold them, move them and split them into notes of their own, and keeps [links](links.md) pointing at the right place as you do.
 
 ## Open the outline
 
@@ -1744,12 +1866,18 @@ If the caret is not under a heading, Margin says "Put the caret in a section und
 
 ## Add a table of contents
 
-In the MultiMarkdown and All flavors, write \`[TOC]\`, \`[[_TOC_]]\` or \`{{TOC}}\` on a line of its own. The preview draws a table of contents of the note's headings there.
+In the MultiMarkdown and All [flavors](flavors.md#what-each-flavor-reads), write \`[TOC]\`, \`[[_TOC_]]\` or \`{{TOC}}\` on a line of its own. The [preview](preview.md) draws a table of contents of the note's headings there.
 
 ## Restore or export one section
 
 - To bring back an earlier version of a section, see [How Margin keeps your notes safe](safety.md#restore-a-section-from-a-snapshot).
 - To export a section on its own, see [Export, print and share](export.md#export-one-section).
+
+## See also
+
+- [Write and edit](editor.md), to move any block and follow the heading path in the footer
+- [Rename, delete and organize notes](manage-notes.md), to merge a whole note into another
+- [Find and create notes](find-and-create.md), to search headings across every note with \`#\`
 `,ce=`---
 title: Open and close the panel
 section: Get started
@@ -1766,11 +1894,11 @@ Margin's window is a panel that drops down from the menu bar. It opens over what
 - Click the Margin icon in the menu bar. The panel opens under the icon, on the display whose menu bar you clicked.
 - Press ⌃⌥N in any app. The panel opens on the screen that holds the pointer.
 
-The panel opens with the search field ready for typing and the last note you had open on show. Margin also comes to the front, so dictation, the emoji picker and Writing Tools work in the panel.
+The panel opens with the [search field](find-and-create.md#search-your-notes) ready for typing and the last note you had open on show. Margin also comes to the front, so [dictation, the emoji picker and Writing Tools](editor.md#type-in-any-language) work in the panel.
 
 ## Change the global shortcut
 
-1. Press ⌘, to open Settings.
+1. Press ⌘, to open [Settings](settings.md#startup-and-the-panel).
 2. Click the Global hotkey recorder and press the chord you want.
 
 The hints in an empty notes folder show the new chord from then on.
@@ -1786,7 +1914,7 @@ Do any of these:
 
 When you close the panel, Margin saves the open note and returns you to the app you were in.
 
-Esc closes whatever sits on top first. It clears text in the search field, then closes the find bar, the outline, the \`[[\` completion list or the shortcut sheet, ends a snippet's fields, and removes the marks Find References left. Once nothing is left to close, Esc closes the panel.
+Esc closes whatever sits on top first. It clears text in the search field, then closes the [find bar](find-and-replace.md#find-text-in-a-note), the [outline](outline-and-sections.md#open-the-outline), the \`[[\` completion list or the shortcut sheet, ends a [snippet's fields](slash-menu.md#fill-in-a-snippets-fields), and removes the marks Find References left. Once nothing is left to close, Esc closes the panel.
 
 ## Keep the panel open
 
@@ -1840,10 +1968,17 @@ Press ⌘Q while the panel is open, or choose Quit Margin from the status item's
 ## Good to know
 
 - The panel opens on every Space and over apps in full screen.
-- The panel sits on the system's glass material and follows the system's light or dark appearance.
-- It fades in over 0.15 seconds and out over 0.12 seconds with a short slide. The format bar, the slash menu and the empty folder's hints fade in too. Turn on Reduce Motion in System Settings to skip every fade.
+- The panel sits on the system's glass material and follows the system's [light or dark appearance](appearance.md).
+- It fades in over 0.15 seconds and out over 0.12 seconds with a short slide. The [format bar](formatting.md#use-the-format-bar), the slash menu and the empty folder's hints fade in too. Turn on Reduce Motion in System Settings to skip every fade.
 - Margin's release builds must meet a set of speed budgets. The panel shows within 50 ms of a click, Margin is ready within 600 ms of launch, a 10 MB note opens in 300 ms, and search answers within 10 ms a keystroke across 5,000 notes.
 - Margin has no menu bar of its own while you work. Every menu command is in the command palette, ⇧⌘P. See [A tour of the window](window-tour.md#the-command-palette).
+
+## See also
+
+- [A tour of the window](window-tour.md), for the parts of the panel and the command palette
+- [Keyboard shortcuts](keyboard-shortcuts.md), for every key, and how to change one
+- [Tabs, layouts and the reference note](tabs-and-layouts.md), to save the panel's size and columns as a layout
+- [Troubleshooting](troubleshooting.md), when the panel will not close or Launch at Login stays off
 `,le=`---
 title: Plugins, macros and hooks
 section: Plugins, macros and hooks
@@ -1853,12 +1988,12 @@ summary: Add commands with sandboxed plugins, record a series of commands as a m
 
 # Plugins, macros and hooks
 
-Plugins add commands, slash menu rows and block types written in JavaScript. Macros replay a series of commands you recorded. Hooks run a command each time a note saves or opens. All three live in your notes folder's \`.margin\` folder.
+Plugins add commands, [slash menu](slash-menu.md) rows and block types written in JavaScript. Macros replay a series of commands you recorded. Hooks run a command each time a note saves or opens. All three live in your [notes folder's](notes-folder.md#files-margin-keeps-in-the-margin-folder) \`.margin\` folder.
 
 ## Add a plugin
 
 1. Put the plugin's folder in \`.margin/plugins/\` in your notes folder, such as \`.margin/plugins/word-tools/\`.
-2. Press ⌘, and find Plugins in Settings. The plugin is listed there.
+2. Press ⌘, and find Plugins in [Settings](settings.md#plugins). The plugin is listed there.
 3. Turn the plugin on.
 
 Every plugin is off until you turn it on. Margin keeps which plugins are on in its own Application Support folder, for each notes folder, and never in the notes folder itself. So a notes folder copied from someone else runs nothing until you turn its plugins on.
@@ -1867,15 +2002,15 @@ A plugin's folder holds a \`manifest.json\` that names its version, its main Jav
 
 ## Use a plugin
 
-- A plugin's commands appear in the palette under Plugins, each with the plugin's name after it, such as "Title Case (word-tools)". A command sends the selection, or the whole note when nothing is selected, and its answer replaces what it was sent.
+- A plugin's commands appear in the [palette](window-tour.md#the-command-palette) under Plugins, each with the plugin's name after it, such as "Title Case (word-tools)". A command sends the selection, or the whole note when nothing is selected, and its answer replaces what it was sent.
 - A plugin's slash rows appear in the slash menu under Plugins. A row sends the line before the slash, and its answer takes the slash's place.
-- A plugin can draw a fenced block of its own language in the preview. Exports show the block as code.
+- A plugin can draw a fenced block of its own language in the [preview](preview.md). Exports show the block as code.
 
 Each answer is one step of undo. If the note changed before the answer came back, or the note is read-only, Margin changes nothing and says so.
 
 ## What a plugin cannot do
 
-Margin runs each plugin in a sandbox with no network, no images and no storage. A plugin sees the note's text only when you run one of its commands, and its drawings in the preview pass through the same safety filter as any note.
+Margin runs each plugin in a sandbox with no network, no images and no storage. A plugin sees the note's text only when you run one of its commands, and its drawings in the preview pass through the [same safety filter](privacy.md#notes-never-run-code) as any note.
 
 If a plugin does not answer within 2 seconds, Margin stops it and starts it again, so a plugin stuck in a loop cannot freeze the editor.
 
@@ -1890,7 +2025,7 @@ Settings lists a plugin it cannot turn on with the reason. That happens when its
 
 The macro appears in the palette under Macros. Run it to replay its commands in order, as one step of undo. If a command does nothing, the macro stops there and says which.
 
-Margin saves each macro as \`.margin/macros/<name>.json\`. A name cannot be empty, hold \`/\` or \`:\`, start with a dot, start or end with a space, or run past 64 characters, and must not be in use already. Plugin commands and AI commands return before their answer arrives, so Record Macro leaves them out and says so.
+Margin saves each macro as \`.margin/macros/<name>.json\`. A name cannot be empty, hold \`/\` or \`:\`, start with a dot, start or end with a space, or run past 64 characters, and must not be in use already. Plugin commands and [AI commands](ai.md#run-an-ai-command) return before their answer arrives, so Record Macro leaves them out and says so.
 
 ## Run a command when a note saves or opens
 
@@ -1900,12 +2035,18 @@ Put a \`.margin/hooks.json\` file in your notes folder, naming a command for eac
 {"save": "editor.formatDocument", "open": "editor.foldSection"}
 \`\`\`
 
-- The save hook runs on the note before every save, as a step of undo of its own. This example tidies the note each time it saves.
+- The save hook runs on the note before every save, as a step of undo of its own. This example [tidies the note](editor.md#tidy-a-note) each time it saves.
 - The open hook runs on each note as it opens. It cannot change the note's text, so opening a note never writes it.
 
 A hook can name a command from the palette, a plugin's command or a macro. AI commands, Record Macro, and a macro that holds a plugin's or AI command cannot be hooks. Command ids are listed in [Keyboard shortcuts](keyboard-shortcuts.md).
 
 If a hook fails, Margin leaves the note as it was and says why, once, until the file changes.
+
+## See also
+
+- [Keyboard shortcuts](keyboard-shortcuts.md), for the command ids a hook or a key binding names
+- [Slash menu, snippets and templates](slash-menu.md), for snippets and templates, which need no code
+- [Troubleshooting](troubleshooting.md), when a plugin stops answering
 `,ue=`---
 title: Read the preview
 section: Reading and sharing
@@ -1925,9 +2066,9 @@ The preview shows the note as it reads when rendered, in the note's flavor. It u
 | ⌘2 | Editor and Preview, side by side |
 | ⌘3 | Preview |
 
-You can also click the Editor, Split and Preview buttons in the editor header. In a panel narrower than 900 points, split mode puts the preview under the editor.
+You can also click the Editor, Split and Preview buttons in the [editor header](window-tour.md#the-editor-header). In a panel narrower than 900 points, split mode puts the preview under the editor.
 
-Switching modes keeps your caret, your selection, your folded sections and your place in the note. If the editor had the keys when you left it, it has them again when it comes back.
+Switching modes keeps your caret, your selection, your [folded sections](outline-and-sections.md#fold-a-section) and your place in the note. If the editor had the keys when you left it, it has them again when it comes back.
 
 ## Scroll both panes together
 
@@ -1937,7 +2078,7 @@ The preview redraws as you type and leaves its scroll position, images and diagr
 
 ## Click in the preview
 
-- Click a task's checkbox to check it off in the source. In a read-only note the checkboxes do nothing.
+- Click a [task's checkbox](lists-and-tasks.md#check-off-a-task) to check it off in the source. In a read-only note the checkboxes do nothing.
 - Click a link to follow it, the same as ⌘-clicking it in the editor. See [Links and wikilinks](links.md#open-a-link).
 - Click a \`#heading\` link to scroll the preview to that heading.
 
@@ -1990,7 +2131,7 @@ Exports carry the same numbers.
 
 ## Read other Markdown extensions
 
-Depending on the flavor, the preview also draws task lists, wikilinks, embeds, tags, \`%%comments%%\`, a \`[TOC]\` table of contents, footnotes, front matter, \`==highlight==\`, \`^superscript^\`, subscript, definition lists and abbreviations. See [Markdown flavors](flavors.md#what-each-flavor-reads) for which flavor reads what.
+Depending on the flavor, the preview also draws task lists, wikilinks, embeds, [tags](properties-and-bases.md#add-tags), \`%%comments%%\`, a \`[TOC]\` table of contents, footnotes, front matter, \`==highlight==\`, \`^superscript^\`, subscript, definition lists and abbreviations. See [Markdown flavors](flavors.md#what-each-flavor-reads) for which flavor reads what.
 
 ## Present a note as slides
 
@@ -2012,9 +2153,16 @@ Front matter starts no slide, and Margin skips empty slides. A note with nothing
 
 ## Good to know
 
-- The preview never runs scripts from a note. Margin strips scripts and other active content before anything reaches the screen.
+- The preview [never runs scripts](privacy.md#notes-never-run-code) from a note. Margin strips scripts and other active content before anything reaches the screen.
 - The preview shows images from your notes folder. A path that climbs out of the notes folder does not load.
-- The preview follows the system's light or dark appearance.
+- The preview follows the system's [light or dark appearance](appearance.md).
+
+## See also
+
+- [Markdown flavors](flavors.md), for which flavor reads which extension
+- [Export, print and share](export.md), to save or print what the preview shows
+- [Math in notes](calc.md), to work out sums with an answer beside each line
+- [Tabs, layouts and the reference note](tabs-and-layouts.md), to keep a rendered reference note beside your draft
 `,de=`---
 title: Privacy and network use
 section: Reference
@@ -2024,25 +2172,25 @@ summary: See when Margin reaches the network, what it sends, and where it keeps 
 
 # Privacy and network use
 
-Margin works offline. Your notes stay in your notes folder, and Margin has no account and no server of its own. It reaches the network only for the things on this page, and only after you turn them on.
+Margin works offline. Your notes stay in your [notes folder](notes-folder.md), and Margin has no account and no server of its own. It reaches the network only for the things on this page, and only after you turn them on.
 
 ## When Margin goes online
 
 | What | When | Where it connects |
 | --- | --- | --- |
 | Claude | You choose Claude in the AI settings, add your key and send a run | Anthropic's API |
-| Database connections | You add a connection and run a command against it | The database server you named |
-| Remote images | Load remote images is on, which it is at first, and a note shows an image from a web address | That image's address |
+| [Database connections](databases.md) | You add a connection and run a command against it | The database server you named |
+| [Remote images](images.md#show-images-from-the-web) | Load remote images is on, which it is at first, and a note shows an image from a web address | That image's address |
 | Links you open | You click or ⌘-click a web link | Your default browser opens it |
 
 Everything else stays on your Mac:
 
-- Margin bundles its currency rates and never fetches rates while it runs.
+- Margin bundles its [currency rates](calc.md#convert-currencies) and never fetches rates while it runs.
 - Margin does not check for updates. Homebrew does that when you run \`brew upgrade\`.
 - Note Health does not test web links.
-- AI on this Mac, and Find by meaning, run on your Mac.
-- Coding agents connect through a file on your Mac that exists only while Agents is on. Margin opens no network port.
-- Plugins run with no network access, and export templates and themes cannot load web fonts or style sheets.
+- AI on this Mac, and [Find by meaning](ai-across-notes.md#search-by-meaning), run on your Mac.
+- [Coding agents](agents.md) connect through a file on your Mac that exists only while Agents is on. Margin opens no network port.
+- [Plugins](plugins.md#what-a-plugin-cannot-do) run with no network access, and export templates and themes cannot load web fonts or style sheets.
 
 ## What Claude receives
 
@@ -2065,7 +2213,7 @@ Besides your notes, their attachments and the \`.margin\` folder, Margin keeps i
 
 | File or folder | What it holds |
 | --- | --- |
-| \`Snapshots/\` | Earlier versions of each note, for 7 days |
+| \`Snapshots/\` | [Earlier versions of each note](safety.md#snapshots), for 7 days |
 | \`Backups/\` | Hourly backups of your notes folder |
 | \`pins.json\` | Pinned notes |
 | \`layouts.json\` | Saved layouts |
@@ -2078,6 +2226,12 @@ Besides your notes, their attachments and the \`.margin\` folder, Margin keeps i
 Passwords for database connections and your Claude key live in the macOS Keychain.
 
 To remove everything Margin keeps outside your notes, see [Install Margin](install.md#uninstall-margin).
+
+## See also
+
+- [AI in a note](ai.md), to turn AI on and keep notes and passages out of it
+- [Connect a coding agent](agents.md), for what agents can and cannot see
+- [How Margin keeps your notes safe](safety.md), for snapshots and backups
 `,fe=`---
 title: Tags, properties and bases
 section: Organize
@@ -2099,7 +2253,7 @@ tags: [work, work/launch]
 ---
 \`\`\`
 
-A tag can hold others under it with a slash, such as \`#work/launch\`. The Obsidian and All flavors draw tags in the text.
+A tag can hold others under it with a slash, such as \`#work/launch\`. The Obsidian and All [flavors](flavors.md#what-each-flavor-reads) draw tags in the text.
 
 ## Edit a note's properties
 
@@ -2110,7 +2264,7 @@ The Properties panel shows each front matter key with a control for its type. A 
 
 ## Filter by tag or property
 
-Type these in the search field:
+Type these in the [search field](find-and-create.md#search-your-notes):
 
 | Type this | To find notes |
 | --- | --- |
@@ -2122,7 +2276,7 @@ A property filter ignores case and accents, and matches any item of a list. It f
 
 ## Show notes as a table with a base
 
-A base is a set of filters, columns and views written in YAML, in a subset of Obsidian's Bases syntax. Put it in a \` \`\`\`base \` block in any note, or in a \`.base\` file of its own. Margin draws it as a \`table\` or a \`board\` view over the notes its filters match. A \`.base\` file appears in the note list like a note.
+A base is a set of filters, columns and views written in YAML, in a subset of Obsidian's Bases syntax. Put it in a \` \`\`\`base \` block in any note, or in a \`.base\` file of its own. Margin draws it as a \`table\` or a \`board\` view over the notes its filters match. A \`.base\` file appears in the [note list](notes-folder.md#which-files-margin-lists) like a note.
 
 Margin keeps the parts of a base it does not read, such as \`formulas\`, \`summaries\` and other view types, exactly as written, and marks them Not supported. A filter it cannot read shows no notes and names the filter, rather than showing every note.
 
@@ -2138,7 +2292,7 @@ To move a card, drag it to another column, or open its ⋯ menu and choose Move.
 
 ## Use a base as a saved search
 
-Each \`.base\` file in your notes folder appears in the folder menu above the note list, under Saved Searches. Choose one to scope the list to the notes its first view matches. The list follows your notes as they change. Choose a folder or All Notes to leave the saved search.
+Each \`.base\` file in your notes folder appears in the [folder menu](manage-notes.md#scope-the-list-to-a-folder) above the note list, under Saved Searches. Choose one to scope the list to the notes its first view matches. The list follows your notes as they change. Choose a folder or All Notes to leave the saved search.
 
 ## Rename a tag or property across notes
 
@@ -2158,11 +2312,17 @@ Rename Tag changes the tag and every tag under it, so \`#work/launch\` becomes \
 
 After Rename Tag, Rename Property or Set Property, click Undo in the notice or press ⌘Z to put every note back, except a note changed since.
 
-Each of these commands changes only the one key in each note. Margin holds back a note that changed on disk meanwhile, or whose front matter is TOML, and says why.
+Each of these commands changes only the one key in each note. Margin holds back a note that [changed on disk](safety.md#when-another-app-changes-a-note) meanwhile, or whose front matter is TOML, and says why.
 
 ## Check properties against a schema
 
 To check that notes have the properties they should, see [Check a note](checks.md#check-front-matter-against-a-schema).
+
+## See also
+
+- [Open tasks across notes](tasks.md), to list open tasks with their owners and due dates
+- [Find and create notes](find-and-create.md), for every filter the search field takes
+- [Check a note](checks.md), to check front matter against a JSON Schema
 `,v=`---
 title: How Margin keeps your notes safe
 section: Notes
@@ -2172,7 +2332,7 @@ summary: Learn how Margin saves, handles edits from other apps, and brings notes
 
 # How Margin keeps your notes safe
 
-Margin saves as you type and never writes a file you did not change. It keeps two kinds of history outside your notes folder: a snapshot of each note as you edit it, and an hourly backup of the whole folder.
+Margin saves as you type and never writes a file you did not change. It keeps two kinds of history outside your [notes folder](notes-folder.md): a snapshot of each note as you edit it, and an hourly backup of the whole folder.
 
 ## How Margin saves
 
@@ -2211,7 +2371,7 @@ A note that iCloud has not downloaded to this Mac still shows in the list under 
 
 Each time Margin saves a note, it checks the note's newest snapshot. If that is more than 10 minutes old, Margin copies the version on disk into \`~/Library/Application Support/Margin/Snapshots/\` before writing. Margin keeps snapshots for 7 days, separately for each notes folder.
 
-To see the files, choose Browse Snapshots… from the status item's menu. Finder opens the snapshot folder.
+To see the files, choose Browse Snapshots… from the [status item's menu](panel.md#use-the-status-items-menu). Finder opens the snapshot folder.
 
 ## Compare a note with a snapshot
 
@@ -2222,7 +2382,7 @@ A panel above the editor shows what changed since then, word by word. Its summar
 
 - Removed words are struck through in grey.
 - Added words are underlined in heavier type.
-- A section you moved shows "Moved here" where it went, and a line such as "Pricing moved down" where it was.
+- A [section you moved](outline-and-sections.md#move-a-section) shows "Moved here" where it went, and a line such as "Pricing moved down" where it was.
 - Runs of blocks that did not change fold to one line, such as "3 blocks the same".
 
 Click a block to put the caret there. Press Esc, click Done or edit the note to close the panel.
@@ -2252,7 +2412,7 @@ To back up right now, choose Back Up Now from the status item's menu. Margin say
 
 ## Restore from a backup
 
-1. Choose Browse Backups… from the status item's menu or the command palette. The list shows each backup by its time and number of files, such as Today 10:30 and 412 files.
+1. Choose Browse Backups… from the status item's menu or the [command palette](window-tour.md#the-command-palette). The list shows each backup by its time and number of files, such as Today 10:30 and 412 files.
 2. Choose a backup and press Return. Margin lists that backup's notes, each marked Same as now, Changed since, or No longer in the folder.
 3. Choose a note and press Return.
 
@@ -2268,6 +2428,12 @@ If Margin cannot write a note, a "Could not save" banner shows the reason. Your 
 
 - For history beyond snapshots and backups, use Time Machine or git.
 - Moving a note to the Trash is undoable during the session. See [Rename, delete and organize notes](manage-notes.md#move-a-note-to-the-trash).
+
+## See also
+
+- [Troubleshooting](troubleshooting.md), for what each banner means and what to do about it
+- [Privacy and network use](privacy.md), for every file Margin keeps in Application Support
+- [Install Margin](install.md), to keep or remove snapshots and backups when you uninstall
 `,y=`---
 title: SQL schema blocks
 section: SQL and databases
@@ -2277,7 +2443,7 @@ summary: Write a database schema in sql blocks with completion, checks, snippets
 
 # SQL schema blocks
 
-A note's \` \`\`\`sql \` blocks are its schema. Margin reads the tables, columns, keys and indexes they define, checks them as you type, completes names and types, and draws a diagram in the preview. The \`.md\` file stays the source, and Margin never drops a statement it cannot read.
+A note's \` \`\`\`sql \` blocks are its schema. Margin reads the tables, columns, keys and indexes they define, checks them as you type, completes names and types, and draws a diagram in the [preview](preview.md). The \`.md\` file stays the source, and Margin never drops a statement it cannot read.
 
 ## Write a schema
 
@@ -2289,7 +2455,7 @@ To start from a template, choose Schema, Data dictionary, Migration plan or Deci
 
 ## Choose the dialect
 
-Add \`sql:\` to the note's front matter with the dialect and version:
+Add \`sql:\` to the note's [front matter](properties-and-bases.md#edit-a-notes-properties) with the dialect and version:
 
 \`\`\`yaml
 ---
@@ -2297,7 +2463,7 @@ sql: postgresql 16
 ---
 \`\`\`
 
-Margin knows PostgreSQL 13 to 17, each with its own types, the version each feature arrived in, and its 63-byte limit on names. \`sql: sqlite\` reads the note as SQLite, which takes any word as a type. Settings sets the dialect for notes that do not name one. An unknown dialect falls back to the default, and Margin says so.
+Margin knows PostgreSQL 13 to 17, each with its own types, the version each feature arrived in, and its 63-byte limit on names. \`sql: sqlite\` reads the note as SQLite, which takes any word as a type. [Settings](settings.md#sql) sets the dialect for notes that do not name one. An unknown dialect falls back to the default, and Margin says so.
 
 ## See problems as you type
 
@@ -2333,7 +2499,14 @@ Nothing is offered where you name something new, such as a new column, or in a c
 
 ## Set naming conventions and column groups
 
-Put a \`.margin/schema.json\` file in your notes folder to set how constraint and index names are made, and to define groups of columns a table can take whole. With no file, Margin uses:
+Put a \`.margin/schema.json\` file in your [notes folder](notes-folder.md#files-margin-keeps-in-the-margin-folder) to set how constraint and index names are made, and to define groups of columns a table can take whole. Margin 0.1.5 and later open the file for you. In 0.1.4, open it in any text editor.
+
+1. Press ⇧⌘P to open the [command palette](window-tour.md#the-command-palette).
+2. Type "schema settings" and choose Open Schema Settings. Margin opens \`.margin/schema.json\`, and first writes it with the defaults below when the folder has none.
+3. Change a pattern or a group.
+4. Save the file. Margin uses the saved change in your SQL blocks right away.
+
+With no file, Margin uses these defaults:
 
 \`\`\`json
 {
@@ -2422,7 +2595,7 @@ You never need a shortcut. They exist only to save typing. To save your own, suc
 
 ## See the diagram
 
-In the preview, every SQL block that defines a table gets an entity relationship diagram under it, in every flavor. Each table shows its columns, their types and PK, FK and UK marks, with a line for each foreign key. Exports and copies carry the diagram.
+In the preview, every SQL block that defines a table gets an entity relationship diagram under it, in every flavor. Each table shows its columns, their types and PK, FK and UK marks, with a line for each foreign key. [Exports](export.md#export-a-diagram) and copies carry the diagram.
 
 Click a table in the diagram to jump to where it is defined. A schema too large to draw shows "This schema is too large to draw as a diagram."
 
@@ -2452,9 +2625,16 @@ Each copy starts with what it left out.
 3. Type the new name and press Return.
 4. If other notes use the name, a sheet asks \`Rename "users" to "people" in other notes?\` and counts the references. Click Update References, Don't Update or Cancel.
 
-Margin renames the name only where the schema uses it, and leaves prose, strings and inline code alone. It takes a snapshot of each other note first. One ⌘Z undoes the rename in the open note. Margin refuses a name the note already has.
+Margin renames the name only where the schema uses it, and leaves prose, strings and inline code alone. It takes a [snapshot](safety.md#snapshots) of each other note first. One ⌘Z undoes the rename in the open note. Margin refuses a name the note already has.
 
 To review a schema for missing keys and indexes, see [Review SQL](schema-review.md).
+
+## See also
+
+- [Review SQL](schema-review.md), to find missing keys, unindexed foreign keys and risky queries
+- [Database connections](databases.md), to run a block's SQL against a real database
+- [Slash menu, snippets and templates](slash-menu.md), for snippet fields and the schema templates
+- [Export, print and share](export.md), to save the diagram as SVG or PNG
 `,b=`---
 title: Review SQL
 section: SQL and databases
@@ -2464,7 +2644,7 @@ summary: Find missing keys, unindexed foreign keys, risky queries and slow plans
 
 # Review SQL
 
-Review reads the SQL in a note the way a careful reviewer would, and lists what it would raise: a table with no key, a foreign key with no index, an \`UPDATE\` with no \`WHERE\`. Each finding says why it matters, and many come with a fix you can apply in one step.
+Review reads the [SQL in a note](schema-blocks.md) the way a careful reviewer would, and lists what it would raise: a table with no key, a foreign key with no index, an \`UPDATE\` with no \`WHERE\`. Each finding says why it matters, and many come with a fix you can apply in one step.
 
 ## Open the Review list
 
@@ -2515,7 +2695,7 @@ A plan without \`ANALYZE\` holds only what was planned, so only the scan rule ca
 
 ## Tell Review how big tables get
 
-A missing index matters more on a big table. Add the rows you expect to the note's front matter:
+A missing index matters more on a big table. Add the rows you expect to the note's [front matter](properties-and-bases.md#edit-a-notes-properties):
 
 \`\`\`yaml
 ---
@@ -2550,7 +2730,7 @@ Margin writes a comment above the statement, such as \`-- margin-review: ignore 
 
 ## Ask a model about a finding
 
-With AI on, Review can ask a model too.
+With [AI on](ai.md#turn-on-ai), Review can ask a model too.
 
 - Explain also asks the model about the finding and shows its answer under the rule's own, marked AI. Margin keeps the answer until you edit the note.
 - Propose Fix, ⇧⌘↩, closes the list and runs a proposal over the finding's statement, which you accept or reject like any AI change. With Claude, Margin always asks first, however short the statement is.
@@ -2561,11 +2741,17 @@ A statement that holds a protected passage is never sent.
 
 If the note names a [database connection](databases.md#name-a-connection-in-a-note), Review can read facts from it. Nothing is read until you run one of these commands.
 
-- Read Table Sizes, in the palette or as Read Sizes, ⌥⌘S, under a finding that depends on size, asks the database how many rows each table holds. Those numbers take the place of the note's \`workload:\`, and the list's last line names where they came from.
+- Read Table Sizes, in the [palette](window-tour.md#the-command-palette) or as Read Sizes, ⌥⌘S, under a finding that depends on size, asks the database how many rows each table holds. Those numbers take the place of the note's \`workload:\`, and the list's last line names where they came from.
 - Run Plan asks PostgreSQL for the plan of the statement at the caret, without running it, and adds the plan's findings to Review.
 - Run Plan with ANALYZE runs the statement to measure it, so a statement that writes asks first, the same as Run.
 
 The plan never goes into the note. While a read waits, a notice says so. Press Esc to stop it.
+
+## See also
+
+- [SQL schema blocks](schema-blocks.md), to write the schema and set the naming convention Review checks
+- [Database connections](databases.md), to connect the database Review reads sizes and plans from
+- [Check a note](checks.md), for Margin's other checks of a note
 `,x=`---
 title: Settings
 section: Reference
@@ -2575,7 +2761,7 @@ summary: Find every Margin setting, what it does and what it starts as.
 
 # Settings
 
-Press ⌘, while the panel is open, or choose Settings… from the status item's menu, to open Settings. Switches and checkboxes show their state in neutral colors, and the control with the keys shows a brighter surface instead of a blue ring.
+Press ⌘, while the panel is open, or choose Settings… from the [status item's menu](panel.md#use-the-status-items-menu), to open Settings. Switches and checkboxes show their state in neutral colors, and the control with the keys shows a brighter surface instead of a blue ring.
 
 Settings that belong to one notes folder, such as which plugins are on and which note holds your math definitions, stay with that folder. Settings in your notes folder's \`.margin\` folder are listed in [Set up your notes folder](notes-folder.md#files-margin-keeps-in-the-margin-folder).
 
@@ -2598,13 +2784,13 @@ Settings that belong to one notes folder, such as which plugins are on and which
 
 | Setting | What it does | At first |
 | --- | --- | --- |
-| Default Markdown flavor | The flavor for notes that do not name one | All |
+| Default Markdown flavor | The [flavor](flavors.md#set-the-default-flavor) for notes that do not name one | All |
 | Text direction | Automatic, Left to right or Right to left | Automatic |
 | Theme | Standard, Sepia, or a theme in \`.margin/themes/\` | Standard |
 | Font | System, Monospaced or Serif | |
 | Size | Text size in points | 15 |
 | Hide Markdown syntax | Hides marks away from the caret | On |
-| Hide it on the caret's line too | Edit Without Marks. Needs Hide Markdown syntax on. | Off |
+| Hide it on the caret's line too | [Edit Without Marks](edit-without-marks.md). Needs Hide Markdown syntax on. | Off |
 | Focus Mode | Dims everything but the caret's block | Off |
 | Typewriter scrolling | Keeps the caret's line in the middle | Off |
 | Line height | 1.2 to 2.0 | 1.6 |
@@ -2612,7 +2798,7 @@ Settings that belong to one notes folder, such as which plugins are on and which
 | Maximum line width | Caps the text at 40 to 200 characters, centered | Off, then 72 |
 | Show line numbers | Numbers each line in the editor | Off |
 | Spell check | Checks spelling as you type | On |
-| Load remote images | Shows images from web addresses | On |
+| Load remote images | Shows [images from web addresses](images.md#show-images-from-the-web) | On |
 
 See [Themes and writing comfort](appearance.md) and [Write and edit](editor.md).
 
@@ -2641,6 +2827,8 @@ See [Export, print and share](export.md).
 
 Settings holds the default SQL dialect for notes whose front matter does not name one. See [SQL schema blocks](schema-blocks.md#choose-the-dialect).
 
+Naming conventions and column groups for SQL live in \`.margin/schema.json\` in your notes folder, not in Settings. To open that file, choose Open Schema Settings in the [command palette](window-tour.md#the-command-palette). Margin writes the file with the defaults first when it is missing, and uses a saved change right away.
+
 ## Shortcuts
 
 The Shortcuts pane lists every command you can bind, by group, with a filter. Click a command's keys to record a new chord. See [Keyboard shortcuts](keyboard-shortcuts.md#change-a-shortcut).
@@ -2658,7 +2846,7 @@ The Menus pane arranges two things:
 | --- | --- | --- |
 | AI | Off, On this Mac, or Claude | Off |
 | Claude API key | Your Anthropic key, kept in the Keychain | |
-| Find by meaning | Lets \`?\` in the search field search by meaning, on this Mac | Off |
+| Find by meaning | Lets \`?\` in the search field [search by meaning](ai-across-notes.md#search-by-meaning), on this Mac | Off |
 
 See [AI in a note](ai.md#turn-on-ai).
 
@@ -2673,6 +2861,12 @@ The Databases pane lists your database connections. Add, test, edit and remove t
 ## Plugins
 
 Settings lists the plugins in your notes folder's \`.margin/plugins/\`, each with a switch. Every plugin starts off. A plugin that cannot run shows why. See [Plugins, macros and hooks](plugins.md).
+
+## See also
+
+- [Keyboard shortcuts](keyboard-shortcuts.md), for every default key
+- [Set up your notes folder](notes-folder.md), for the settings files that live in \`.margin\`
+- [Privacy and network use](privacy.md), for where Margin keeps its own files
 `,S=`---
 title: Slash menu, snippets and templates
 section: Writing
@@ -2692,7 +2886,7 @@ Type \`/\` to put in a block without remembering its Markdown. Snippets put in t
 
 Press Esc to close the menu and keep what you typed. The menu does not open in code, front matter or math.
 
-The menu lists Heading 1, Heading 2, Heading 3, Bullet list, Numbered list, Task, Quote, Code block, Table, Divider, Image, Math block, Calc block, SQL block, Mermaid diagram and Callout. Rows with a key show it at the right. Callout and Mermaid diagram appear only in flavors that draw them. Under them come diagram templates, then your snippets, then templates, and rows that plugins add. With AI on, the menu also has a row for the AI commands.
+The menu lists Heading 1, Heading 2, Heading 3, Bullet list, Numbered list, Task, Quote, Code block, Table, Divider, Image, Math block, [Calc block](calc.md#start-a-calculation), SQL block, [Mermaid diagram](preview.md#draw-diagrams) and Callout. Rows with a key show it at the right. Callout and Mermaid diagram appear only in [flavors](flavors.md) that draw them. Under them come diagram templates, then your snippets, then templates, and rows that [plugins](plugins.md#use-a-plugin) add. With AI on, the menu also has a row for the AI commands.
 
 ## Insert a diagram template
 
@@ -2718,7 +2912,7 @@ The snippet ends at its last stop, or when you press Esc or move the caret out o
 
 ## Write your own snippets
 
-Put your snippets in \`.margin/snippets.json\` in your notes folder:
+Put your snippets in \`.margin/snippets.json\` in your [notes folder](notes-folder.md#files-margin-keeps-in-the-margin-folder):
 
 \`\`\`json
 {
@@ -2751,7 +2945,7 @@ A body can hold these:
 
 Write a backslash before \`$\`, \`}\` or another backslash to keep it as text.
 
-Your prose snippets also appear in the slash menu under Snippets. A trigger takes Tab before list nesting does, so pick one that is not a common word, such as \`;sig\`. Margin reads the file again whenever it changes. If it cannot use the file, it keeps the built-in snippets and says why in a notice, such as "Margin could not use .margin/snippets.json. Snippet 2 needs a name."
+Your prose snippets also appear in the slash menu under Snippets. A trigger takes Tab before [list nesting](lists-and-tasks.md#nest-and-unnest-items) does, so pick one that is not a common word, such as \`;sig\`. Margin reads the file again whenever it changes. If it cannot use the file, it keeps the built-in snippets and says why in a notice, such as "Margin could not use .margin/snippets.json. Snippet 2 needs a name."
 
 For the snippets Margin has in SQL blocks, see [SQL schema blocks](schema-blocks.md#use-sql-snippets).
 
@@ -2767,7 +2961,7 @@ Choose one to put its text in at the caret, with variables such as \`$TITLE\` an
 2. Choose a template, such as New Spec. The search field reads "Title for new Spec".
 3. Type a title and press Return. With no title, Margin names the note for the template.
 
-Press Esc instead to drop the template, so the next ⌘N makes a plain note. Each template is also a command of its own, such as New Spec, so you can find it by name in the palette or give it a key in Settings.
+Press Esc instead to drop the template, so the next ⌘N [makes a plain note](find-and-create.md#create-a-note). Each template is also a command of its own, such as New Spec, so you can find it by name in the palette or give it a [key in Settings](keyboard-shortcuts.md#change-a-shortcut).
 
 ## Add your own templates
 
@@ -2780,6 +2974,12 @@ Margin passes over hidden files, folders, files over 1 MB and files that are not
 ## Draft from a template with AI
 
 With AI on, Draft from Template… pours your rough notes into a template's shape as a proposal. See [AI in a note](ai.md#draft-from-a-template).
+
+## See also
+
+- [Format text](formatting.md), for the keys that make the same blocks
+- [SQL schema blocks](schema-blocks.md), for the snippets and one-line abbreviations in a sql block
+- [AI in a note](ai.md), to draft a note from a template with AI
 `,C=`---
 title: Tables
 section: Writing
@@ -2799,9 +2999,9 @@ Margin edits Markdown pipe tables as text and gives you the keys and commands to
 | ⇧Tab | Go to the cell before |
 | Return | Go down a row, in the same column |
 
-From a row's last cell, Tab goes to the first cell of the next row. From the table's last cell, Tab adds a row. Return in the last row adds a row too, and Return on an empty last row takes it away and puts the caret on a blank line under the table, the way Return ends a list.
+From a row's last cell, Tab goes to the first cell of the next row. From the table's last cell, Tab adds a row. Return in the last row adds a row too, and Return on an empty last row takes it away and puts the caret on a blank line under the table, the way Return [ends a list](lists-and-tasks.md#continue-a-list).
 
-These keys work in every flavor except CommonMark, which has no tables.
+These keys work in every [flavor](flavors.md#what-each-flavor-reads) except CommonMark, which has no tables.
 
 ## Add, delete and move rows and columns
 
@@ -2848,7 +3048,7 @@ Put the caret in a table and choose Convert Table to CSV. Margin replaces the ta
 
 ## Paste cells from a spreadsheet
 
-Copy cells in Numbers or Excel and paste them into a note. Margin pastes them as a table whose first row is the header. To paste the cells as tab-separated text instead, choose Plain Text from the menu that appears after the paste.
+Copy cells in Numbers or Excel and paste them into a note. Margin pastes them as a table whose first row is the header. To paste the cells as tab-separated text instead, choose Plain Text from the [menu that appears after the paste](formatting.md#paste-formatted-text).
 
 ## Paste a table from a web page
 
@@ -2861,7 +3061,7 @@ A notice tells you what the table needed HTML for, such as "This table needs HTM
 
 ## Work with wide tables
 
-In the editor, each row of a table stays on one line and the editor scrolls sideways to follow the caret. In the preview, a wide table scrolls sideways in its own box. Exports and print lay tables out on the page as usual.
+In the editor, each row of a table stays on one line and the editor scrolls sideways to follow the caret. In the preview, a wide table scrolls sideways in its own box. [Exports and print](export.md) lay tables out on the page as usual.
 
 The editor also lines up each table's columns on screen, so every pipe sits under the one above it. It does this without adding spaces to the file, so the Markdown stays exactly as you typed it.
 
@@ -2877,6 +3077,12 @@ With Edit Without Marks on, a table draws as a grid of cells and the caret moves
 
 - A line right under a table with no blank line before it is not a row, even though some flavors draw it as one. Table keys and commands leave it alone.
 - On the line of dashes, the table keys do what they do outside a table.
+
+## See also
+
+- [Tags, properties and bases](properties-and-bases.md), to see notes as a table and edit its cells in place
+- [Database connections](databases.md), to put a query's results in a note as a table
+- [Edit Without Marks](edit-without-marks.md), to edit a table as a grid of cells
 `,w=`---
 title: Tabs, layouts and the reference note
 section: Organize
@@ -2899,18 +3105,18 @@ Tabs keep several notes a keystroke apart. A reference note sits beside the note
 
 New Tab opens a second tab on the current note. The next note you open fills it. Once two or more notes are open in tabs, a row of tabs appears at the top of the editor. Click a tab to go to it, or click its close button to close it.
 
-Opening a note from the list, a search, a link, Back or Forward puts it in the current tab, or goes to the tab that already holds it. Close Tab opens the tab before it, and the last tab always stays.
+Opening a note from the list, a [search](find-and-create.md#search-your-notes), a [link](links.md#open-a-link), [Back or Forward](manage-notes.md#go-back-and-forward) puts it in the current tab, or goes to the tab that already holds it. Close Tab opens the tab before it, and the last tab always stays.
 
-Tabs last until Margin quits. A note you rename keeps its tab under its new name. ⌘W still closes the panel, not a tab.
+Tabs last until Margin quits. A note you rename keeps its tab under its new name. ⌘W still [closes the panel](panel.md#close-the-panel), not a tab.
 
 ## Pin a reference note
 
 1. Press ⇧⌘P and choose Pin Reference Note….
 2. Choose a note from the list.
 
-The note appears read-only beside the editor, or under it in a narrow panel, rendered as the preview renders it. It shows in Editor mode only, so split and preview modes keep their own layout.
+The note appears read-only beside the editor, or under it in a narrow panel, rendered as the [preview](preview.md) renders it. It shows in Editor mode only, so split and preview modes keep their own layout.
 
-The reference note updates when its file changes, follows the note if you rename it, and keeps its scroll position. A link in it opens its note. Click Unpin in its header, or choose Unpin Reference Note in the palette, to close it.
+The reference note updates when its file changes, follows the note if you rename it, and keeps its scroll position. A link in it opens its note. Click Unpin in its header, or choose Unpin Reference Note in the [palette](window-tour.md#the-command-palette), to close it.
 
 ## Save a layout
 
@@ -2927,7 +3133,13 @@ Saving under a name you already used replaces that layout.
 
 Margin restores the tabs, with the same tab current, the reference note, the columns, the mode and the panel's size. A note that no longer exists is left out. To delete a layout, choose it and press ⌘⌫.
 
-Margin keeps layouts for each notes folder in its own Application Support folder, not in your notes.
+Margin keeps layouts for each notes folder in its own [Application Support folder](privacy.md#where-margin-keeps-its-files), not in your notes.
+
+## See also
+
+- [Open and close the panel](panel.md), to resize the panel and fill the screen
+- [Read the preview](preview.md), for the editor, split and preview modes a layout saves
+- [Rename, delete and organize notes](manage-notes.md), to show the folder column and go back and forward
 `,T=`---
 title: Open tasks across notes
 section: Organize
@@ -2937,11 +3149,11 @@ summary: List every unchecked task in your notes, filter by owner or by what is 
 
 # Open tasks across notes
 
-Open Tasks gathers every unchecked task from every note into one list, so you can see what is left to do without opening each note. Each row leads back to the line the task came from.
+Open Tasks gathers every [unchecked task](lists-and-tasks.md#check-off-a-task) from every note into one list, so you can see what is left to do without opening each note. Each row leads back to the line the task came from.
 
 ## List your open tasks
 
-Press ⇧⌘P and choose Open Tasks…. The list shows each \`- [ ]\` task that has words, under its note's folder and name, with the heading it sits under. Tasks in front matter and code blocks are left out.
+Press ⇧⌘P and choose Open Tasks…. The list shows each \`- [ ]\` task that has words, under its note's folder and name, with the heading it sits under. Tasks in [front matter](properties-and-bases.md#edit-a-notes-properties) and [code blocks](code-blocks.md) are left out.
 
 A line under the list counts what it shows, such as "12 open tasks in 4 notes". Margin reads the newest notes first and stops after 500 tasks. When it stops early, the line adds how many older notes it left, such as "and more in 4,788 older notes".
 
@@ -2980,6 +3192,13 @@ Type in the list's filter:
 ## Pull tasks out of a meeting note
 
 With AI on, Pull Action Items reads a meeting note and proposes a task list of what people agreed to do, with owners and due dates. See [AI in a note](ai.md#pull-action-items).
+
+## See also
+
+- [Lists and tasks](lists-and-tasks.md), to write tasks and check them off
+- [Find and create notes](find-and-create.md), to find notes with open tasks through \`kind:todo\`
+- [Tags, properties and bases](properties-and-bases.md), to track notes on a board by a property
+- [AI in a note](ai.md), to pull action items out of a meeting note
 `,E=`---
 title: Troubleshooting
 section: Reference
@@ -3015,13 +3234,13 @@ Another app changed the note while you had unsaved changes. Margin saved the oth
 
 ## A note is missing from the list
 
-- Check the folder menu above the list. If it shows a folder or a saved search, choose All Notes.
-- Check the file's extension. Margin lists \`.md\`, \`.markdown\` and \`.base\` files, and the extras you turn on in Settings.
+- Check the [folder menu](manage-notes.md#scope-the-list-to-a-folder) above the list. If it shows a folder or a saved search, choose All Notes.
+- Check the file's extension. Margin lists \`.md\`, \`.markdown\` and \`.base\` files, and the [extras you turn on in Settings](notes-folder.md#which-files-margin-lists).
 - Check the file's folder. Margin skips hidden folders, \`node_modules\` and the attachments folder.
 
 ## A shortcut does nothing
 
-- In the editor, macOS's text system keeps some keys for itself, and they keep their macOS meaning. The Shortcuts pane in Settings says when a key is taken.
+- In the editor, macOS's text system keeps some keys for itself, and they keep their macOS meaning. The [Shortcuts pane](settings.md#shortcuts) in Settings says when a key is taken.
 - Two commands may share a key. The Shortcuts pane names both.
 - If you edited \`keybindings.json\` by hand and it has a mistake, Margin uses the default keys and the Shortcuts pane shows the reason.
 
@@ -3029,7 +3248,7 @@ See [Keyboard shortcuts](keyboard-shortcuts.md).
 
 ## The panel does not close when I click elsewhere
 
-The panel is pinned. Press ⌃⌘P or click the pin glyph to unpin it.
+The panel is [pinned](panel.md#keep-the-panel-open). Press ⌃⌘P or click the pin glyph to unpin it.
 
 ## Launch at Login did not turn on
 
@@ -3037,13 +3256,13 @@ macOS may hold the request until you approve it. Open System Settings, go to Gen
 
 ## An image shows "Image not found"
 
-- The file is not at the path the link names. Run Note Health to list missing images, and click Restore if a backup holds the file. See [Images and attachments](images.md#restore-a-missing-attachment).
+- The file is not at the path the link names. Run [Note Health](links.md#fix-broken-links) to list missing images, and click Restore if a backup holds the file. See [Images and attachments](images.md#restore-a-missing-attachment).
 - The path climbs out of the notes folder. The preview loads images only from inside it.
 - The image is on the web and Load remote images is off in Settings.
 
 ## A diagram shows as code
 
-A Mermaid block longer than 50,000 characters shows as code, with a line that says why. Split the diagram into smaller ones. A note's schema diagram past 150 tables shows "This schema is too large to draw as a diagram."
+A [Mermaid block](preview.md#draw-diagrams) longer than 50,000 characters shows as code, with a line that says why. Split the diagram into smaller ones. A note's [schema diagram](schema-blocks.md#see-the-diagram) past 150 tables shows "This schema is too large to draw as a diagram."
 
 ## A search says "Invalid pattern" or "Pattern took too long"
 
@@ -3054,14 +3273,14 @@ A term between slashes is a regular expression. Invalid pattern means it does no
 Margin names the file and the fault, such as "Margin could not use .margin/snippets.json. Snippet 2 needs a name." Until you fix it:
 
 - A bad \`.margin/snippets.json\` leaves only the built-in snippets.
-- A bad \`.margin/schema.json\` keeps the default naming and column groups.
+- A bad \`.margin/schema.json\` keeps the default naming and column groups. Choose Open Schema Settings in the palette to open the file and fix it.
 - A bad \`.margin/ai.json\` pauses AI for the folder, since it may be what keeps a note out.
 
 Margin reads each file again as soon as you save it.
 
 ## Saved layouts or custom shortcuts disappeared
 
-Margin keeps both in its Application Support folder.
+Margin keeps both in its [Application Support folder](privacy.md#where-margin-keeps-its-files).
 
 - If Margin cannot read \`layouts.json\`, it moves the file aside as \`layouts.json.bad\`.
 - If \`keybindings.json\` has a mistake, Margin uses the default keys. Before Settings writes a new file, it moves the old one aside as \`keybindings.json.bad\`.
@@ -3083,6 +3302,12 @@ If a plugin does not answer within 2 seconds, Margin restarts it. If Settings li
 ## Switching notes folders failed
 
 If the open note does not finish closing within 2 seconds, Margin keeps the current folder and says so. Try again.
+
+## See also
+
+- [How Margin keeps your notes safe](safety.md), for how saving, conflict copies and backups work
+- [Set up your notes folder](notes-folder.md), for which files Margin lists and the \`.margin\` files it reads
+- [Settings](settings.md), for every setting and its default
 `,D=`---
 title: A tour of the window
 section: Get started
@@ -3092,11 +3317,11 @@ summary: Learn the parts of the panel, from the search field and note list to th
 
 # A tour of the window
 
-The panel has a search field across the top, the note list on the left, and the editor on the right. Everything else, such as the outline, the find bar and the command palette, opens over or above the editor and closes with Esc.
+The panel has a search field across the top, the note list on the left, and the editor on the right. Everything else, such as the [outline](outline-and-sections.md#open-the-outline), the [find bar](find-and-replace.md#find-text-in-a-note) and the command palette, opens over or above the editor and closes with Esc.
 
 ## The search field
 
-The search field runs across the top of the panel and reads "Search or create a note". Type in it to filter the list. When the field holds text, its right end shows what Return will do, Open or Create. The pin glyph at the far right keeps the panel open. See [Find and create notes](find-and-create.md).
+The search field runs across the top of the panel and reads "Search or create a note". Type in it to filter the list. When the field holds text, its right end shows what Return will do, Open or Create. The pin glyph at the far right [keeps the panel open](panel.md#keep-the-panel-open). See [Find and create notes](find-and-create.md).
 
 Press ⌘L from anywhere in the panel to go back to the search field.
 
@@ -3116,9 +3341,9 @@ A bar above the editor shows the open note's folder and title. Click the title t
 
 On the right are three buttons for the editor's modes, Editor, Split and Preview, which match ⌘1, ⌘2 and ⌘3. Each button's tooltip shows its name and keys. See [Read the preview](preview.md).
 
-The ⋯ button opens the note menu, which acts on the open note: Pin Note, Rename…, Reveal in Finder, Copy as HTML, Share…, Export…, Print…, Enter Full Screen and Move to Trash. You can add other commands to it and hide the ones you never use. See [Settings](settings.md#menus).
+The ⋯ button opens the note menu, which acts on the open note: Pin Note, Rename…, Reveal in Finder, Copy as HTML, Share…, [Export…](export.md#export-a-note), Print…, Enter Full Screen and Move to Trash. You can add other commands to it and hide the ones you never use. See [Settings](settings.md#menus).
 
-Banners about the open note, such as a read-only note or a save that failed, sit under the header.
+Banners about the open note, such as a [read-only note](safety.md#notes-you-can-read-but-not-edit) or a save that failed, sit under the header.
 
 ## Tabs
 
@@ -3132,7 +3357,7 @@ The editor's footer shows:
 - The word count, character count and reading time, for the note or for the selection.
 - How many notes link to this one, or mention it. Click to list them. See [Links and wikilinks](links.md#see-which-notes-link-here).
 - In a calculation, the total of its answers. See [Math in notes](calc.md#add-up-totals).
-- When a coding agent has proposed edits, how many wait for you.
+- When a [coding agent](agents.md#review-what-an-agent-proposes) has proposed edits, how many wait for you.
 
 ## The command palette
 
@@ -3162,6 +3387,12 @@ You can do everything in Margin from the keyboard.
 - Text meets the WCAG 2.2 AA contrast ratio of 4.5 to 1, and every button, tab and menu item in the editor is at least 24 by 24 pixels.
 
 To move a block without dragging, see [Write and edit](editor.md#drag-a-block).
+
+## See also
+
+- [Open and close the panel](panel.md), to open, pin, resize and fill the screen with the panel
+- [Write and edit](editor.md), for typing, selecting and moving text in the editor
+- [Keyboard shortcuts](keyboard-shortcuts.md), for every key the shortcut sheet lists, and how to change one
 `,O=[`Get started`,`Notes`,`Writing`,`Reading and sharing`,`Organize`,`Math in notes`,`AI`,`Coding agents`,`SQL and databases`,`Plugins, macros and hooks`,`Reference`];function k(e,t){let n=/^---\n([\s\S]*?)\n---\n?/.exec(t);if(!n)throw Error(`${e} has no front matter`);let r=new Map;for(let e of(n[1]??``).split(`
 `)){let t=e.indexOf(`:`);t>0&&r.set(e.slice(0,t).trim(),e.slice(t+1).trim())}return{slug:e,title:r.get(`title`)??e,section:r.get(`section`)??``,order:Number(r.get(`order`)??0),summary:r.get(`summary`)??``,body:t.slice(n[0].length)}}function A(e){let t=e=>{let t=O.indexOf(e);return t<0?O.length:t};return[...new Set(e.map(e=>e.section))].sort((e,n)=>t(e)-t(n)||e.localeCompare(n)).map(t=>({section:t,pages:e.filter(e=>e.section===t).sort((e,t)=>e.order-t.order||e.title.localeCompare(t.title))}))}function j(e){return e.toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu,``).trim().replace(/\s+/g,`-`)}function M(e){let t=[],n=``;for(let r of e.split(`
 `)){let e=/^(`{3,}|~{3,})/.exec(r);if(e){n?r.startsWith(n)&&(n=``):n=e[1]??``;continue}if(n)continue;let i=/^## +(.+?)\s*#*\s*$/.exec(r);i?.[1]&&t.push({id:j(i[1]),text:i[1]})}return t}function N(e){return e.replace(/^(`{3,}|~{3,}).*$/gm,``).replace(/^\s*\|(.*)\|\s*$/gm,(e,t)=>t.split(`|`).map(e=>e.trim()).filter(Boolean).join(` · `)).replace(/^\s*(?:[-*+]|\d+[.)])\s+/gm,``).replace(/\[([^\]]*)\]\([^)]*\)/g,`$1`).replace(/[*_`>#|]/g,``).replace(/[ \t]+/g,` `)}var P=e=>e.normalize(`NFKD`).replace(/\p{M}/gu,``).toLowerCase();function F(e,t){let n=P(t).split(/\s+/).filter(Boolean);if(n.length===0)return[];let r=[];for(let t of e){let e=N(t.body),i=P(`${t.title}\n${t.summary}\n${e}`);if(!n.every(e=>i.includes(e)))continue;let a=M(t.body),o=n.filter(e=>P(t.title).includes(e)).length*10,s=n.filter(e=>a.some(t=>P(t.text).includes(e))).length*5,c=e.split(`
