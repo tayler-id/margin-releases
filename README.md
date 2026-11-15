@@ -16,6 +16,6 @@ brew install --cask margin
 
 Homebrew loads a cask from another person's tap only once you trust that tap. To update later, run `brew upgrade --cask margin`.
 
-The current build is signed with Developer ID but not yet notarized, so macOS stops its first launch. Open System Settings, then Privacy & Security, and click Open Anyway beside Margin.
+Each build is signed with Developer ID and notarized by Apple, so it opens on its first launch.
 
 Each release also lists its zip and the zip's SHA-256, under [Releases](https://github.com/tayler-id/margin-releases/releases).
