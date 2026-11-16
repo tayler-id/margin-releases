@@ -1,4 +1,4 @@
-import{r as e,t}from"./preview-rACw3hN1.js";var n=`---
+import{r as e,t}from"./preview-lBuFJwfn.js";var n=`---
 title: Connect a coding agent
 section: Coding agents
 order: 1
@@ -408,7 +408,7 @@ With a fixed direction, every line takes it, so a line that starts with a number
 - [Write and edit](editor.md), for text size, spell check and input methods
 - [Export, print and share](export.md), to set the look of PDFs and HTML with an export template
 - [Open and close the panel](panel.md), to fill the screen with the panel
-`,o="---\ntitle: Math in notes\nsection: Math in notes\norder: 1\nsummary: Work out sums, percentages, units, dates and currencies in a note, with each answer beside its line.\n---\n\n# Math in notes\n\nWrite arithmetic in plain words and Margin shows the answer at the right of each line, the way Numi and Soulver do. Answers never go into the file, so the note stays plain Markdown.\n\n## Start a calculation\n\nMargin works out lines only inside a calculation, so a list item such as `1. Buy milk` or a date such as `2026-11-03` elsewhere in your notes stays as it is. Start one in either of these ways:\n\n- Add a ` ```calc ` block. Type `/` and choose [Calc block](slash-menu.md#insert-a-block-from-the-slash-menu), or type the fence yourself. Margin works out every line in the block.\n- Add `calc: true` to a note's [front matter](properties-and-bases.md#edit-a-notes-properties). Margin works out every line from the end of the front matter to the end of the note, except tables, HTML and other code blocks.\n\nA ` ```math ` block is still [LaTeX math](preview.md#write-math), not a calculation.\n\n## Write lines Margin can read\n\nMargin finds the arithmetic in each line and passes over the words around it.\n\n| Line | Answer |\n| --- | --- |\n| `$19 for breakfast + $22 for the uber` | $41.00 |\n| `Rent: 1,850` | 1,850 |\n| `- [ ] Rent 1,850` | 1,850 |\n| `6 (3)` | 18 |\n\n- Text before a colon and a space is a label.\n- Everything after `//` is a comment.\n- Margin skips text in double quotes.\n- List markers, task boxes, quote marks, emphasis and link addresses come off first.\n- A heading shows no answer, even when it holds numbers.\n- A line with nothing Margin can read shows no answer and no error.\n\n## Do arithmetic\n\nUse symbols or words. `and` and `with` add, `without` subtracts, and `mul` and `times` multiply. `6 (3)` multiplies too.\n\n- `2 ^ 3 ^ 2` is 512, since powers group from the right.\n- `square root of 50000`, `sqrt 50000`, `sqrt(50000)` and `50000^0.5` are all 223.60679775, and `cube root of 27`, `cbrt 27` and `root 3 of 27` are 3. From Margin 0.1.6 the signs work too, `√50000` and `∛27`.\n- `sqrt`, logarithms and trigonometry work in radians unless a value says `°` or `degrees`.\n- `larger of 100 and 200` is 200.\n- `random number between 1 and 10` draws a new whole number each time Margin reads the line.\n- `0.1 + 0.2` is 0.3, since Margin counts in decimal.\n\nAnswers show up to 10 decimal places. A line Margin cannot work out, such as `1 / 0`, shows no answer.\n\n## Work with percentages\n\n| Line | Answer |\n| --- | --- |\n| `200 + 10%` | 220 |\n| `10% of 200` | 20 |\n| `10% off 200` | 180 |\n| `30% + 0.4` | 70% |\n| `20/200 %` | 10% |\n| `20 is 10% of what` | 200 |\n| `50 to 75 is what %` | 50% |\n| `5% of what is $6` | $120.00 |\n| `2/3 of 600` | 400 |\n| `1/4 off $100` | $75.00 |\n| `2/10 as fraction` | 1/5 |\n| `0.534 to nearest 16th` | 9/16 |\n| `20/5 as multiplier` | 4x |\n\n`as %` makes a number a percent, and `as dec` makes a percent a number again.\n\n## Use variables and earlier lines\n\n- `name = value` sets a variable. A name can be several words, and works on the lines below it.\n- `+=` and `-=` change a variable.\n- `prev` is the answer on the line above. A line that starts with an operator, such as `* 2`, carries on from it.\n- A `---` line clears your variables.\n\nVariables carry on through every calculation in a note, top to bottom. Type two letters of a variable's name to have Margin offer it.\n\n## Add up totals\n\nWrite `sum` or `total` to add the answers above it, `average` or `avg` to average them, or `subtotal` to add them as a subtotal. Each stops at the nearest blank line, heading, `---` line or earlier total.\n\nWhile the caret is in a calculation, the [footer](window-tour.md#the-footer) shows its Total. Select lines to total only those, under Selection. Click the footer total to copy it. Answers that do not add, such as 5 km and 3 kg, show no total.\n\n## Convert units\n\nUse `in`, `into`, `as` or `to` to convert.\n\n| Line | Answer |\n| --- | --- |\n| `1km + 1,000m` | 2 km |\n| `1 meter 20 cm` | 120 cm |\n| `5 km in 25 min` | 05:00/km |\n| `time to upload 3GB at 10 MB/s` | The time, in the largest whole unit |\n| `12h 30m in degrees` | An angle, at 15° an hour |\n\n- Data sizes count 1,000 for `kB` and 1,024 for `KiB`, with `b` for bits and `B` for bytes.\n- Temperatures read `°C`, `C`, `celsius`, the same for Fahrenheit, and `K` or `kelvin`.\n- `em` is 16 px and `ppi` is 96 until a line sets them. `at 326 ppi` sets the density for its own line.\n- `cast` changes a unit without converting.\n\nWhen two amounts of one kind add, the larger unit wins. A plain number takes the other amount's unit.\n\n## Work with dates and times\n\n| Line | Answer |\n| --- | --- |\n| `today + 3 weeks` | The date three weeks from today |\n| `days between 3 March and 30 May` | The days between them |\n| `January 31 2020 + 1 month` | 29 February 2020 |\n| `6pm Sydney in Chicago` | The time in Chicago |\n| `time in Tokyo` | Tokyo's time now |\n\n- A date without a year is this year's, unless that is more than nine months ago.\n- A date in digits needs a four-digit year, and reads in your region's order.\n- A clock time needs am or pm. A city counts as a time zone only beside a time, so `flight to Paris $500` is $500.00.\n- One date minus another gives the span between them in years, months, weeks and days.\n\n## Use rates\n\nA rate is an amount per unit, such as `3 hours / day`, `$99 per week` or `$24 a day`.\n\n| Line | Answer |\n| --- | --- |\n| `$50/week × 12 weeks` | $600.00 |\n| `$24 a day for a year` | $8,765.82 |\n| `30 hours at $30/hour` | $900.00 |\n| `$500 at $20/hour` | 25 hours |\n\nWrite `as / month`, `in €/month` or `is what per year` to restate a rate. In time arithmetic a year is 365.2425 days and a month is a twelfth of one.\n\n## Convert currencies\n\nWrite money with a sign such as `$`, `€`, `US$` or `C$`, a code after the amount such as `50 CHF`, a common code before it such as `EUR 50`, or a name such as `dollars` or `yen`.\n\nMargin finds a rate for a conversion in this order:\n\n1. A rate on the line itself, such as `50 EUR in USD at 1.05 USD/EUR`.\n2. A rate line above it in the note or the definitions note, such as `EUR = 1.09 USD`.\n3. A currency both have a rate to.\n4. The European Central Bank's reference rates for about 30 currencies, bundled with Margin on the day it was built.\n\nPoint at an answer converted with the bundled rates to see their date. A sum of two currencies converts into the first. Without a rate, the line reads, for example, \"no EUR rate\". Margin [never fetches rates](privacy.md#when-margin-goes-online) from the internet.\n\n## Format numbers\n\nMargin uses your Mac's region for decimal points, thousands separators and clock times, and reads your lines the same way. `1_000_000`, `1e3` and `5 300` all read as numbers.\n\nAdd a format to any line, such as `in hex`, `in binary`, `as base 8`, `in sci`, `to 2 dp`, `to 5 digits`, `to nearest 10`, `rounded down` or `rounded up to nearest 5`. Large answers show as `1.7M`. Money rounds to its currency's places, so yen show none.\n\nTo set defaults, open [Settings](settings.md#math) and find Math. Turn large answers as 1.5M on or off, and choose decimal places from 0 to 10 or automatic.\n\n## Copy answers\n\n- Click an answer to copy it. It reads Copied for a second.\n- Press ⌥⇧⌘C to copy the answer on the caret's line, as shown.\n- Choose Copy Unformatted Answer in the palette to copy the number without separators, units or notation.\n- Choose Copy with Answers to copy the selected lines, or the whole calculation, as `expression | answer` lines lined up on the bar.\n- Choose Insert Answer to add the answer to the caret's line as a comment, such as ` // 1,850`. The `//` keeps it out of later sums.\n\nA long answer ends in an ellipsis. Point at it to see all of it.\n\n## Define your own units and values\n\nPick one note to hold the values and units you use everywhere:\n\n1. Open Settings and find Math.\n2. Choose a definitions note.\n\nIts variables, units and rates apply in every calculation in that notes folder, below each note's own. A unit is written in terms of one Margin knows, such as `1 watermelon = 20 lb`, and its plural works too, so `40 lb in watermelons` is 2 watermelons. If you [rename](manage-notes.md#rename-a-note) the definitions note in Margin, the choice follows it.\n\n## See answers in the preview and exports\n\nThe preview shows a ` ```calc ` block with its answers in a second column, and each answer of a `calc: true` note at the right of its line. [Printing, HTML and PDF exports](export.md), Copy as HTML and Share carry the answers. Export as plain text writes `expression | answer` lines.\n\n## What Margin leaves out\n\nMargin does not do math that needs the internet, such as weather, stocks or live crypto rates. It has no numbered line references, since a plain file has nowhere to keep them when lines move, and no scripting. For custom units and values, use the definitions note.\n\n## See also\n\n- [Read the preview](preview.md), for LaTeX math, which draws formulas and works nothing out\n- [Export, print and share](export.md), to print or export a note with its answers\n- [Settings](settings.md), for the Math settings and the definitions note\n",s=`---
+`,o="---\ntitle: Math in notes\nsection: Math in notes\norder: 1\nsummary: Work out sums, percentages, units, dates and currencies in a note, with each answer beside its line.\n---\n\n# Math in notes\n\nWrite arithmetic in plain words and Margin shows the answer at the right of each line, the way Numi and Soulver do. Answers never go into the file, so the note stays plain Markdown.\n\n## Start a calculation\n\nMargin works out lines only inside a calculation, so a list item such as `1. Buy milk` or a date such as `2026-11-03` elsewhere in your notes stays as it is. Start one in either of these ways:\n\n- Add a ` ```calc ` block. Type `/` and choose [Calc block](slash-menu.md#insert-a-block-from-the-slash-menu), or type the fence yourself. Margin works out every line in the block.\n- Add `calc: true` to a note's [front matter](properties-and-bases.md#write-front-matter). Margin works out every line from the end of the front matter to the end of the note, except tables, HTML and other code blocks. In Margin 0.1.6 and later, Turn On Math for This Note in the palette (⇧⌘P) writes it for you, and Turn Off Math for This Note takes it out.\n\nA ` ```math ` block is still [LaTeX math](preview.md#write-math), not a calculation.\n\n## Write lines Margin can read\n\nMargin finds the arithmetic in each line and passes over the words around it.\n\n| Line | Answer |\n| --- | --- |\n| `$19 for breakfast + $22 for the uber` | $41.00 |\n| `Rent: 1,850` | 1,850 |\n| `- [ ] Rent 1,850` | 1,850 |\n| `6 (3)` | 18 |\n\n- Text before a colon and a space is a label.\n- Everything after `//` is a comment.\n- Margin skips text in double quotes.\n- List markers, task boxes, quote marks, emphasis and link addresses come off first.\n- A heading shows no answer, even when it holds numbers.\n- A line with nothing Margin can read shows no answer and no error.\n\n## Do arithmetic\n\nUse symbols or words. `and` and `with` add, `without` subtracts, and `mul` and `times` multiply. `6 (3)` multiplies too.\n\n- `2 ^ 3 ^ 2` is 512, since powers group from the right.\n- `square root of 50000`, `sqrt 50000`, `sqrt(50000)` and `50000^0.5` are all 223.60679775, and `cube root of 27`, `cbrt 27` and `root 3 of 27` are 3. From Margin 0.1.6 the signs work too, `√50000` and `∛27`.\n- `sqrt`, logarithms and trigonometry work in radians unless a value says `°` or `degrees`.\n- `larger of 100 and 200` is 200.\n- `random number between 1 and 10` draws a new whole number each time Margin reads the line.\n- `0.1 + 0.2` is 0.3, since Margin counts in decimal.\n\nAnswers show up to 10 decimal places. A line Margin cannot work out, such as `1 / 0`, shows no answer.\n\n## Work with percentages\n\n| Line | Answer |\n| --- | --- |\n| `200 + 10%` | 220 |\n| `10% of 200` | 20 |\n| `10% off 200` | 180 |\n| `30% + 0.4` | 70% |\n| `20/200 %` | 10% |\n| `20 is 10% of what` | 200 |\n| `50 to 75 is what %` | 50% |\n| `5% of what is $6` | $120.00 |\n| `2/3 of 600` | 400 |\n| `1/4 off $100` | $75.00 |\n| `2/10 as fraction` | 1/5 |\n| `0.534 to nearest 16th` | 9/16 |\n| `20/5 as multiplier` | 4x |\n\n`as %` makes a number a percent, and `as dec` makes a percent a number again.\n\n## Use variables and earlier lines\n\n- `name = value` sets a variable. A name can be several words, and works on the lines below it.\n- `+=` and `-=` change a variable.\n- `prev` is the answer on the line above. A line that starts with an operator, such as `* 2`, carries on from it.\n- A `---` line clears your variables.\n\nVariables carry on through every calculation in a note, top to bottom. Type two letters of a variable's name to have Margin offer it.\n\n## Add up totals\n\nWrite `sum` or `total` to add the answers above it, `average` or `avg` to average them, or `subtotal` to add them as a subtotal. Each stops at the nearest blank line, heading, `---` line or earlier total.\n\nWhile the caret is in a calculation, the [footer](window-tour.md#the-footer) shows its Total. Select lines to total only those, under Selection. Click the footer total to copy it. Answers that do not add, such as 5 km and 3 kg, show no total.\n\n## Convert units\n\nUse `in`, `into`, `as` or `to` to convert.\n\n| Line | Answer |\n| --- | --- |\n| `1km + 1,000m` | 2 km |\n| `1 meter 20 cm` | 120 cm |\n| `5 km in 25 min` | 05:00/km |\n| `time to upload 3GB at 10 MB/s` | The time, in the largest whole unit |\n| `12h 30m in degrees` | An angle, at 15° an hour |\n\n- Data sizes count 1,000 for `kB` and 1,024 for `KiB`, with `b` for bits and `B` for bytes.\n- Temperatures read `°C`, `C`, `celsius`, the same for Fahrenheit, and `K` or `kelvin`.\n- `em` is 16 px and `ppi` is 96 until a line sets them. `at 326 ppi` sets the density for its own line.\n- `cast` changes a unit without converting.\n- A fraction before a unit is that much of the unit, as in a recipe. `1 1/2 pounds` is 1.5 lb, and from Margin 0.1.6 `1/3 cup` is 0.33 cup and `1 1/3 cups in ml` is 315.45 ml. After a currency it stays a price, so `$10/2 kg` is $5.00/kg.\n\nWhen two amounts of one kind add, the larger unit wins. A plain number takes the other amount's unit.\n\n## Work with dates and times\n\n| Line | Answer |\n| --- | --- |\n| `today + 3 weeks` | The date three weeks from today |\n| `days between 3 March and 30 May` | The days between them |\n| `January 31 2020 + 1 month` | 29 February 2020 |\n| `6pm Sydney in Chicago` | The time in Chicago |\n| `time in Tokyo` | Tokyo's time now |\n\n- A date without a year is this year's, unless that is more than nine months ago.\n- A date in digits needs a four-digit year, and reads in your region's order.\n- A clock time needs am or pm. A city counts as a time zone only beside a time, so `flight to Paris $500` is $500.00.\n- One date minus another gives the span between them in years, months, weeks and days.\n\n## Use rates\n\nA rate is an amount per unit, such as `3 hours / day`, `$99 per week` or `$24 a day`.\n\n| Line | Answer |\n| --- | --- |\n| `$50/week × 12 weeks` | $600.00 |\n| `$24 a day for a year` | $8,765.82 |\n| `30 hours at $30/hour` | $900.00 |\n| `$500 at $20/hour` | 25 hours |\n\nWrite `as / month`, `in €/month` or `is what per year` to restate a rate. In time arithmetic a year is 365.2425 days and a month is a twelfth of one.\n\n## Convert currencies\n\nWrite money with a sign such as `$`, `€`, `US$` or `C$`, a code after the amount such as `50 CHF`, a common code before it such as `EUR 50`, or a name such as `dollars` or `yen`.\n\nMargin finds a rate for a conversion in this order:\n\n1. A rate on the line itself, such as `50 EUR in USD at 1.05 USD/EUR`.\n2. A rate line above it in the note or the definitions note, such as `EUR = 1.09 USD`.\n3. A currency both have a rate to.\n4. The European Central Bank's reference rates for about 30 currencies, bundled with Margin on the day it was built.\n\nPoint at an answer converted with the bundled rates to see their date. A sum of two currencies converts into the first. Without a rate, the line reads, for example, \"no EUR rate\". Margin [never fetches rates](privacy.md#when-margin-goes-online) from the internet.\n\n## Format numbers\n\nMargin uses your Mac's region for decimal points, thousands separators and clock times, and reads your lines the same way. `1_000_000`, `1e3` and `5 300` all read as numbers.\n\nAdd a format to any line, such as `in hex`, `in binary`, `as base 8`, `in sci`, `to 2 dp`, `to 5 digits`, `to nearest 10`, `rounded down` or `rounded up to nearest 5`. Large answers show as `1.7M`. Money rounds to its currency's places, so yen show none.\n\nTo set defaults, open [Settings](settings.md#math) and find Math. Turn large answers as 1.5M on or off, and choose decimal places from 0 to 10 or automatic.\n\n## Copy answers\n\n- Click an answer to copy it. It reads Copied for a second.\n- Press ⌥⇧⌘C to copy the answer on the caret's line, as shown.\n- Choose Copy Unformatted Answer in the palette to copy the number without separators, units or notation.\n- Choose Copy with Answers to copy the selected lines, or the whole calculation, as `expression | answer` lines lined up on the bar.\n- Choose Insert Answer to add the answer to the caret's line as a comment, such as ` // 1,850`. The `//` keeps it out of later sums.\n\nA long answer ends in an ellipsis. Point at it to see all of it.\n\n## Define your own units and values\n\nPick one note to hold the values and units you use everywhere:\n\n1. Open Settings and find Math.\n2. Choose a definitions note.\n\nIts variables, units and rates apply in every calculation in that notes folder, below each note's own. A unit is written in terms of one Margin knows, such as `1 watermelon = 20 lb`, and its plural works too, so `40 lb in watermelons` is 2 watermelons. If you [rename](manage-notes.md#rename-a-note) the definitions note in Margin, the choice follows it.\n\n## See answers in the preview and exports\n\nThe preview shows a ` ```calc ` block with its answers in a second column, and each answer of a `calc: true` note at the right of its line. [Printing, HTML and PDF exports](export.md), Copy as HTML and Share carry the answers. Export as plain text writes `expression | answer` lines.\n\n## What Margin leaves out\n\nMargin does not do math that needs the internet, such as weather, stocks or live crypto rates. It has no numbered line references, since a plain file has nowhere to keep them when lines move, and no scripting. For custom units and values, use the definitions note.\n\n## See also\n\n- [Read the preview](preview.md), for LaTeX math, which draws formulas and works nothing out\n- [Export, print and share](export.md), to print or export a note with its answers\n- [Settings](settings.md), for the Math settings and the definitions note\n",s=`---
 title: Check a note
 section: Writing
 order: 12
@@ -505,6 +505,27 @@ To take the fences off a block, put the caret inside it and press ⇧⌘K.
 4. Press Return.
 
 Margin writes the name on the opening fence and keeps anything after it, such as a title. If the caret is not in a block, Margin says "Put the caret in a fenced code block to set its language."
+
+## Expand HTML and CSS abbreviations
+
+In Margin 0.1.6 and later, Tab expands an Emmet abbreviation, the shorthand many code editors take, in a block whose language is html, htm, xml, svg or vue, or css, scss, less or sass.
+
+1. Type the abbreviation inside the block, such as \`ul>li*3\`.
+2. Press Tab. Margin puts the HTML or CSS in its place, with the caret in the first empty spot.
+3. Type there, then press Tab to go to the next empty spot. After the last one, Tab types a tab again. Esc stops sooner.
+
+One ⌘Z brings the abbreviation back as you typed it. Tab with no abbreviation before the caret types a tab, as before, and Tab in prose, a sql block or a calc block never expands one. In a jsx or tsx block, start the abbreviation with \`<\`, as in \`<div.card\`, so Tab after a word of JavaScript still types a tab.
+
+| You type | Tab gives |
+| --- | --- |
+| \`ul>li*3\` | A \`ul\` holding three empty \`li\` items, one to a line |
+| \`div.card>h2+p\` | \`<div class="card">\` holding an \`h2\` and a \`p\` |
+| \`a[href=#]\` | \`<a href="#"></a>\`, with the caret inside the link |
+| \`m10\` | \`margin: 10px;\` |
+| \`p10-20\` | \`padding: 10px 20px;\` |
+| \`df\` | \`display: flex;\` |
+
+To see every form with what Tab gives, press ⇧⌘P and choose HTML and CSS Abbreviations Cheat Sheet.
 
 ## Copy code from the preview
 
@@ -984,6 +1005,8 @@ One field both searches and creates. Type a few letters to find a note. If no no
 
 ## Search your notes
 
+In Margin 0.1.7 and later, press ⇧⌘P and choose Search Filters Cheat Sheet for every filter with what it finds.
+
 1. Press ⌃⌥N to open the [panel](panel.md#open-the-panel). The search field has the keys. If you are in the editor, press ⌘L to go back to the field.
 2. Type. The list filters with every key you press.
 
@@ -1167,6 +1190,8 @@ summary: Apply bold, headings, lists and links with keys or the format bar, and 
 # Format text
 
 Margin writes formatting as [Markdown marks](editor.md#hide-markdown-marks), so \`**bold**\` is what lands in the file. Use the keys or the format bar to add marks, and the same keys again to take them off.
+
+In Margin 0.1.6 and later, press ⇧⌘P and choose Markdown Cheat Sheet for every mark Margin reads, with the key that writes each one and a filter.
 
 ## Use the formatting keys
 
@@ -1438,7 +1463,7 @@ Homebrew puts Margin in your Applications folder and the \`margin\` command on y
 
 ## Open Margin for the first time
 
-Homebrew installs Margin but does not open it, and Margin has no Dock icon or window of its own, so nothing shows until you open it once.
+Homebrew installs Margin but does not open it, so nothing shows until you open it once. From Margin 0.1.6 it has a Dock icon too, which opens the panel.
 
 1. Press ⌘Space, type Margin and press Return, or open Margin from the Applications folder. If macOS says Margin was downloaded from the internet, click Open.
 2. Margin 0.1.5 and later drop the [panel](panel.md#open-the-panel) down by themselves. In 0.1.4, click Margin's icon in the menu bar, or press ⌃⌥N.
@@ -1452,7 +1477,11 @@ The first time you open Margin from the Applications folder, it turns on Launch 
 
 ## Update Margin
 
-Run \`brew upgrade\` in Terminal. Homebrew installs the new version. Margin itself [never checks the network](privacy.md#when-margin-goes-online) for updates.
+From Margin 0.1.6, Margin checks once a day for a new version. When one is ready, an Update to button shows in the editor's footer and at the top of Margin's menu in the menu bar. Click it, and Margin shows what changed and installs the new version, after it checks that Apple notarized the download and that you signed it. Choose Check for Updates… in the same menu to look now. To stop the daily check, turn off Check for updates once a day in [Settings](settings.md#startup-and-the-panel). See [Privacy and network use](privacy.md#when-margin-goes-online).
+
+The button shows only while a newer version waits, so the newest version has none. To see which version you have, choose About Margin in Margin's menu, in the menu bar or the status item's menu, in Margin 0.1.7 and later. In 0.1.6, select Margin in the Applications folder and press ⌘I.
+
+Margin 0.1.5 and earlier have no update button. Run \`brew upgrade --cask margin\` in Terminal, and Homebrew installs the new version.
 
 ## Uninstall Margin
 
@@ -1628,6 +1657,7 @@ To see every unchecked task in your notes in one list, with due dates and owners
 - [Open tasks across notes](tasks.md), to list every open task with its due date and owner
 - [Write and edit](editor.md), to move a list item with ⌃⇧⌘↑ and ⌃⇧⌘↓
 - [Slash menu, snippets and templates](slash-menu.md), to insert a list or a task by name
+- [Short forms](slash-menu.md#type-a-short-form), to put in three tasks with \`;task3\` and Tab
 `,ae=`---
 title: Rename, delete and organize notes
 section: Notes
@@ -1710,7 +1740,7 @@ Press ⌘[ to go back to the note you had open before, and ⌘] to go forward ag
 
 ## Merge a note into another
 
-Merge Note Into… adds the open note's text to the end of another note, moves the open note to the Trash, and points every link at the note that remains.
+In Margin 0.1.7 and later, Merge Note Into… adds the open note's text to the end of another note, moves the open note to the Trash, and points every link at the note that remains.
 
 1. Open the note you want to merge away.
 2. Press ⇧⌘P and choose Merge Note Into….
@@ -1899,6 +1929,7 @@ Margin's window is a panel that drops down from the menu bar. It opens over what
 
 - Click the Margin icon in the menu bar. The panel opens under the icon, on the display whose menu bar you clicked.
 - Press ⌃⌥N in any app. The panel opens on the screen that holds the pointer.
+- Click Margin's icon in the Dock, in Margin 0.1.6 and later. To keep Margin in the menu bar alone, turn off Show Margin in the Dock in [Settings](settings.md#startup-and-the-panel).
 
 The panel opens with the [search field](find-and-create.md#search-your-notes) ready for typing and the last note you had open on show. Margin also comes to the front, so [dictation, the emoji picker and Writing Tools](editor.md#type-in-any-language) work in the panel.
 
@@ -2187,12 +2218,13 @@ Margin works offline. Your notes stay in your [notes folder](notes-folder.md), a
 | Claude | You choose Claude in the AI settings, add your key and send a run | Anthropic's API |
 | [Database connections](databases.md) | You add a connection and run a command against it | The database server you named |
 | [Remote images](images.md#show-images-from-the-web) | Load remote images is on, which it is at first, and a note shows an image from a web address | That image's address |
+| Updates | Check for updates once a day is on, which it is at first, in Margin 0.1.6 and later. It asks for a short list of versions and nothing about you or your notes. | The list beside this guide, and GitHub for the download when you install one |
 | Links you open | You click or ⌘-click a web link | Your default browser opens it |
 
 Everything else stays on your Mac:
 
 - Margin bundles its [currency rates](calc.md#convert-currencies) and never fetches rates while it runs.
-- Margin does not check for updates. Homebrew does that when you run \`brew upgrade\`.
+- Margin 0.1.5 and earlier never check for updates. Homebrew does that when you run \`brew upgrade\`.
 - Note Health does not test web links.
 - AI on this Mac, and [Find by meaning](ai-across-notes.md#search-by-meaning), run on your Mac.
 - [Coding agents](agents.md) connect through a file on your Mac that exists only while Agents is on. Margin opens no network port.
@@ -2261,6 +2293,36 @@ tags: [work, work/launch]
 
 A tag can hold others under it with a slash, such as \`#work/launch\`. The Obsidian and All [flavors](flavors.md#what-each-flavor-reads) draw tags in the text.
 
+## Write front matter
+
+Front matter is a block of settings at the very top of a note, between two \`---\` lines, one \`key: value\` per line:
+
+\`\`\`
+---
+calc: true
+status: draft
+---
+\`\`\`
+
+Nothing may come before the first \`---\`, not even an empty line, and the block needs both lines. One \`---\` on its own is a [rule](formatting.md), not front matter.
+
+In Margin 0.1.6 and later, press ⇧⌘P and choose Add Front Matter. Margin writes both lines at the top of the note and puts the caret between them, or puts it at the end of the front matter the note has. Type a key, a colon, a space and the value.
+
+Margin reads these keys itself:
+
+| Key | What it does |
+| --- | --- |
+| \`calc: true\` | Works out every line of the note as [math](calc.md#start-a-calculation) |
+| \`sql: postgresql 16\` | Sets the dialect of the note's [SQL blocks](schema-blocks.md#choose-the-dialect) |
+| \`connection: staging\` | Names the [database](databases.md) the note's SQL runs against |
+| \`flavor: github\` | Sets the [Markdown flavor](flavors.md) |
+| \`ai: false\` | Keeps the note out of [AI](ai.md) |
+| \`tags: [recipes, home]\` | Tags the note |
+| \`cover: true\` | Starts a PDF [export](export.md) with a cover page |
+| \`$schema: schemas/post.yaml\` | Names the schema [Check Front Matter](checks.md#check-front-matter-against-a-schema) uses |
+
+Any other key, such as \`status: draft\`, is a property of your own, which search, bases and the Properties panel read.
+
 ## Edit a note's properties
 
 1. Open the note.
@@ -2281,6 +2343,8 @@ Type these in the [search field](find-and-create.md#search-your-notes):
 A property filter ignores case and accents, and matches any item of a list. It filters only when some note has that property, so text such as \`http://x\` still searches as words. Words beside a filter rank the notes it lets through.
 
 ## Show notes as a table with a base
+
+In Margin 0.1.7 and later, press ⇧⌘P and choose Bases Cheat Sheet for every piece of base syntax Margin reads, by where it goes.
 
 A base is a set of filters, columns and views written in YAML, in a subset of Obsidian's Bases syntax. Put it in a \` \`\`\`base \` block in any note, or in a \`.base\` file of its own. Margin draws it as a \`table\` or a \`board\` view over the notes its filters match. A \`.base\` file appears in the [note list](notes-folder.md#which-files-margin-lists) like a note.
 
@@ -2654,7 +2718,7 @@ Review reads the [SQL in a note](schema-blocks.md) the way a careful reviewer wo
 
 ## Open the Review list
 
-Press ⇧⌘P and choose Review. A list opens above the editor, grouped as Keys, Indexes, Deletes, Types, Names, Queries and Plans.
+Press ⇧⌘P, type \`review sql\` and choose Review SQL. A list opens above the editor, grouped as Keys, Indexes, Deletes, Types, Names, Queries and Plans.
 
 Each row starts with its severity, as a glyph and a word: × Error, ! Warning or i Note. Under the title is the kind of evidence behind it:
 
@@ -2785,6 +2849,8 @@ Settings that belong to one notes folder, such as which plugins are on and which
 | --- | --- | --- |
 | Global hotkey | Opens and closes the panel from any app. Click the recorder and press a chord. | ⌃⌥N |
 | Launch at login | Starts Margin when you log in | Turned on at first launch from the Applications folder |
+| Check for updates once a day | Looks for a new version once a day and shows an Update to button when one is ready. Margin 0.1.6 and later | On |
+| Show Margin in the Dock | Gives Margin a Dock icon, which opens the panel, and its menus in the menu bar while it is in front. Off, Margin lives in the menu bar alone. Margin 0.1.6 and later | On |
 
 ## Editor
 
@@ -2877,12 +2943,14 @@ Settings lists the plugins in your notes folder's \`.margin/plugins/\`, each wit
 title: Slash menu, snippets and templates
 section: Writing
 order: 9
-summary: Insert blocks from the slash menu, expand your own snippets with Tab, and start notes from templates.
+summary: Insert blocks from the slash menu, type short forms such as ;table3x4, expand your own snippets with Tab, and start notes from templates.
 ---
 
 # Slash menu, snippets and templates
 
-Type \`/\` to put in a block without remembering its Markdown. Snippets put in text you type often, with fields you fill in by pressing Tab. Templates give a new note its starting text.
+Type \`/\` to put in a block without remembering its Markdown. Short forms such as \`;table3x4\` put in a table, a list or a block from a few letters and Tab. Snippets put in text you type often, with fields you fill in by pressing Tab. Templates give a new note its starting text.
+
+In Margin 0.1.7 and later, press ⇧⌘P and choose Slash Menu Cheat Sheet for every row and what it puts in.
 
 ## Insert a block from the slash menu
 
@@ -2915,6 +2983,27 @@ Snippets and templates can hold fields, places you fill in.
 - A field with choices opens a list. Press Return to pick one.
 
 The snippet ends at its last stop, or when you press Esc or move the caret out of a field. Press ⌘Z right after Tab to take the whole snippet out and get back the word you typed.
+
+## Type a short form
+
+In Margin 0.1.7 and later, a word that starts with \`;\` puts in a table, a list or a block. Type the short form in ordinary text and press Tab.
+
+| Type | Margin puts in |
+| --- | --- |
+| \`;table\` | A table of two columns and two rows |
+| \`;table3x4\` | A table of 3 columns and 4 rows, up to 12 by 50. \`;table3\` has 3 columns and two rows |
+| \`;task\` or \`;task3\` | One open task, or 3, up to 50 |
+| \`;ul3\` or \`;ol3\` | A bullet list or a numbered list of 3 items, up to 50 |
+| \`;link\` or \`;img\` | A link or an image, with the text selected first and the address next |
+| \`;code\` | A code block, with a list of languages |
+| \`;callout\` | A [callout](preview.md#use-alerts-and-callouts), with a list of kinds |
+| \`;math\` | A math block |
+| \`;fm\` | [Front matter](properties-and-bases.md#write-front-matter), on the first line of a note only |
+| \`;date\` or \`;time\` | Today's date or the time now |
+
+Tab then steps through the places to fill, as in a snippet. In a table, Tab goes from heading to heading and ends in the first cell, and from there Tab moves from cell to cell. In a list, Tab goes down the items. A short form does nothing after a letter or a digit, or in code, front matter or math. A snippet of yours with the same trigger takes its place.
+
+Press ⇧⌘P and choose Short Forms Cheat Sheet for each short form with the text it puts in.
 
 ## Write your own snippets
 
@@ -3086,6 +3175,7 @@ With Edit Without Marks on, a table draws as a grid of cells and the caret moves
 
 ## See also
 
+- [Slash menu, snippets and templates](slash-menu.md#type-a-short-form), to put in a table of any size by typing \`;table3x4\` and Tab
 - [Tags, properties and bases](properties-and-bases.md), to see notes as a table and edit its cells in place
 - [Database connections](databases.md), to put a query's results in a note as a table
 - [Edit Without Marks](edit-without-marks.md), to edit a table as a grid of cells
@@ -3246,7 +3336,7 @@ Another app changed the note while you had unsaved changes. Margin saved the oth
 
 ## Margin's icon is not in the menu bar
 
-Press ⌃⌥N. If the panel drops down, Margin is running and macOS is hiding its icon.
+Press ⌃⌥N, or click Margin's icon in the Dock in Margin 0.1.6 and later. If the panel drops down, Margin is running and macOS is hiding its menu bar icon.
 
 1. Open System Settings, choose Menu Bar, and find Margin under Allow in the Menu Bar. Turn it on.
 2. If Margin is not in that list, quit it and open it again. In Activity Monitor, select Margin and click the stop button, then press ⌘Space, type Margin and press Return. Look at the list again.

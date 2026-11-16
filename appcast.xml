@@ -3,6 +3,24 @@
   <channel>
     <title>Margin</title>
     <item>
+      <title>Margin 0.1.7</title>
+      <pubDate>Mon, 16 Nov 2026 19:46:17 +0000</pubDate>
+      <sparkle:version>0.1.7</sparkle:version>
+      <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>Margin 0.1.7. Signed with Developer ID and notarized by Apple.</p>
+<h3>New</h3>
+<ul>
+<li><b>Short forms in your writing.</b> Type <code>;table3x4</code> and press Tab for a table of 3 columns and 4 rows, or <code>;task3</code> for three tasks. <code>;ul3</code>, <code>;ol3</code>, <code>;link</code>, <code>;img</code>, <code>;code</code>, <code>;callout</code>, <code>;math</code>, <code>;fm</code>, <code>;date</code> and <code>;time</code> work too. Press ⇧⌘P and choose Short Forms Cheat Sheet for the list.</li>
+<li><b>Merge Note Into…</b> Press ⇧⌘P and choose it to add the open note's text to the end of another note. Margin moves the open note to the Trash and points every link at the note that remains.</li>
+<li><b>Three more cheat sheets.</b> Slash Menu, Bases and Search Filters, each in the palette (⇧⌘P).</li>
+<li><b>About Margin.</b> In Margin's menu and the status item's menu, it shows the version you have.</li>
+</ul>
+<p>The guide: https://tayler-id.github.io/margin-releases/</p>
+]]></description>
+      <enclosure url="https://github.com/tayler-id/margin-releases/releases/download/v0.1.7/Margin-0.1.7.zip" length="10481680" type="application/octet-stream" sparkle:edSignature="W719OrVpgo3k4zwkxPlY0KtXNYF5o4KuX63o8mOSKufEv38PZAuCHAiU73NyLz7rCWHsUqg+3uZJt/y7OeMcAA=="/>
+    </item>
+    <item>
       <title>Margin 0.1.6</title>
       <pubDate>Mon, 16 Nov 2026 14:43:56 +0000</pubDate>
       <sparkle:version>0.1.6</sparkle:version>
