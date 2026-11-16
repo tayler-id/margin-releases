@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Margin</title>
+    <item>
+      <title>Margin 0.1.6</title>
+      <pubDate>Mon, 16 Nov 2026 14:43:56 +0000</pubDate>
+      <sparkle:version>0.1.6</sparkle:version>
+      <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>Margin 0.1.6, a menu bar Markdown notebook for macOS 26 or later. Signed with Developer ID and notarized by Apple.</p>
+<h3>New</h3>
+<ul>
+<li><b>Updates from inside Margin.</b> Margin checks once a day for a new version. When one is ready, an Update to button shows in the editor's footer and at the top of Margin's menu. Click it to see what changed and install. Check for Updates… looks now, and Settings › General turns the daily check off. This is the last version you need Homebrew to update to.</li>
+<li><b>Margin in the Dock.</b> Margin has a Dock icon, which opens the panel, so you can always reach it even when macOS hides the menu bar icon. Turn off Show Margin in the Dock in Settings › General to keep it in the menu bar alone.</li>
+<li><b>Emmet in HTML and CSS blocks.</b> Type <code>ul&gt;li*3</code> in an html block, or <code>m10</code> in a css block, and press Tab. Press ⇧⌘P and type <code>cheat</code> for the HTML and CSS Abbreviations Cheat Sheet.</li>
+<li><b>Markdown Cheat Sheet.</b> Press ⇧⌘P and choose Markdown Cheat Sheet for every mark Margin reads, with the key that writes it.</li>
+<li><b>Add Front Matter.</b> Press ⇧⌘P and choose Add Front Matter to write the block at the top of a note with the cursor inside it. Turn On Math for This Note writes <code>calc: true</code> for you.</li>
+<li><b>Roots and recipe fractions in math.</b> <code>√50000</code> and <code>∛27</code> work. <code>1/3 cup</code> is a third of a cup, and <code>1 1/3 cups in ml</code> is 315.45 ml.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>The palette's Review is now Review SQL, the name the guide uses, so typing <code>review sql</code> finds it.</li>
+<li>Code comments, punctuation and strings in the preview were too light to read easily. They now meet WCAG AA contrast in every theme.</li>
+<li>The Schema Settings sheet says what <code>naming</code> and <code>groups</code> hold, with an example group.</li>
+</ul>
+<h3>Install or update</h3>
+<p>brew update</p>
+<p>brew upgrade --cask margin</p>
+<p>New to Margin:</p>
+<p>brew tap tayler-id/margin</p>
+<p>brew trust tayler-id/margin</p>
+<p>brew install --cask margin</p>
+<p>The guide: https://tayler-id.github.io/margin-releases/</p>
+]]></description>
+      <enclosure url="https://github.com/tayler-id/margin-releases/releases/download/v0.1.6/Margin-0.1.6.zip" length="10438720" type="application/octet-stream" sparkle:edSignature="Bi1ss8G9vC9NBedFvrFkrTK4SFfJH+Oy+ihVmXocOU3sKjSLK5wu4rFbQssKVCw8cG+8C1KFtIwMh76D7VSaCA=="/>
+    </item>
+  </channel>
+</rss>
