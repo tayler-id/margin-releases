@@ -3,6 +3,23 @@
   <channel>
     <title>Margin</title>
     <item>
+      <title>Margin 0.1.8</title>
+      <pubDate>Tue, 17 Nov 2026 14:00:03 +0000</pubDate>
+      <sparkle:version>0.1.8</sparkle:version>
+      <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>Margin 0.1.8. Signed with Developer ID and notarized by Apple.</p>
+<h3>New</h3>
+<ul>
+<li><b>Margin opens as a window.</b> ⌃⌥N, the menu bar icon, the Dock, Applications and Finder open Margin's window in the middle of the screen, and it stays open until you click its close button or press ⌘W. A click elsewhere or Esc leaves it open. While it is in front, Margin's menus show in the menu bar. A launch at login opens no window.</li>
+<li><b>The version and a purple Update button in the title bar.</b> The right end of the title bar shows the version you have. When a new version is ready, a purple Update to button beside it shows what changed and installs it.</li>
+<li><b>Keep on Top.</b> Press ⌃⌘P, click the pin glyph or choose Keep on Top in the Window menu to keep the window above other apps' windows.</li>
+</ul>
+<p>The guide: https://tayler-id.github.io/margin-releases/</p>
+]]></description>
+      <enclosure url="https://github.com/tayler-id/margin-releases/releases/download/v0.1.8/Margin-0.1.8.zip" length="10481106" type="application/octet-stream" sparkle:edSignature="PktpHSY1ey1g0MqUG2cBzg9jte/r0zwYAMP8REZiF6V278apQIxoZHqFRK0OS95AvAN9ocpdWuCTw0TNRjjmBA=="/>
+    </item>
+    <item>
       <title>Margin 0.1.7</title>
       <pubDate>Mon, 16 Nov 2026 19:46:17 +0000</pubDate>
       <sparkle:version>0.1.7</sparkle:version>

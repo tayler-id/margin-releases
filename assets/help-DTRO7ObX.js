@@ -1,4 +1,4 @@
-import{r as e,t}from"./preview-lBuFJwfn.js";var n=`---
+import{r as e,t}from"./preview-DAWd3CiM.js";var n=`---
 title: Connect a coding agent
 section: Coding agents
 order: 1
@@ -1007,7 +1007,7 @@ One field both searches and creates. Type a few letters to find a note. If no no
 
 In Margin 0.1.7 and later, press ⇧⌘P and choose Search Filters Cheat Sheet for every filter with what it finds.
 
-1. Press ⌃⌥N to open the [panel](panel.md#open-the-panel). The search field has the keys. If you are in the editor, press ⌘L to go back to the field.
+1. Press ⌃⌥N to open [Margin's window](panel.md#open-the-window). The search field has the keys. If you are in the editor, press ⌘L to go back to the field.
 2. Type. The list filters with every key you press.
 
 Search looks at file names, folder paths and the full text of every note. It works this way:
@@ -1180,7 +1180,7 @@ To jump to a heading in any note, start a search in the search field with \`#\`.
 - [Tags, properties and bases](properties-and-bases.md), to rename a tag or property across notes
 - [AI across notes](ai-across-notes.md), to describe a change and have AI propose it in several notes
 - [Keyboard shortcuts](keyboard-shortcuts.md), for the find keys and how to change them
-`,h="---\ntitle: Markdown flavors\nsection: Reading and sharing\norder: 2\nsummary: Choose which Markdown flavor Margin reads a note in, and see what another flavor would read differently.\n---\n\n# Markdown flavors\n\nA flavor is the set of Markdown extensions Margin reads in a note. The editor's highlighting and the [preview](preview.md) always use the same flavor, so what you see while typing matches what renders. Margin reads six flavors: CommonMark, GitHub, Obsidian, Pandoc, MultiMarkdown and All. All is the default.\n\n## Set the default flavor\n\n1. Press ⌘, to open [Settings](settings.md#editor).\n2. Under Editor, choose a Default Markdown flavor.\n\nEvery note without a flavor of its own uses it.\n\n## Set a note's flavor\n\nAdd a `flavor` property to the note's [front matter](properties-and-bases.md#edit-a-notes-properties):\n\n```yaml\n---\nflavor: github\n---\n```\n\nThe values are `commonmark`, `github`, `obsidian`, `pandoc`, `multimarkdown` and `all`. The preview and highlighting switch as soon as you type it.\n\n## What each flavor reads\n\nEvery flavor reads CommonMark 0.31.2: headings, lists, code, links and HTML blocks. Every flavor also highlights [fenced code](code-blocks.md) by its language, and shows raw HTML after removing anything unsafe.\n\n| Extension | Syntax | CommonMark | GitHub | Obsidian | Pandoc | MultiMarkdown | All |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| [Tables](tables.md) | pipe tables | | yes | yes | yes | | |\n| Tables with merged cells and captions | MultiMarkdown tables | | | | | yes | yes |\n| Strikethrough | `~~x~~` | | yes | yes | yes | yes | yes |\n| Single-tilde strikethrough | `~x~` | | yes | | | | yes |\n| Task lists | `- [ ]`, `- [x]` | | yes | yes | yes | | yes |\n| Bare web addresses as links | `www.` and URLs, emails | | yes | yes | | | yes |\n| Footnotes | `[^1]`, inline `^[x]` | | yes | yes | yes | yes | yes |\n| Front matter | YAML `---`, TOML `+++` | | yes | yes | yes | yes | yes |\n| Math | `$x$`, `$$x$$`, `\\(x\\)`, `\\[x\\]`, ` ```math ` | | yes | yes | yes | yes | yes |\n| Mermaid diagrams | ` ```mermaid ` | | yes | yes | | | yes |\n| GitHub alerts | `> [!NOTE]` | | yes | | | | yes |\n| Callouts, foldable | `> [!tip]- Title` | | | yes | | | yes |\n| Admonitions | `!!! note \"Title\"`, `??? note`, `:::note` | | | | | | yes |\n| [Wikilinks and embeds](links.md) | `[[Note]]`, `[[Note\\|alias]]`, `[[Note#Heading]]`, `![[image.png]]` | | | yes | | | yes |\n| Tags | `#tag` | | | yes | | | yes |\n| Comments | `%%hidden%%` | | | yes | | | yes |\n| Highlight | `==x==` | | | yes | | yes | yes |\n| Superscript | `^x^` | | | | yes | yes | yes |\n| Subscript | `~x~` | | | | yes | yes | |\n| Definition lists | `Term` then `: Definition` | | | | yes | yes | yes |\n| Abbreviations | `*[HTML]: Hyper Text` | | | | | yes | yes |\n| Inserted text | `++x++` | | | | | | yes |\n| Emoji shortcodes | `:tada:` | | yes | | | | yes |\n| Attributes | `{#id .class}` | | | | yes | | yes |\n| Cross-references | `{#fig:id}`, `{#eq:id}`, `{#tbl:id}`, `@fig:id` | | | | yes | | yes |\n| Heading anchors | automatic ids | | yes | yes | yes | yes | yes |\n| [Table of contents](outline-and-sections.md#add-a-table-of-contents) | `[TOC]`, `[[_TOC_]]`, `{{TOC}}` | | | | | yes | yes |\n| A single Return is a line break | | | | yes | | | |\n| Smart quotes and dashes | | | | | yes | | |\n| CriticMarkup | `{++ ++}`, `{-- --}`, `{~~ ~> ~~}`, `{== ==}`, `{>> <<}` | | | | | yes | yes |\n| [Sections for one export format](export.md#keep-a-section-out-of-one-format) | `::: {.content-visible when-format=\"pdf\"}` | | | | yes | | yes |\n\nAttributes read only an id, a class, a width and a height.\n\n## When flavors disagree\n\n- `~x~` is strikethrough in GitHub and subscript in Pandoc and MultiMarkdown. All follows GitHub. Choose Pandoc or MultiMarkdown for subscript.\n- `> [!type]` is a GitHub alert in GitHub and an Obsidian callout in Obsidian and All. Callouts take GitHub's five alert types too, so a GitHub note reads the same in All.\n- A single Return makes a line break only in Obsidian.\n- Smart quotes and dashes are on only in Pandoc, because they rewrite the quotes and dashes you typed.\n- A `$$` block or a `%%` comment that never closes runs to the end of its container, the way an unclosed code fence does.\n- A `---` at the top of a note with no closing line is a horizontal rule, not front matter.\n\n## Compare flavors\n\nTo see what another flavor would read differently in the open note:\n\n1. Press ⇧⌘P and choose Compare flavors.\n2. The list shows each flavor the note is not read in, with how many places would render differently and the line of the first.\n3. Choose a row to see which extensions cause the differences, each with a count and its first line.\n4. Press Return to go to the first place, or press ⌘↩ to use that flavor for this note.\n\nUse for this note sets `flavor:` in the note's front matter, and adds front matter if the note has none, in one step of undo. It is not offered for CommonMark, which shows front matter as text, for a note with TOML front matter, or for a read-only note. The list's last line names the flavor the note is read in now.\n\nMargin does not compare a note over 100,000 characters.\n\n## What Margin does not render\n\nThese show as plain code or text:\n\n- Pandoc citations.\n- MDX's JSX. The Markdown around it still renders.\n- R Markdown and Quarto code, which Margin does not run.\n- PlantUML and Graphviz diagrams, which need tools Margin does not include.\n\n## See also\n\n- [Read the preview](preview.md), for how math, diagrams, callouts and cross-references draw\n- [Write and edit](editor.md), for highlighting and hidden marks as you type\n- [Export, print and share](export.md), to export a note as HTML, PDF or Markdown\n",ee=`---
+`,ee="---\ntitle: Markdown flavors\nsection: Reading and sharing\norder: 2\nsummary: Choose which Markdown flavor Margin reads a note in, and see what another flavor would read differently.\n---\n\n# Markdown flavors\n\nA flavor is the set of Markdown extensions Margin reads in a note. The editor's highlighting and the [preview](preview.md) always use the same flavor, so what you see while typing matches what renders. Margin reads six flavors: CommonMark, GitHub, Obsidian, Pandoc, MultiMarkdown and All. All is the default.\n\n## Set the default flavor\n\n1. Press ⌘, to open [Settings](settings.md#editor).\n2. Under Editor, choose a Default Markdown flavor.\n\nEvery note without a flavor of its own uses it.\n\n## Set a note's flavor\n\nAdd a `flavor` property to the note's [front matter](properties-and-bases.md#edit-a-notes-properties):\n\n```yaml\n---\nflavor: github\n---\n```\n\nThe values are `commonmark`, `github`, `obsidian`, `pandoc`, `multimarkdown` and `all`. The preview and highlighting switch as soon as you type it.\n\n## What each flavor reads\n\nEvery flavor reads CommonMark 0.31.2: headings, lists, code, links and HTML blocks. Every flavor also highlights [fenced code](code-blocks.md) by its language, and shows raw HTML after removing anything unsafe.\n\n| Extension | Syntax | CommonMark | GitHub | Obsidian | Pandoc | MultiMarkdown | All |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| [Tables](tables.md) | pipe tables | | yes | yes | yes | | |\n| Tables with merged cells and captions | MultiMarkdown tables | | | | | yes | yes |\n| Strikethrough | `~~x~~` | | yes | yes | yes | yes | yes |\n| Single-tilde strikethrough | `~x~` | | yes | | | | yes |\n| Task lists | `- [ ]`, `- [x]` | | yes | yes | yes | | yes |\n| Bare web addresses as links | `www.` and URLs, emails | | yes | yes | | | yes |\n| Footnotes | `[^1]`, inline `^[x]` | | yes | yes | yes | yes | yes |\n| Front matter | YAML `---`, TOML `+++` | | yes | yes | yes | yes | yes |\n| Math | `$x$`, `$$x$$`, `\\(x\\)`, `\\[x\\]`, ` ```math ` | | yes | yes | yes | yes | yes |\n| Mermaid diagrams | ` ```mermaid ` | | yes | yes | | | yes |\n| GitHub alerts | `> [!NOTE]` | | yes | | | | yes |\n| Callouts, foldable | `> [!tip]- Title` | | | yes | | | yes |\n| Admonitions | `!!! note \"Title\"`, `??? note`, `:::note` | | | | | | yes |\n| [Wikilinks and embeds](links.md) | `[[Note]]`, `[[Note\\|alias]]`, `[[Note#Heading]]`, `![[image.png]]` | | | yes | | | yes |\n| Tags | `#tag` | | | yes | | | yes |\n| Comments | `%%hidden%%` | | | yes | | | yes |\n| Highlight | `==x==` | | | yes | | yes | yes |\n| Superscript | `^x^` | | | | yes | yes | yes |\n| Subscript | `~x~` | | | | yes | yes | |\n| Definition lists | `Term` then `: Definition` | | | | yes | yes | yes |\n| Abbreviations | `*[HTML]: Hyper Text` | | | | | yes | yes |\n| Inserted text | `++x++` | | | | | | yes |\n| Emoji shortcodes | `:tada:` | | yes | | | | yes |\n| Attributes | `{#id .class}` | | | | yes | | yes |\n| Cross-references | `{#fig:id}`, `{#eq:id}`, `{#tbl:id}`, `@fig:id` | | | | yes | | yes |\n| Heading anchors | automatic ids | | yes | yes | yes | yes | yes |\n| [Table of contents](outline-and-sections.md#add-a-table-of-contents) | `[TOC]`, `[[_TOC_]]`, `{{TOC}}` | | | | | yes | yes |\n| A single Return is a line break | | | | yes | | | |\n| Smart quotes and dashes | | | | | yes | | |\n| CriticMarkup | `{++ ++}`, `{-- --}`, `{~~ ~> ~~}`, `{== ==}`, `{>> <<}` | | | | | yes | yes |\n| [Sections for one export format](export.md#keep-a-section-out-of-one-format) | `::: {.content-visible when-format=\"pdf\"}` | | | | yes | | yes |\n\nAttributes read only an id, a class, a width and a height.\n\n## When flavors disagree\n\n- `~x~` is strikethrough in GitHub and subscript in Pandoc and MultiMarkdown. All follows GitHub. Choose Pandoc or MultiMarkdown for subscript.\n- `> [!type]` is a GitHub alert in GitHub and an Obsidian callout in Obsidian and All. Callouts take GitHub's five alert types too, so a GitHub note reads the same in All.\n- A single Return makes a line break only in Obsidian.\n- Smart quotes and dashes are on only in Pandoc, because they rewrite the quotes and dashes you typed.\n- A `$$` block or a `%%` comment that never closes runs to the end of its container, the way an unclosed code fence does.\n- A `---` at the top of a note with no closing line is a horizontal rule, not front matter.\n\n## Compare flavors\n\nTo see what another flavor would read differently in the open note:\n\n1. Press ⇧⌘P and choose Compare flavors.\n2. The list shows each flavor the note is not read in, with how many places would render differently and the line of the first.\n3. Choose a row to see which extensions cause the differences, each with a count and its first line.\n4. Press Return to go to the first place, or press ⌘↩ to use that flavor for this note.\n\nUse for this note sets `flavor:` in the note's front matter, and adds front matter if the note has none, in one step of undo. It is not offered for CommonMark, which shows front matter as text, for a note with TOML front matter, or for a read-only note. The list's last line names the flavor the note is read in now.\n\nMargin does not compare a note over 100,000 characters.\n\n## What Margin does not render\n\nThese show as plain code or text:\n\n- Pandoc citations.\n- MDX's JSX. The Markdown around it still renders.\n- R Markdown and Quarto code, which Margin does not run.\n- PlantUML and Graphviz diagrams, which need tools Margin does not include.\n\n## See also\n\n- [Read the preview](preview.md), for how math, diagrams, callouts and cross-references draw\n- [Write and edit](editor.md), for highlighting and hidden marks as you type\n- [Export, print and share](export.md), to export a note as HTML, PDF or Markdown\n",h=`---
 title: Format text
 section: Writing
 order: 2
@@ -1332,7 +1332,7 @@ To send a note somewhere else with its pictures, export it as Markdown. Margin c
 - [Check a note](checks.md), to find every image that has no alt text
 - [Edit Without Marks](edit-without-marks.md), to work with an image line as one block
 - [Export, print and share](export.md), to export a note with its images bundled
-`,_=`---
+`,te=`---
 title: Import notes and documents
 section: Notes
 order: 3
@@ -1420,7 +1420,7 @@ To paste formatted text instead of importing a file, see [Format text](formattin
 - [Format text](formatting.md), to paste formatted text instead of importing a file
 - [Set up your notes folder](notes-folder.md), for where imported notes and their originals go
 - [Export, print and share](export.md), to send notes back out as HTML, PDF or Markdown
-`,te=`---
+`,ne=`---
 title: Install Margin
 section: Get started
 order: 1
@@ -1466,7 +1466,7 @@ Homebrew puts Margin in your Applications folder and the \`margin\` command on y
 Homebrew installs Margin but does not open it, so nothing shows until you open it once. From Margin 0.1.6 it has a Dock icon too, which opens the panel.
 
 1. Press ⌘Space, type Margin and press Return, or open Margin from the Applications folder. If macOS says Margin was downloaded from the internet, click Open.
-2. Margin 0.1.5 and later drop the [panel](panel.md#open-the-panel) down by themselves. In 0.1.4, click Margin's icon in the menu bar, or press ⌃⌥N.
+2. Margin 0.1.8 and later open [their window](panel.md#open-the-window) in the middle of the screen by themselves, and 0.1.5 to 0.1.7 drop their panel down from the menu bar. In 0.1.4, click Margin's icon in the menu bar, or press ⌃⌥N.
 3. Margin asks for a notes folder inside the panel and suggests \`~/Documents/Margin\`. Confirm it, or choose another folder. See [Set up your notes folder](notes-folder.md).
 
 To read this guide inside Margin, choose Margin Help in the status item's menu, the panel's ⋯ menu or the [command palette](window-tour.md#the-command-palette), in Margin 0.1.5 and later. Its Open in Browser button shows the same page on this site.
@@ -1477,9 +1477,9 @@ The first time you open Margin from the Applications folder, it turns on Launch 
 
 ## Update Margin
 
-From Margin 0.1.6, Margin checks once a day for a new version. When one is ready, an Update to button shows in the editor's footer and at the top of Margin's menu in the menu bar. Click it, and Margin shows what changed and installs the new version, after it checks that Apple notarized the download and that you signed it. Choose Check for Updates… in the same menu to look now. To stop the daily check, turn off Check for updates once a day in [Settings](settings.md#startup-and-the-panel). See [Privacy and network use](privacy.md#when-margin-goes-online).
+From Margin 0.1.6, Margin checks once a day for a new version. When one is ready, a purple Update to button shows in the title bar of Margin's window, beside the version, in Margin 0.1.8 and later, and at the top of Margin's menu in the menu bar. In 0.1.6 and 0.1.7 the button is in the editor's footer. Click it, and Margin shows what changed and installs the new version, after it checks that Apple notarized the download and that you signed it. Choose Check for Updates… in the same menu to look now. To stop the daily check, turn off Check for updates once a day in [Settings](settings.md#startup-and-the-panel). See [Privacy and network use](privacy.md#when-margin-goes-online).
 
-The button shows only while a newer version waits, so the newest version has none. To see which version you have, choose About Margin in Margin's menu, in the menu bar or the status item's menu, in Margin 0.1.7 and later. In 0.1.6, select Margin in the Applications folder and press ⌘I.
+The button shows only while a newer version waits, so the newest version has none. To see which version you have, look at the title bar of Margin's window in 0.1.8 and later, or choose About Margin in Margin's menu, in the menu bar or the status item's menu, in 0.1.7 and later. In 0.1.6, select Margin in the Applications folder and press ⌘I.
 
 Margin 0.1.5 and earlier have no update button. Run \`brew upgrade --cask margin\` in Terminal, and Homebrew installs the new version.
 
@@ -1495,7 +1495,7 @@ Your notes folder stays where it is either way. Margin keeps its [snapshots and 
 - [Set up your notes folder](notes-folder.md), to choose the folder Margin reads and which files it lists
 - [Open and close the panel](panel.md), to open, pin, resize and quit the panel
 - [A tour of the window](window-tour.md), for the search field, the note list, the editor and the command palette
-`,ne='---\ntitle: Keyboard shortcuts\nsection: Reference\norder: 1\nsummary: Look up every default key in Margin by area, and change any of them in Settings or keybindings.json.\n---\n\n# Keyboard shortcuts\n\nThese are Margin\'s default keys, grouped as the [shortcut sheet](window-tour.md#the-shortcut-sheet) groups them. Press ⌘/ in Margin to see the same list with any keys you have changed. The id beside each command is the name to use in `keybindings.json` and `.margin/hooks.json`.\n\nA key that macOS\'s text system already uses inside a text view keeps its macOS meaning in the editor. The [Shortcuts pane](settings.md#shortcuts) in Settings tells you when that happens.\n\n## Global\n\n| Keys | Command |\n| --- | --- |\n| ⌃⌥N | Open or close the panel from any app. [Change it in Settings](panel.md#change-the-global-shortcut). |\n\n## Note\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘N | New Note | `native.newNote` |\n| ⌘R | Rename Note | `native.renameNote` |\n| ⌘⌫ | Move to Trash, from the list or search field | `native.trashNote` |\n| ⌥⌘P | Pin Note | `native.togglePinNote` |\n| ⇧⌘R | Reveal in Finder | `native.revealNote` |\n| ⌘L | Find Notes, which puts the keys in the search field | `native.focusSearch` |\n| ⌘↩ | Create Note from Search | `native.createFromSearch` |\n| ⌘P | Print… | `native.printNote` |\n\n## View\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘\\ | Show or Hide Note List | `native.toggleList` |\n| ⌃⌘S | Show or Hide Folders | `native.toggleFolders` |\n| ⌘1 | Editor | `native.showEditor` |\n| ⌘2 | Editor and Preview | `native.showEditorAndPreview` |\n| ⌘3 | Preview | `native.showPreview` |\n| ⌘+ or ⌘= | Bigger | `native.biggerText` |\n| ⌘- | Smaller | `native.smallerText` |\n| ⌘0 | Actual Size | `native.actualSizeText` |\n| ⇧⌘M | Hide Markdown Syntax | `native.toggleHideSyntax` |\n| ⌘D | Focus Mode | `native.toggleFocusMode` |\n| ⌥⌘T | Typewriter Scrolling | `native.toggleTypewriter` |\n| ⌘[ | Back | `native.goBack` |\n| ⌘] | Forward | `native.goForward` |\n| ⌘/ | Keyboard Shortcuts | `native.showShortcuts` |\n| ⇧⌘P | Command Palette… | `native.showPalette` |\n| ⌥⌘[ | Fold section | `editor.foldSection` |\n| ⌥⌘] | Unfold section | `editor.unfoldSection` |\n\n## Window\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘W | Close Panel | `native.closePanel` |\n| ⌃⌘P | Pin Panel | `native.togglePin` |\n| ⌃⌘F, Globe-F or ⇧⌘F | Enter Full Screen | `native.toggleFullScreen` |\n| ⌘T | New Tab | `editor.newTab` |\n| ⇧⌘W | Close Tab | `editor.closeTab` |\n| ⇧⌘] | Next Tab | `editor.nextTab` |\n| ⇧⌘[ | Previous Tab | `editor.previousTab` |\n\n## Edit\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘Z | Undo | `native.undo` |\n| ⇧⌘Z | Redo | `native.redo` |\n| ⌘X | Cut | `native.cut` |\n| ⌘C | Copy | `native.copy` |\n| ⌘V | Paste | `native.paste` |\n| ⌥⇧⌘V | Paste and Match Style, which pastes plain text | `native.pasteAsPlainText` |\n| ⌘A | Select All | `native.selectAll` |\n| ⌥⌘C | Copy as HTML | `native.copyAsHTML` |\n| ⌥⇧⌘C | Copy Answer | `editor.copyAnswer` |\n| ⌃⇧⌘→ | Expand selection | `editor.expandSelection` |\n| ⌃⇧⌘← | Shrink selection | `editor.shrinkSelection` |\n\n## Search field\n\nThese keys work while the [search field](find-and-create.md#search-your-notes) has the keys, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↓ | Select the next note |\n| ↑ | Select the previous note |\n| ↩ | Open the note, or create one |\n| Esc | Clear the search, then close the panel |\n\n## Format\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘B | Bold | `editor.bold` |\n| ⌘I | Italic | `editor.italic` |\n| ⇧⌘X | Strikethrough | `editor.strikethrough` |\n| ⇧⌘C | Inline code | `editor.inlineCode` |\n\n## Blocks\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌥⌘1 to ⌥⌘6 | Heading 1 to Heading 6 | `editor.heading1` to `editor.heading6` |\n| ⌥⌘0 | Paragraph | `editor.paragraph` |\n| ⇧⌘8 | Bullet list | `editor.bulletList` |\n| ⇧⌘7 | Numbered list | `editor.numberedList` |\n| ⇧⌘T | Task item | `editor.taskItem` |\n| ⇧⌘L | Toggle the checkbox | `editor.toggleCheckbox` |\n| ⇧⌘K | Fenced code block | `editor.fence` |\n| ⌥⌘↑ | Move section up | `editor.moveSectionUp` |\n| ⌥⌘↓ | Move section down | `editor.moveSectionDown` |\n| ⌃⇧⌘↑ | Move block up | `editor.moveBlockUp` |\n| ⌃⇧⌘↓ | Move block down | `editor.moveBlockDown` |\n| ⇧⌘↩ | Run SQL block | `editor.runQuery` |\n\n## Lists\n\nThese keys act where the caret is, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↩ | Continue a list or quote |\n| ⌫ | Remove a list, quote or heading mark |\n| Tab | Nest a list item |\n| ⇧Tab | Unnest a list item |\n\n## Links\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘K | Link | `editor.link` |\n| ⌘-click | Open a link. Cannot be changed. | |\n| `[[` | Link to a note. Cannot be changed. | |\n\n## Find\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘F | Find | `editor.find` |\n| ⌥⌘F | Find and replace | `editor.findReplace` |\n| ⌘G | Find next | `editor.findNext` |\n| ⇧⌘G | Find previous | `editor.findPrevious` |\n| ⌘E | Use selection for find | `editor.useSelection` |\n| ⌥⌘R | Regular expressions in find | `editor.findPattern` |\n| ⇧⌘O | Outline | `editor.outline` |\n| Esc | Close find or outline. Cannot be changed. | |\n\n## AI\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘J | AI Commands, while AI is on | `ai.menu` |\n\n## Margin\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘, | Settings… | `native.showSettings` |\n| ⌘Q | Quit Margin | `native.terminate` |\n\n## Keys inside lists and sheets\n\nSome lists have keys of their own, which work only while the list is open. Each page lists them:\n\n- The Review list\'s Explain, Apply Fix, Dismiss and Propose Fix. See [Review SQL](schema-review.md).\n- Use for this note in Compare flavors. See [Markdown flavors](flavors.md#compare-flavors).\n- Accepting an AI proposal. See [AI in a note](ai.md#review-a-proposal).\n- Moving through slides. See [Read the preview](preview.md#present-a-note-as-slides).\n\n## Change a shortcut\n\n1. Press ⌘, and open the Shortcuts pane.\n2. Find the command. The filter ignores case and accents.\n3. Click the command\'s keys and press the new chord. A chord needs ⌘, ⌃ or ⌥.\n\nPress Esc to cancel, or Delete to remove the command\'s key. Click Reset beside a command to give it back its default key, or Reset All to restore every default. When two commands share a chord, the pane names both. Every command except the fixed ones above is listed, including those with no default key.\n\n## Edit keybindings.json\n\nMargin keeps your changes in `~/Library/Application Support/Margin/keybindings.json`. You can edit it by hand:\n\n```json\n{\n  "version": 1,\n  "bindings": {\n    "editor.formatDocument": [{ "key": "f", "mods": ["ctrl", "alt"] }],\n    "editor.findPattern": null\n  }\n}\n```\n\nThis file gives [Format document](editor.md#tidy-a-note) the keys ⌃⌥F and takes ⌥⌘R away from [Regular expressions in find](find-and-replace.md#use-a-regular-expression). `null` removes a command\'s key. The modifiers are `cmd`, `ctrl`, `alt`, `shift` and `fn`. Margin reads the file when it starts and whenever the file changes. If the file has a mistake, Margin keeps the default keys and the Shortcuts pane shows the reason. Before Settings writes over a file that does not read, it moves it to `keybindings.json.bad`, so your work is not lost.\n\n## Commands with no default key\n\nThese commands are in the palette and have no key until you give them one. Use their ids in `keybindings.json` or `.margin/hooks.json`.\n\n| Command | Id |\n| --- | --- |\n| Properties | `note.properties` |\n| New Note from Template… | `note.newFromTemplate` |\n| Note Health | `native.showNoteHealth` |\n| Share… | `native.shareNote` |\n| Import… | `native.importDocument` |\n| Insert Image… | `native.insertImage` |\n| Export… | `native.exportNote` |\n| Export Diagram… | `native.exportDiagram` |\n| Export Notes Folder… | `native.exportNotesFolder` |\n| Export Listed Notes… | `native.exportListedNotes` |\n| Rename Tag… | `native.renameTag` |\n| Rename Property… | `native.renameProperty` |\n| Set Property on Listed Notes… | `native.setPropertyOnListedNotes` |\n| Replace in Notes… | `native.replaceInNotes` |\n| Copy as Markdown | `native.copyAsMarkdown` |\n| Copy as Plain Text | `native.copyAsPlainText` |\n| Larger Panel | `native.largerPanel` |\n| Smaller Panel | `native.smallerPanel` |\n| Default Panel Size | `native.defaultPanelSize` |\n| Edit Without Marks | `native.toggleEditWithoutMarks` |\n| Show Authorship | `native.toggleAuthorship` |\n| Unfold all sections | `editor.unfoldAll` |\n| Show in preview | `editor.showInPreview` |\n| Line breaks | `editor.lineBreaks` |\n| Compare flavors | `editor.compareFlavors` |\n| Start Presentation | `editor.startPresentation` |\n| Pin Reference Note… | `editor.pinReference` |\n| Unpin Reference Note | `editor.unpinReference` |\n| Layouts… | `editor.layouts` |\n| Save Layout… | `editor.saveLayout` |\n| Browse Backups… | `editor.browseBackups` |\n| Open Tasks… | `editor.openTasks` |\n| Format document | `editor.formatDocument` |\n| Format Code Blocks | `editor.formatCodeBlocks` |\n| Check Front Matter | `editor.checkFrontMatter` |\n| Check Style | `editor.checkStyle` |\n| Check Agent Files | `editor.checkAgentFiles` |\n| Agent Context | `editor.agentContext` |\n| Check Accessibility | `editor.checkAccessibility` |\n| Record Macro | `macro.record` |\n| Stop Recording | `macro.stop` |\n| Copy Unformatted Answer | `calc.copyUnformattedAnswer` |\n| Copy with Answers | `calc.copyWithAnswers` |\n| Insert Answer | `calc.insertAnswer` |\n| Alt text and caption… | `editor.imageText` |\n| Rename heading… | `editor.renameHeading` |\n| Move Section to New Note… | `editor.moveSection` |\n| Promote Section | `editor.promoteSection` |\n| Demote Section | `editor.demoteSection` |\n| Set Code Language… | `editor.setCodeLanguage` |\n| Export Section… | `editor.exportSection` |\n| Restore Section from Snapshot… | `editor.restoreSection` |\n| Compare with Snapshot… | `editor.compareWithSnapshot` |\n| Go to Definition | `schema.goToDefinition` |\n| Find References | `schema.findReferences` |\n| Expand Abbreviation | `schema.expandAbbreviation` |\n| Copy as SQLite | `schema.copyAsSQLite` |\n| Copy as MySQL | `schema.copyAsMySQL` |\n| Copy as DBML | `schema.copyAsDBML` |\n| Copy as Data Dictionary | `schema.copyAsDictionary` |\n| Rename Table or Column… | `schema.rename` |\n| Review | `schema.review` |\n| Import Schema | `database.importSchema` |\n| Compare with Database | `database.compare` |\n| Read Table Sizes | `database.readSizes` |\n| Run Plan | `database.runPlan` |\n| Run Plan with ANALYZE | `database.runPlanAnalyze` |\n| Add Table Row Above | `table.insertRowAbove` |\n| Add Table Row Below | `table.insertRowBelow` |\n| Delete Table Row | `table.deleteRow` |\n| Duplicate Table Row | `table.duplicateRow` |\n| Move Table Row Up | `table.moveRowUp` |\n| Move Table Row Down | `table.moveRowDown` |\n| Add Table Column Before | `table.insertColumnLeft` |\n| Add Table Column After | `table.insertColumnRight` |\n| Delete Table Column | `table.deleteColumn` |\n| Duplicate Table Column | `table.duplicateColumn` |\n| Move Table Column Left | `table.moveColumnLeft` |\n| Move Table Column Right | `table.moveColumnRight` |\n| Align Table Column Left | `table.alignLeft` |\n| Align Table Column Center | `table.alignCenter` |\n| Align Table Column Right | `table.alignRight` |\n| Clear Table Column Alignment | `table.alignNone` |\n| Sort Table by Column, Ascending | `table.sortAscending` |\n| Sort Table by Column, Descending | `table.sortDescending` |\n| Convert Table to CSV | `table.toCsv` |\n| Convert CSV or TSV to Table | `table.fromDelimited` |\n\n## See also\n\n- [Plugins, macros and hooks](plugins.md), to run a command by its id when a note saves or opens\n- [Settings](settings.md), for the Shortcuts pane and every other setting\n- [Troubleshooting](troubleshooting.md), when a shortcut does nothing\n',re=`---
+`,re='---\ntitle: Keyboard shortcuts\nsection: Reference\norder: 1\nsummary: Look up every default key in Margin by area, and change any of them in Settings or keybindings.json.\n---\n\n# Keyboard shortcuts\n\nThese are Margin\'s default keys, grouped as the [shortcut sheet](window-tour.md#the-shortcut-sheet) groups them. Press ⌘/ in Margin to see the same list with any keys you have changed. The id beside each command is the name to use in `keybindings.json` and `.margin/hooks.json`.\n\nA key that macOS\'s text system already uses inside a text view keeps its macOS meaning in the editor. The [Shortcuts pane](settings.md#shortcuts) in Settings tells you when that happens.\n\n## Global\n\n| Keys | Command |\n| --- | --- |\n| ⌃⌥N | Open Margin\'s window, or bring it to the front, from any app. [Change it in Settings](panel.md#change-the-global-shortcut). |\n\n## Note\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘N | New Note | `native.newNote` |\n| ⌘R | Rename Note | `native.renameNote` |\n| ⌘⌫ | Move to Trash, from the list or search field | `native.trashNote` |\n| ⌥⌘P | Pin Note | `native.togglePinNote` |\n| ⇧⌘R | Reveal in Finder | `native.revealNote` |\n| ⌘L | Find Notes, which puts the keys in the search field | `native.focusSearch` |\n| ⌘↩ | Create Note from Search | `native.createFromSearch` |\n| ⌘P | Print… | `native.printNote` |\n\n## View\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘\\ | Show or Hide Note List | `native.toggleList` |\n| ⌃⌘S | Show or Hide Folders | `native.toggleFolders` |\n| ⌘1 | Editor | `native.showEditor` |\n| ⌘2 | Editor and Preview | `native.showEditorAndPreview` |\n| ⌘3 | Preview | `native.showPreview` |\n| ⌘+ or ⌘= | Bigger | `native.biggerText` |\n| ⌘- | Smaller | `native.smallerText` |\n| ⌘0 | Actual Size | `native.actualSizeText` |\n| ⇧⌘M | Hide Markdown Syntax | `native.toggleHideSyntax` |\n| ⌘D | Focus Mode | `native.toggleFocusMode` |\n| ⌥⌘T | Typewriter Scrolling | `native.toggleTypewriter` |\n| ⌘[ | Back | `native.goBack` |\n| ⌘] | Forward | `native.goForward` |\n| ⌘/ | Keyboard Shortcuts | `native.showShortcuts` |\n| ⇧⌘P | Command Palette… | `native.showPalette` |\n| ⌥⌘[ | Fold section | `editor.foldSection` |\n| ⌥⌘] | Unfold section | `editor.unfoldSection` |\n\n## Window\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘W | Close Window | `native.closePanel` |\n| ⌃⌘P | Keep on Top | `native.togglePin` |\n| ⌃⌘F, Globe-F or ⇧⌘F | Enter Full Screen | `native.toggleFullScreen` |\n| ⌘T | New Tab | `editor.newTab` |\n| ⇧⌘W | Close Tab | `editor.closeTab` |\n| ⇧⌘] | Next Tab | `editor.nextTab` |\n| ⇧⌘[ | Previous Tab | `editor.previousTab` |\n\n## Edit\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘Z | Undo | `native.undo` |\n| ⇧⌘Z | Redo | `native.redo` |\n| ⌘X | Cut | `native.cut` |\n| ⌘C | Copy | `native.copy` |\n| ⌘V | Paste | `native.paste` |\n| ⌥⇧⌘V | Paste and Match Style, which pastes plain text | `native.pasteAsPlainText` |\n| ⌘A | Select All | `native.selectAll` |\n| ⌥⌘C | Copy as HTML | `native.copyAsHTML` |\n| ⌥⇧⌘C | Copy Answer | `editor.copyAnswer` |\n| ⌃⇧⌘→ | Expand selection | `editor.expandSelection` |\n| ⌃⇧⌘← | Shrink selection | `editor.shrinkSelection` |\n\n## Search field\n\nThese keys work while the [search field](find-and-create.md#search-your-notes) has the keys, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↓ | Select the next note |\n| ↑ | Select the previous note |\n| ↩ | Open the note, or create one |\n| Esc | Clear the search, then close the panel |\n\n## Format\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘B | Bold | `editor.bold` |\n| ⌘I | Italic | `editor.italic` |\n| ⇧⌘X | Strikethrough | `editor.strikethrough` |\n| ⇧⌘C | Inline code | `editor.inlineCode` |\n\n## Blocks\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌥⌘1 to ⌥⌘6 | Heading 1 to Heading 6 | `editor.heading1` to `editor.heading6` |\n| ⌥⌘0 | Paragraph | `editor.paragraph` |\n| ⇧⌘8 | Bullet list | `editor.bulletList` |\n| ⇧⌘7 | Numbered list | `editor.numberedList` |\n| ⇧⌘T | Task item | `editor.taskItem` |\n| ⇧⌘L | Toggle the checkbox | `editor.toggleCheckbox` |\n| ⇧⌘K | Fenced code block | `editor.fence` |\n| ⌥⌘↑ | Move section up | `editor.moveSectionUp` |\n| ⌥⌘↓ | Move section down | `editor.moveSectionDown` |\n| ⌃⇧⌘↑ | Move block up | `editor.moveBlockUp` |\n| ⌃⇧⌘↓ | Move block down | `editor.moveBlockDown` |\n| ⇧⌘↩ | Run SQL block | `editor.runQuery` |\n\n## Lists\n\nThese keys act where the caret is, and cannot be changed.\n\n| Keys | Command |\n| --- | --- |\n| ↩ | Continue a list or quote |\n| ⌫ | Remove a list, quote or heading mark |\n| Tab | Nest a list item |\n| ⇧Tab | Unnest a list item |\n\n## Links\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘K | Link | `editor.link` |\n| ⌘-click | Open a link. Cannot be changed. | |\n| `[[` | Link to a note. Cannot be changed. | |\n\n## Find\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘F | Find | `editor.find` |\n| ⌥⌘F | Find and replace | `editor.findReplace` |\n| ⌘G | Find next | `editor.findNext` |\n| ⇧⌘G | Find previous | `editor.findPrevious` |\n| ⌘E | Use selection for find | `editor.useSelection` |\n| ⌥⌘R | Regular expressions in find | `editor.findPattern` |\n| ⇧⌘O | Outline | `editor.outline` |\n| Esc | Close find or outline. Cannot be changed. | |\n\n## AI\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘J | AI Commands, while AI is on | `ai.menu` |\n\n## Margin\n\n| Keys | Command | Id |\n| --- | --- | --- |\n| ⌘, | Settings… | `native.showSettings` |\n| ⌘Q | Quit Margin | `native.terminate` |\n\n## Keys inside lists and sheets\n\nSome lists have keys of their own, which work only while the list is open. Each page lists them:\n\n- The Review list\'s Explain, Apply Fix, Dismiss and Propose Fix. See [Review SQL](schema-review.md).\n- Use for this note in Compare flavors. See [Markdown flavors](flavors.md#compare-flavors).\n- Accepting an AI proposal. See [AI in a note](ai.md#review-a-proposal).\n- Moving through slides. See [Read the preview](preview.md#present-a-note-as-slides).\n\n## Change a shortcut\n\n1. Press ⌘, and open the Shortcuts pane.\n2. Find the command. The filter ignores case and accents.\n3. Click the command\'s keys and press the new chord. A chord needs ⌘, ⌃ or ⌥.\n\nPress Esc to cancel, or Delete to remove the command\'s key. Click Reset beside a command to give it back its default key, or Reset All to restore every default. When two commands share a chord, the pane names both. Every command except the fixed ones above is listed, including those with no default key.\n\n## Edit keybindings.json\n\nMargin keeps your changes in `~/Library/Application Support/Margin/keybindings.json`. You can edit it by hand:\n\n```json\n{\n  "version": 1,\n  "bindings": {\n    "editor.formatDocument": [{ "key": "f", "mods": ["ctrl", "alt"] }],\n    "editor.findPattern": null\n  }\n}\n```\n\nThis file gives [Format document](editor.md#tidy-a-note) the keys ⌃⌥F and takes ⌥⌘R away from [Regular expressions in find](find-and-replace.md#use-a-regular-expression). `null` removes a command\'s key. The modifiers are `cmd`, `ctrl`, `alt`, `shift` and `fn`. Margin reads the file when it starts and whenever the file changes. If the file has a mistake, Margin keeps the default keys and the Shortcuts pane shows the reason. Before Settings writes over a file that does not read, it moves it to `keybindings.json.bad`, so your work is not lost.\n\n## Commands with no default key\n\nThese commands are in the palette and have no key until you give them one. Use their ids in `keybindings.json` or `.margin/hooks.json`.\n\n| Command | Id |\n| --- | --- |\n| Properties | `note.properties` |\n| New Note from Template… | `note.newFromTemplate` |\n| Note Health | `native.showNoteHealth` |\n| Share… | `native.shareNote` |\n| Import… | `native.importDocument` |\n| Insert Image… | `native.insertImage` |\n| Export… | `native.exportNote` |\n| Export Diagram… | `native.exportDiagram` |\n| Export Notes Folder… | `native.exportNotesFolder` |\n| Export Listed Notes… | `native.exportListedNotes` |\n| Rename Tag… | `native.renameTag` |\n| Rename Property… | `native.renameProperty` |\n| Set Property on Listed Notes… | `native.setPropertyOnListedNotes` |\n| Replace in Notes… | `native.replaceInNotes` |\n| Copy as Markdown | `native.copyAsMarkdown` |\n| Copy as Plain Text | `native.copyAsPlainText` |\n| Larger Panel | `native.largerPanel` |\n| Smaller Panel | `native.smallerPanel` |\n| Default Panel Size | `native.defaultPanelSize` |\n| Edit Without Marks | `native.toggleEditWithoutMarks` |\n| Show Authorship | `native.toggleAuthorship` |\n| Unfold all sections | `editor.unfoldAll` |\n| Show in preview | `editor.showInPreview` |\n| Line breaks | `editor.lineBreaks` |\n| Compare flavors | `editor.compareFlavors` |\n| Start Presentation | `editor.startPresentation` |\n| Pin Reference Note… | `editor.pinReference` |\n| Unpin Reference Note | `editor.unpinReference` |\n| Layouts… | `editor.layouts` |\n| Save Layout… | `editor.saveLayout` |\n| Browse Backups… | `editor.browseBackups` |\n| Open Tasks… | `editor.openTasks` |\n| Format document | `editor.formatDocument` |\n| Format Code Blocks | `editor.formatCodeBlocks` |\n| Check Front Matter | `editor.checkFrontMatter` |\n| Check Style | `editor.checkStyle` |\n| Check Agent Files | `editor.checkAgentFiles` |\n| Agent Context | `editor.agentContext` |\n| Check Accessibility | `editor.checkAccessibility` |\n| Record Macro | `macro.record` |\n| Stop Recording | `macro.stop` |\n| Copy Unformatted Answer | `calc.copyUnformattedAnswer` |\n| Copy with Answers | `calc.copyWithAnswers` |\n| Insert Answer | `calc.insertAnswer` |\n| Alt text and caption… | `editor.imageText` |\n| Rename heading… | `editor.renameHeading` |\n| Move Section to New Note… | `editor.moveSection` |\n| Promote Section | `editor.promoteSection` |\n| Demote Section | `editor.demoteSection` |\n| Set Code Language… | `editor.setCodeLanguage` |\n| Export Section… | `editor.exportSection` |\n| Restore Section from Snapshot… | `editor.restoreSection` |\n| Compare with Snapshot… | `editor.compareWithSnapshot` |\n| Go to Definition | `schema.goToDefinition` |\n| Find References | `schema.findReferences` |\n| Expand Abbreviation | `schema.expandAbbreviation` |\n| Copy as SQLite | `schema.copyAsSQLite` |\n| Copy as MySQL | `schema.copyAsMySQL` |\n| Copy as DBML | `schema.copyAsDBML` |\n| Copy as Data Dictionary | `schema.copyAsDictionary` |\n| Rename Table or Column… | `schema.rename` |\n| Review | `schema.review` |\n| Import Schema | `database.importSchema` |\n| Compare with Database | `database.compare` |\n| Read Table Sizes | `database.readSizes` |\n| Run Plan | `database.runPlan` |\n| Run Plan with ANALYZE | `database.runPlanAnalyze` |\n| Add Table Row Above | `table.insertRowAbove` |\n| Add Table Row Below | `table.insertRowBelow` |\n| Delete Table Row | `table.deleteRow` |\n| Duplicate Table Row | `table.duplicateRow` |\n| Move Table Row Up | `table.moveRowUp` |\n| Move Table Row Down | `table.moveRowDown` |\n| Add Table Column Before | `table.insertColumnLeft` |\n| Add Table Column After | `table.insertColumnRight` |\n| Delete Table Column | `table.deleteColumn` |\n| Duplicate Table Column | `table.duplicateColumn` |\n| Move Table Column Left | `table.moveColumnLeft` |\n| Move Table Column Right | `table.moveColumnRight` |\n| Align Table Column Left | `table.alignLeft` |\n| Align Table Column Center | `table.alignCenter` |\n| Align Table Column Right | `table.alignRight` |\n| Clear Table Column Alignment | `table.alignNone` |\n| Sort Table by Column, Ascending | `table.sortAscending` |\n| Sort Table by Column, Descending | `table.sortDescending` |\n| Convert Table to CSV | `table.toCsv` |\n| Convert CSV or TSV to Table | `table.fromDelimited` |\n\n## See also\n\n- [Plugins, macros and hooks](plugins.md), to run a command by its id when a note saves or opens\n- [Settings](settings.md), for the Shortcuts pane and every other setting\n- [Troubleshooting](troubleshooting.md), when a shortcut does nothing\n',ie=`---
 title: Links and wikilinks
 section: Writing
 order: 4
@@ -1582,7 +1582,7 @@ To rename a heading and update every link that points at it, see [Outline, headi
 - [Outline, headings and sections](outline-and-sections.md), to rename headings and move sections without breaking links
 - [Rename, delete and organize notes](manage-notes.md), to rename or merge notes with their links updated
 - [Tags, properties and bases](properties-and-bases.md), to group notes by tag and property
-`,ie=`---
+`,ae=`---
 title: Lists and tasks
 section: Writing
 order: 3
@@ -1658,7 +1658,7 @@ To see every unchecked task in your notes in one list, with due dates and owners
 - [Write and edit](editor.md), to move a list item with ⌃⇧⌘↑ and ⌃⇧⌘↓
 - [Slash menu, snippets and templates](slash-menu.md), to insert a list or a task by name
 - [Short forms](slash-menu.md#type-a-short-form), to put in three tasks with \`;task3\` and Tab
-`,ae=`---
+`,oe=`---
 title: Rename, delete and organize notes
 section: Notes
 order: 2
@@ -1759,7 +1759,7 @@ To split a section out into a note of its own, see [Outline, headings and sectio
 - [Links and wikilinks](links.md), to see which notes link to a note and fix broken links
 - [Outline, headings and sections](outline-and-sections.md), to split a section into a note of its own
 - [How Margin keeps your notes safe](safety.md), for snapshots, backups and edits from other apps
-`,oe=`---
+`,se=`---
 title: Set up your notes folder
 section: Get started
 order: 2
@@ -1835,7 +1835,7 @@ Margin keeps everything else, such as pins, layouts, snapshots and backups, in \
 - [How Margin keeps your notes safe](safety.md), for how Margin saves the folder's files and backs them up
 - [Find and create notes](find-and-create.md), to search the folder and add notes to it
 - [Open and close the panel](panel.md), to open the panel from any app with its hotkey
-`,se=`---
+`,ce=`---
 title: Outline, headings and sections
 section: Organize
 order: 3
@@ -1914,24 +1914,31 @@ In the MultiMarkdown and All [flavors](flavors.md#what-each-flavor-reads), write
 - [Write and edit](editor.md), to move any block and follow the heading path in the footer
 - [Rename, delete and organize notes](manage-notes.md), to merge a whole note into another
 - [Find and create notes](find-and-create.md), to search headings across every note with \`#\`
-`,ce=`---
-title: Open and close the panel
+`,le=`---
+title: Open and close Margin's window
 section: Get started
 order: 3
-summary: Open Margin from the menu bar or a hotkey, pin it open, resize it, and fill the screen with it.
+summary: Open Margin's window from the menu bar, a hotkey, the Dock or Finder, keep it on top, resize it, and fill the screen with it.
 ---
 
-# Open and close the panel
+# Open and close Margin's window
 
-Margin's window is a panel that drops down from the menu bar. It opens over whatever app you are in, on every Space and over full-screen apps, and gets out of the way when you click elsewhere.
+In Margin 0.1.8 and later, Margin opens as a window in the middle of the screen, and it stays open until you close it. Margin 0.1.7 and earlier drop a panel down from the menu bar instead, which closes when you click elsewhere or press Esc.
 
-## Open the panel
+## Open the window
 
-- Click the Margin icon in the menu bar. The panel opens under the icon, on the display whose menu bar you clicked.
-- Press ⌃⌥N in any app. The panel opens on the screen that holds the pointer.
-- Click Margin's icon in the Dock, in Margin 0.1.6 and later. To keep Margin in the menu bar alone, turn off Show Margin in the Dock in [Settings](settings.md#startup-and-the-panel).
+Do any of these:
 
-The panel opens with the [search field](find-and-create.md#search-your-notes) ready for typing and the last note you had open on show. Margin also comes to the front, so [dictation, the emoji picker and Writing Tools](editor.md#type-in-any-language) work in the panel.
+- Click the Margin icon in the menu bar.
+- Press ⌃⌥N in any app.
+- Click Margin's icon in the Dock. To keep Margin in the menu bar alone, turn off Show Margin in the Dock in [Settings](settings.md#startup-and-the-panel).
+- Open Margin from the Applications folder or Finder.
+
+The window opens in the middle of the screen that holds the pointer, with the [search field](find-and-create.md#search-your-notes) ready for typing and the last note you had open on show. When the window is open already, each of these brings it to the front, and back from the Dock if you minimized it. None of them closes it.
+
+While the window is in front, Margin is the active app. Its menus, Margin, Edit, Note, View, Window and Help, show at the left of the menu bar, and [dictation, the emoji picker and Writing Tools](editor.md#type-in-any-language) work in the window.
+
+When Margin starts at login, it waits in the menu bar and opens no window.
 
 ## Change the global shortcut
 
@@ -1940,44 +1947,39 @@ The panel opens with the [search field](find-and-create.md#search-your-notes) re
 
 The hints in an empty notes folder show the new chord from then on.
 
-## Close the panel
+## Close the window
 
-Do any of these:
+Click the close button at the window's top left, or press ⌘W. Margin saves the open note and returns you to the app you were in.
 
-- Press Esc.
-- Press ⌘W.
-- Click anywhere outside the panel.
-- Press the global shortcut, or click the menu bar icon, again.
+Esc never closes the window. It clears text in the search field, closes the [find bar](find-and-replace.md#find-text-in-a-note), the [outline](outline-and-sections.md#open-the-outline), the \`[[\` completion list or the shortcut sheet, ends a [snippet's fields](slash-menu.md#fill-in-a-snippets-fields), and removes the marks Find References left. A click in another app leaves the window open behind it.
 
-When you close the panel, Margin saves the open note and returns you to the app you were in.
+## Keep the window on top
 
-Esc closes whatever sits on top first. It clears text in the search field, then closes the [find bar](find-and-replace.md#find-text-in-a-note), the [outline](outline-and-sections.md#open-the-outline), the \`[[\` completion list or the shortcut sheet, ends a [snippet's fields](slash-menu.md#fill-in-a-snippets-fields), and removes the marks Find References left. Once nothing is left to close, Esc closes the panel.
+Press ⌃⌘P, choose Keep on Top from the Window menu, or click the pin glyph at the right end of the search field. The window stays above other apps' windows, and the glyph fills in. Press ⌃⌘P again to let other windows cover it.
 
-## Keep the panel open
+## Resize the window
 
-Press ⌃⌘P, or click the pin glyph at the right end of the search field. The glyph fills in while the panel is pinned.
-
-A pinned panel stays open when you click in other apps. Esc, ⌘W, the global shortcut or the menu bar icon still close it. Press ⌃⌘P again to unpin.
-
-## Resize the panel
-
-Drag either bottom corner of the panel. Margin remembers the size for next time.
+Drag any edge or corner of the window. Margin remembers the size for next time.
 
 You can also change the size without dragging. Open the command palette with ⇧⌘P and choose one of these:
 
 | Command | What it does |
 | --- | --- |
-| Larger Panel | Makes the panel 80 points wider and taller |
-| Smaller Panel | Makes the panel 80 points narrower and shorter |
-| Default Panel Size | Sets the panel to 760 by 540 points |
+| Larger Panel | Makes the window 80 points wider and taller |
+| Smaller Panel | Makes the window 80 points narrower and shorter |
+| Default Panel Size | Sets the window to 760 by 540 points |
 
-The panel is never smaller than 480 by 360 points or larger than its screen. It keeps its top edge and its center as it grows and shrinks.
+The window is never smaller than 480 by 360 points or larger than its screen. It keeps its top edge and its center as it grows and shrinks.
 
 ## Fill the screen
 
-Press ⇧⌘F, ⌃⌘F or Globe-F, or choose Enter Full Screen from the note menu (⋯) in the editor header. The panel fills its screen, and the text fills the width, with no line width limit. Press the same keys again, or choose Exit Full Screen, to put the panel back.
+Press ⇧⌘F, ⌃⌘F or Globe-F, or choose Enter Full Screen from the note menu (⋯) in the editor header. The window fills its screen, and the text fills the width, with no line width limit. Press the same keys again, or choose Exit Full Screen, to put the window back.
 
-When you close a full-screen panel, it opens next time at the size it had before.
+When you close a full-screen window, it opens next time at the size it had before.
+
+## See the version and update
+
+The right end of the title bar shows the version you have. When a new version is ready, a purple Update to button shows beside it. Click it to see what changed and install. See [Install Margin](install.md#update-margin).
 
 ## Use the status item's menu
 
@@ -1990,9 +1992,12 @@ Right-click the Margin icon in the menu bar to see these commands:
 - Back Up Now
 - Settings…
 - Launch at Login
+- Margin Help
+- About Margin
+- Check for Updates…
 - Quit Margin
 
-See [How Margin keeps your notes safe](safety.md) for snapshots and backups.
+While a new version waits, Update to leads the menu. See [How Margin keeps your notes safe](safety.md) for snapshots and backups.
 
 ## Start Margin at login
 
@@ -2000,23 +2005,23 @@ Choose Launch at Login in the status item's menu, or turn it on in Settings. Mar
 
 ## Quit Margin
 
-Press ⌘Q while the panel is open, or choose Quit Margin from the status item's menu. Margin finishes saving the open note before it quits.
+Press ⌘Q while Margin's window is in front, or choose Quit Margin from the status item's menu. Margin finishes saving the open note before it quits.
 
 ## Good to know
 
-- The panel opens on every Space and over apps in full screen.
-- The panel sits on the system's glass material and follows the system's [light or dark appearance](appearance.md).
+- The window sits among your other windows, comes to the Space you are on, and opens over apps in full screen.
+- The window sits on the system's glass material and follows the system's [light or dark appearance](appearance.md).
 - It fades in over 0.15 seconds and out over 0.12 seconds with a short slide. The [format bar](formatting.md#use-the-format-bar), the slash menu and the empty folder's hints fade in too. Turn on Reduce Motion in System Settings to skip every fade.
-- Margin's release builds must meet a set of speed budgets. The panel shows within 50 ms of a click, Margin is ready within 600 ms of launch, a 10 MB note opens in 300 ms, and search answers within 10 ms a keystroke across 5,000 notes.
-- Margin has no menu bar of its own while you work. Every menu command is in the command palette, ⇧⌘P. See [A tour of the window](window-tour.md#the-command-palette).
+- Margin's release builds must meet a set of speed budgets. The window shows within 50 ms of a click, Margin is ready within 600 ms of launch, a 10 MB note opens in 300 ms, and search answers within 10 ms a keystroke across 5,000 notes.
+- Every menu command is in the command palette too, ⇧⌘P. See [A tour of the window](window-tour.md#the-command-palette).
 
 ## See also
 
-- [A tour of the window](window-tour.md), for the parts of the panel and the command palette
+- [A tour of the window](window-tour.md), for the parts of the window and the command palette
 - [Keyboard shortcuts](keyboard-shortcuts.md), for every key, and how to change one
-- [Tabs, layouts and the reference note](tabs-and-layouts.md), to save the panel's size and columns as a layout
-- [Troubleshooting](troubleshooting.md), when the panel will not close or Launch at Login stays off
-`,le=`---
+- [Tabs, layouts and the reference note](tabs-and-layouts.md), to save the window's size and columns as a layout
+- [Troubleshooting](troubleshooting.md), when Margin's icon is missing or Launch at Login stays off
+`,ue=`---
 title: Plugins, macros and hooks
 section: Plugins, macros and hooks
 order: 1
@@ -2084,7 +2089,7 @@ If a hook fails, Margin leaves the note as it was and says why, once, until the 
 - [Keyboard shortcuts](keyboard-shortcuts.md), for the command ids a hook or a key binding names
 - [Slash menu, snippets and templates](slash-menu.md), for snippets and templates, which need no code
 - [Troubleshooting](troubleshooting.md), when a plugin stops answering
-`,ue=`---
+`,de=`---
 title: Read the preview
 section: Reading and sharing
 order: 1
@@ -2200,7 +2205,7 @@ Front matter starts no slide, and Margin skips empty slides. A note with nothing
 - [Export, print and share](export.md), to save or print what the preview shows
 - [Math in notes](calc.md), to work out sums with an answer beside each line
 - [Tabs, layouts and the reference note](tabs-and-layouts.md), to keep a rendered reference note beside your draft
-`,de=`---
+`,fe=`---
 title: Privacy and network use
 section: Reference
 order: 3
@@ -2270,7 +2275,7 @@ To remove everything Margin keeps outside your notes, see [Install Margin](insta
 - [AI in a note](ai.md), to turn AI on and keep notes and passages out of it
 - [Connect a coding agent](agents.md), for what agents can and cannot see
 - [How Margin keeps your notes safe](safety.md), for snapshots and backups
-`,fe=`---
+`,pe=`---
 title: Tags, properties and bases
 section: Organize
 order: 1
@@ -2393,7 +2398,7 @@ To check that notes have the properties they should, see [Check a note](checks.m
 - [Open tasks across notes](tasks.md), to list open tasks with their owners and due dates
 - [Find and create notes](find-and-create.md), for every filter the search field takes
 - [Check a note](checks.md), to check front matter against a JSON Schema
-`,v=`---
+`,_=`---
 title: How Margin keeps your notes safe
 section: Notes
 order: 4
@@ -2504,7 +2509,7 @@ If Margin cannot write a note, a "Could not save" banner shows the reason. Your 
 - [Troubleshooting](troubleshooting.md), for what each banner means and what to do about it
 - [Privacy and network use](privacy.md), for every file Margin keeps in Application Support
 - [Install Margin](install.md), to keep or remove snapshots and backups when you uninstall
-`,y=`---
+`,v=`---
 title: SQL schema blocks
 section: SQL and databases
 order: 1
@@ -2705,7 +2710,7 @@ To review a schema for missing keys and indexes, see [Review SQL](schema-review.
 - [Database connections](databases.md), to run a block's SQL against a real database
 - [Slash menu, snippets and templates](slash-menu.md), for snippet fields and the schema templates
 - [Export, print and share](export.md), to save the diagram as SVG or PNG
-`,b=`---
+`,y=`---
 title: Review SQL
 section: SQL and databases
 order: 2
@@ -2822,7 +2827,7 @@ The plan never goes into the note. While a read waits, a notice says so. Press E
 - [SQL schema blocks](schema-blocks.md), to write the schema and set the naming convention Review checks
 - [Database connections](databases.md), to connect the database Review reads sizes and plans from
 - [Check a note](checks.md), for Margin's other checks of a note
-`,x=`---
+`,b=`---
 title: Settings
 section: Reference
 order: 2
@@ -2831,7 +2836,7 @@ summary: Find every Margin setting, what it does and what it starts as.
 
 # Settings
 
-Press ⌘, while the panel is open, or choose Settings… from the [status item's menu](panel.md#use-the-status-items-menu), to open Settings. Switches and checkboxes show their state in neutral colors, and the control with the keys shows a brighter surface instead of a blue ring.
+Press ⌘, while Margin's window is in front, or choose Settings… from the [status item's menu](panel.md#use-the-status-items-menu), to open Settings. Switches and checkboxes show their state in neutral colors, and the control with the keys shows a brighter surface instead of a blue ring.
 
 Settings that belong to one notes folder, such as which plugins are on and which note holds your math definitions, stay with that folder. Settings in your notes folder's \`.margin\` folder are listed in [Set up your notes folder](notes-folder.md#files-margin-keeps-in-the-margin-folder).
 
@@ -2847,7 +2852,7 @@ Settings that belong to one notes folder, such as which plugins are on and which
 
 | Setting | What it does | At first |
 | --- | --- | --- |
-| Global hotkey | Opens and closes the panel from any app. Click the recorder and press a chord. | ⌃⌥N |
+| Global hotkey | Opens Margin's window, or brings it to the front, from any app. Click the recorder and press a chord. | ⌃⌥N |
 | Launch at login | Starts Margin when you log in | Turned on at first launch from the Applications folder |
 | Check for updates once a day | Looks for a new version once a day and shows an Update to button when one is ready. Margin 0.1.6 and later | On |
 | Show Margin in the Dock | Gives Margin a Dock icon, which opens the panel, and its menus in the menu bar while it is in front. Off, Margin lives in the menu bar alone. Margin 0.1.6 and later | On |
@@ -2939,7 +2944,7 @@ Settings lists the plugins in your notes folder's \`.margin/plugins/\`, each wit
 - [Keyboard shortcuts](keyboard-shortcuts.md), for every default key
 - [Set up your notes folder](notes-folder.md), for the settings files that live in \`.margin\`
 - [Privacy and network use](privacy.md), for where Margin keeps its own files
-`,S=`---
+`,x=`---
 title: Slash menu, snippets and templates
 section: Writing
 order: 9
@@ -3075,7 +3080,7 @@ With AI on, Draft from Template… pours your rough notes into a template's shap
 - [Format text](formatting.md), for the keys that make the same blocks
 - [SQL schema blocks](schema-blocks.md), for the snippets and one-line abbreviations in a sql block
 - [AI in a note](ai.md), to draft a note from a template with AI
-`,C=`---
+`,S=`---
 title: Tables
 section: Writing
 order: 6
@@ -3179,7 +3184,7 @@ With Edit Without Marks on, a table draws as a grid of cells and the caret moves
 - [Tags, properties and bases](properties-and-bases.md), to see notes as a table and edit its cells in place
 - [Database connections](databases.md), to put a query's results in a note as a table
 - [Edit Without Marks](edit-without-marks.md), to edit a table as a grid of cells
-`,w=`---
+`,C=`---
 title: Tabs, layouts and the reference note
 section: Organize
 order: 4
@@ -3203,7 +3208,7 @@ New Tab opens a second tab on the current note. The next note you open fills it.
 
 Opening a note from the list, a [search](find-and-create.md#search-your-notes), a [link](links.md#open-a-link), [Back or Forward](manage-notes.md#go-back-and-forward) puts it in the current tab, or goes to the tab that already holds it. Close Tab opens the tab before it, and the last tab always stays.
 
-Tabs last until Margin quits. A note you rename keeps its tab under its new name. ⌘W still [closes the panel](panel.md#close-the-panel), not a tab.
+Tabs last until Margin quits. A note you rename keeps its tab under its new name. ⌘W still [closes the window](panel.md#close-the-window), not a tab.
 
 ## Pin a reference note
 
@@ -3236,7 +3241,7 @@ Margin keeps layouts for each notes folder in its own [Application Support folde
 - [Open and close the panel](panel.md), to resize the panel and fill the screen
 - [Read the preview](preview.md), for the editor, split and preview modes a layout saves
 - [Rename, delete and organize notes](manage-notes.md), to show the folder column and go back and forward
-`,T=`---
+`,w=`---
 title: Open tasks across notes
 section: Organize
 order: 2
@@ -3295,7 +3300,7 @@ With AI on, Pull Action Items reads a meeting note and proposes a task list of w
 - [Find and create notes](find-and-create.md), to find notes with open tasks through \`kind:todo\`
 - [Tags, properties and bases](properties-and-bases.md), to track notes on a board by a property
 - [AI in a note](ai.md), to pull action items out of a meeting note
-`,E=`---
+`,T=`---
 title: Troubleshooting
 section: Reference
 order: 4
@@ -3336,7 +3341,7 @@ Another app changed the note while you had unsaved changes. Margin saved the oth
 
 ## Margin's icon is not in the menu bar
 
-Press ⌃⌥N, or click Margin's icon in the Dock in Margin 0.1.6 and later. If the panel drops down, Margin is running and macOS is hiding its menu bar icon.
+Press ⌃⌥N, or click Margin's icon in the Dock in Margin 0.1.6 and later. If Margin's window opens, Margin is running and macOS is hiding its menu bar icon.
 
 1. Open System Settings, choose Menu Bar, and find Margin under Allow in the Menu Bar. Turn it on.
 2. If Margin is not in that list, quit it and open it again. In Activity Monitor, select Margin and click the stop button, then press ⌘Space, type Margin and press Return. Look at the list again.
@@ -3353,9 +3358,9 @@ If ⌃⌥N does nothing, Margin is not running. Open it with ⌘Space as in step
 
 See [Keyboard shortcuts](keyboard-shortcuts.md).
 
-## The panel does not close when I click elsewhere
+## The window stays above other apps
 
-The panel is [pinned](panel.md#keep-the-panel-open). Press ⌃⌘P or click the pin glyph to unpin it.
+In Margin 0.1.8 and later, a click elsewhere never closes the window, and only its close button or ⌘W does. When it also stays above other apps' windows, it is [kept on top](panel.md#keep-the-window-on-top). Press ⌃⌘P or click the pin glyph to let other windows cover it.
 
 ## Launch at Login did not turn on
 
@@ -3415,6 +3420,92 @@ If the open note does not finish closing within 2 seconds, Margin keeps the curr
 - [How Margin keeps your notes safe](safety.md), for how saving, conflict copies and backups work
 - [Set up your notes folder](notes-folder.md), for which files Margin lists and the \`.margin\` files it reads
 - [Settings](settings.md), for every setting and its default
+`,E=`---
+title: What's new in Margin
+section: Reference
+order: 5
+summary: Each version of Margin, what it added and what it fixed, newest first.
+---
+
+# What's new in Margin
+
+Each version Margin has published, newest first. Margin 0.1.6 and later offer each new version themselves. Before that, run \`brew upgrade --cask margin\`. Versions 0.1.2 and 0.1.3 were built and never published.
+
+## 0.1.8, 2026-11-16
+
+### New
+
+- **Margin opens as a window.** ⌃⌥N, the menu bar icon, the Dock, Applications and Finder open Margin's window in the middle of the screen, and it stays open until you click its close button or press ⌘W. A click elsewhere or Esc leaves it open. While it is in front, Margin's menus show in the menu bar. A launch at login opens no window.
+- **The version and a purple Update button in the title bar.** The right end of the title bar shows the version you have. When a new version is ready, a purple Update to button beside it shows what changed and installs it.
+- **Keep on Top.** Press ⌃⌘P, click the pin glyph or choose Keep on Top in the Window menu to keep the window above other apps' windows.
+
+## 0.1.7, 2026-11-16
+
+### New
+
+- **Short forms in your writing.** Type \`;table3x4\` and press Tab for a table of 3 columns and 4 rows, or \`;task3\` for three tasks. \`;ul3\`, \`;ol3\`, \`;link\`, \`;img\`, \`;code\`, \`;callout\`, \`;math\`, \`;fm\`, \`;date\` and \`;time\` work too. Press ⇧⌘P and choose Short Forms Cheat Sheet for the list.
+- **Merge Note Into…** Press ⇧⌘P and choose it to add the open note's text to the end of another note. Margin moves the open note to the Trash and points every link at the note that remains.
+- **Three more cheat sheets.** Slash Menu, Bases and Search Filters, each in the palette (⇧⌘P).
+- **About Margin.** In Margin's menu and the status item's menu, it shows the version you have.
+
+## 0.1.6, 2026-11-16
+
+### New
+
+- **Updates from inside Margin.** Margin checks once a day for a new version. When one is ready, an Update to button shows in the editor's footer and at the top of Margin's menu. Click it to see what changed and install. Check for Updates… looks now, and Settings, General turns the daily check off.
+- **Margin in the Dock.** Margin has a Dock icon, which opens the panel, so you can reach it even when macOS hides the menu bar icon. Turn off Show Margin in the Dock in Settings, General to keep it in the menu bar alone.
+- **Emmet in HTML and CSS blocks.** Type \`ul>li*3\` in an html block, or \`m10\` in a css block, and press Tab. Press ⇧⌘P and type \`cheat\` for the HTML and CSS Abbreviations Cheat Sheet.
+- **Markdown Cheat Sheet.** Press ⇧⌘P and choose Markdown Cheat Sheet for every mark Margin reads, with the key that writes it.
+- **Add Front Matter.** Press ⇧⌘P and choose Add Front Matter to write the block at the top of a note with the cursor inside it. Turn On Math for This Note writes \`calc: true\` for you.
+- **Roots and recipe fractions in math.** \`√50000\` and \`∛27\` work. \`1/3 cup\` is a third of a cup, and \`1 1/3 cups in ml\` is 315.45 ml.
+
+### Fixed
+
+- The palette's Review is now Review SQL, the name the guide uses, so typing \`review sql\` finds it.
+- Code comments, punctuation and strings in the preview were too light to read easily. They now meet WCAG AA contrast in every theme.
+- The Schema Settings sheet says what \`naming\` and \`groups\` hold, with an example group.
+
+## 0.1.5, 2026-11-15
+
+### New
+
+- **Margin Help.** The whole guide inside Margin, offline. Choose Margin Help in the menu bar icon's menu, the panel's ⋯ menu or the command palette (⇧⌘P). Open in Browser shows the same page on the docs site.
+- **Open Schema Settings.** Press ⇧⌘P and type \`schema settings\` to edit your notes folder's \`.margin/schema.json\` in a sheet. Margin writes the file with its defaults when you have none, and uses a saved change right away.
+- **The panel opens on first launch.** A new install drops the panel down to ask for your notes folder, so you see Margin even when macOS hides its menu bar icon.
+
+### Fixed
+
+- In the Sepia theme, code punctuation and strings in the preview were too light to read easily. They now meet WCAG AA contrast.
+
+## 0.1.4, 2026-11-15
+
+### New
+
+- **Cheat sheets.** Press ⇧⌘P and type \`cheat\`. The Schema Abbreviations sheet lists every abbreviation with the SQL Tab writes, and the Math sheet lists every kind of calculation with its answer. Each has a filter.
+- **Fractions in math.** Fraction characters such as ½ and ¾, and mixed numbers such as \`1 1/2 pounds\`, work as Soulver reads them.
+- **More percent phrases.** \`50 as % of 200\` and \`what % of 200 is 50\` both answer 25%.
+
+### Fixed
+
+- The block menu changed the line after a selection that ended at that line's start.
+- The block menu put a prefix on table rows, \`* * *\` and a heading's underline.
+- Backspace on the last letter of bold text left \`****\` in the file.
+- Typing \`|\` after a \`\\\` in a table cell split the cell.
+- macOS capitalized \`table:\` in a SQL block, so the abbreviation did not expand. \`Table:\` works too.
+- \`1½ * 2\` answered 2.
+
+## 0.1.1, 2026-11-15
+
+- Notarized by Apple, so Margin opens on its first launch with no extra step.
+
+## 0.1.0, 2026-11-15
+
+- The first version published, installed with Homebrew from the tap \`tayler-id/margin\`. It was signed with Developer ID but not notarized, so macOS stopped its first launch until you clicked Open Anyway in System Settings, Privacy & Security.
+
+## See also
+
+- [Install Margin](install.md#update-margin), for how Margin offers each new version and how to update from Homebrew
+- [Privacy and network use](privacy.md#when-margin-goes-online), for what the daily update check sends
 `,D=`---
 title: A tour of the window
 section: Get started
@@ -3428,7 +3519,7 @@ The panel has a search field across the top, the note list on the left, and the 
 
 ## The search field
 
-The search field runs across the top of the panel and reads "Search or create a note". Type in it to filter the list. When the field holds text, its right end shows what Return will do, Open or Create. The pin glyph at the far right [keeps the panel open](panel.md#keep-the-panel-open). See [Find and create notes](find-and-create.md).
+The search field runs across the top of the panel and reads "Search or create a note". Type in it to filter the list. When the field holds text, its right end shows what Return will do, Open or Create. The pin glyph at the far right [keeps the window on top](panel.md#keep-the-window-on-top). See [Find and create notes](find-and-create.md).
 
 Press ⌘L from anywhere in the panel to go back to the search field.
 
@@ -3504,4 +3595,4 @@ To move a block without dragging, see [Write and edit](editor.md#drag-a-block).
 `)){let t=e.indexOf(`:`);t>0&&r.set(e.slice(0,t).trim(),e.slice(t+1).trim())}return{slug:e,title:r.get(`title`)??e,section:r.get(`section`)??``,order:Number(r.get(`order`)??0),summary:r.get(`summary`)??``,body:t.slice(n[0].length)}}function A(e){let t=e=>{let t=O.indexOf(e);return t<0?O.length:t};return[...new Set(e.map(e=>e.section))].sort((e,n)=>t(e)-t(n)||e.localeCompare(n)).map(t=>({section:t,pages:e.filter(e=>e.section===t).sort((e,t)=>e.order-t.order||e.title.localeCompare(t.title))}))}function j(e){return e.toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu,``).trim().replace(/\s+/g,`-`)}function M(e){let t=[],n=``;for(let r of e.split(`
 `)){let e=/^(`{3,}|~{3,})/.exec(r);if(e){n?r.startsWith(n)&&(n=``):n=e[1]??``;continue}if(n)continue;let i=/^## +(.+?)\s*#*\s*$/.exec(r);i?.[1]&&t.push({id:j(i[1]),text:i[1]})}return t}function N(e){return e.replace(/^(`{3,}|~{3,}).*$/gm,``).replace(/^\s*\|(.*)\|\s*$/gm,(e,t)=>t.split(`|`).map(e=>e.trim()).filter(Boolean).join(` · `)).replace(/^\s*(?:[-*+]|\d+[.)])\s+/gm,``).replace(/\[([^\]]*)\]\([^)]*\)/g,`$1`).replace(/[*_`>#|]/g,``).replace(/[ \t]+/g,` `)}var P=e=>e.normalize(`NFKD`).replace(/\p{M}/gu,``).toLowerCase();function F(e,t){let n=P(t).split(/\s+/).filter(Boolean);if(n.length===0)return[];let r=[];for(let t of e){let e=N(t.body),i=P(`${t.title}\n${t.summary}\n${e}`);if(!n.every(e=>i.includes(e)))continue;let a=M(t.body),o=n.filter(e=>P(t.title).includes(e)).length*10,s=n.filter(e=>a.some(t=>P(t.text).includes(e))).length*5,c=e.split(`
 `).map(e=>e.trim()).filter(Boolean).map((e,t)=>({line:e,at:t,count:n.filter(t=>P(e).includes(t)).length})).filter(({line:e})=>!e.startsWith(`---`)).sort((e,t)=>t.count-e.count||e.at-t.at)[0],l=``;if(c){let t=e.split(`
-`).map(e=>e.trim()).filter(Boolean).slice(0,c.at+1);for(let e of t){let t=a.find(t=>t.text===e);t&&(l=t.text)}}let u=n.reduce((t,n)=>t+P(e).split(n).length-1,0);r.push({slug:t.slug,title:t.title,heading:l,snippet:c&&c.count>0?c.line.slice(0,160):t.summary,score:o+s+(c?.count??0),said:u})}return r.sort((e,t)=>t.score-e.score||t.said-e.said||e.title.localeCompare(t.title)).slice(0,20).map(({score:e,said:t,...n})=>n)}function I(e){let[t=``,n=``]=e.replace(/^#\/?/,``).split(`/`);return{slug:decodeURIComponent(t),anchor:decodeURIComponent(n)}}var L=Object.entries(Object.assign({"../../../help/pages/agents.md":n,"../../../help/pages/ai-across-notes.md":r,"../../../help/pages/ai.md":i,"../../../help/pages/appearance.md":a,"../../../help/pages/calc.md":o,"../../../help/pages/checks.md":s,"../../../help/pages/code-blocks.md":c,"../../../help/pages/databases.md":l,"../../../help/pages/edit-without-marks.md":u,"../../../help/pages/editor.md":d,"../../../help/pages/export.md":f,"../../../help/pages/find-and-create.md":p,"../../../help/pages/find-and-replace.md":m,"../../../help/pages/flavors.md":h,"../../../help/pages/formatting.md":ee,"../../../help/pages/images.md":g,"../../../help/pages/import.md":_,"../../../help/pages/install.md":te,"../../../help/pages/keyboard-shortcuts.md":ne,"../../../help/pages/links.md":re,"../../../help/pages/lists-and-tasks.md":ie,"../../../help/pages/manage-notes.md":ae,"../../../help/pages/notes-folder.md":oe,"../../../help/pages/outline-and-sections.md":se,"../../../help/pages/panel.md":ce,"../../../help/pages/plugins.md":le,"../../../help/pages/preview.md":ue,"../../../help/pages/privacy.md":de,"../../../help/pages/properties-and-bases.md":fe,"../../../help/pages/safety.md":v,"../../../help/pages/schema-blocks.md":y,"../../../help/pages/schema-review.md":b,"../../../help/pages/settings.md":x,"../../../help/pages/slash-menu.md":S,"../../../help/pages/tables.md":C,"../../../help/pages/tabs-and-layouts.md":w,"../../../help/pages/tasks.md":T,"../../../help/pages/troubleshooting.md":E,"../../../help/pages/window-tour.md":D})).map(([e,t])=>k(e.replace(/^.*\/|\.md$/g,``),t)),R=A(L),z=R.flatMap(e=>e.pages),B=e(`all`);function V(e,t={},...n){let r=document.createElement(e);for(let[e,n]of Object.entries(t))n!==void 0&&r.setAttribute(e,n);return r.append(...n),r}var H=V(`button`,{class:`help-menu`,type:`button`,"aria-expanded":`false`,"aria-controls":`help-nav`},`Pages`),U=V(`input`,{type:`search`,placeholder:`Search the guide`,"aria-label":`Search Help`,spellcheck:`false`}),W=V(`nav`,{class:`help-nav`,id:`help-nav`,"aria-label":`Pages`}),G=V(`main`,{class:`help-page preview`}),K=V(`aside`,{class:`help-toc`,"aria-label":`On this page`});document.body.append(V(`header`,{class:`help-bar`},H,V(`a`,{class:`help-title`,href:`#/`},`Margin Help`),V(`label`,{class:`help-search`},U,V(`kbd`,{},`/`))),V(`div`,{class:`help-body`},W,V(`div`,{class:`help-main`},G,K)));for(let e of R){let t=V(`ul`);for(let n of e.pages)t.append(V(`li`,{},V(`a`,{href:`#/${n.slug}`,"data-slug":n.slug},n.title)));W.append(V(`h2`,{},e.section),t)}function q(e){document.body.classList.toggle(`help-nav-open`,e),H.setAttribute(`aria-expanded`,String(e))}H.addEventListener(`click`,()=>q(!document.body.classList.contains(`help-nav-open`)));function pe(e){for(let t of e.querySelectorAll(`a[href]`)){let e=t.getAttribute(`href`)??``,n=/^([\w-]+)\.md(?:#([\w-]+))?$/.exec(e);n?t.setAttribute(`href`,`#/${n[1]}${n[2]?`/${n[2]}`:``}`):e.startsWith(`#`)&&t.setAttribute(`href`,`#/${J}/${e.slice(1)}`)}}function me(e){for(let t of[...e.querySelectorAll(`h2`)]){if(!/^(good to know|limits)$/i.test((t.textContent??``).trim()))continue;let e=V(`section`,{class:`help-note`});t.before(e);let n=t;for(;n&&!(n instanceof HTMLHeadingElement&&n.tagName===`H2`&&n!==t);){let t=n.nextSibling;e.append(n),n=t}}}function he(e){for(let t of e.querySelectorAll(`table`)){let e=V(`div`,{class:`help-table`});t.before(e),e.append(t)}}var J=``,Y=[];function X(){if(Y.length===0)return;let e=(document.querySelector(`.help-bar`)?.getBoundingClientRect().bottom??0)+40,t=Y[0];for(let n of Y)n.heading.getBoundingClientRect().top<=e&&(t=n);window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-2&&(t=Y[Y.length-1]);for(let e of Y)e===t?e.link.setAttribute(`aria-current`,`location`):e.link.removeAttribute(`aria-current`)}var Z=!1;window.addEventListener(`scroll`,()=>{Z||(Z=!0,requestAnimationFrame(()=>{Z=!1,X()}))},{passive:!0});function ge(e){let t=e.offsetTop,n=t+e.offsetHeight;(t<W.scrollTop||n>W.scrollTop+W.clientHeight)&&(W.scrollTop=t-W.clientHeight/3)}function _e(e,n){let r=L.find(t=>t.slug===e)??z[0];if(!r)return;J=r.slug,G.innerHTML=t(B.render(r.body)),G.prepend(V(`p`,{class:`help-kicker`},r.section));for(let e of G.querySelectorAll(`h2`))e.id=j(e.textContent??``);me(G),he(G);for(let e of G.querySelectorAll(`ol[start]`))e.style.counterReset=`step ${e.start-1}`;pe(G);let i=z.indexOf(r),a=z[i-1],o=z[i+1],s=V(`nav`,{class:`help-steps`,"aria-label":`Previous and next`});a&&s.append(V(`a`,{href:`#/${a.slug}`,class:`help-previous`},V(`span`,{},`Previous`),a.title)),o&&s.append(V(`a`,{href:`#/${o.slug}`,class:`help-next`},V(`span`,{},`Next`),o.title)),G.append(s),K.replaceChildren(),Y=[];let c=M(r.body);if(c.length>1){let e=V(`ul`);for(let t of c){let n=V(`a`,{href:`#/${r.slug}/${t.id}`},t.text),i=document.getElementById(t.id);i&&Y.push({heading:i,link:n}),e.append(V(`li`,{},n))}K.append(V(`h2`,{},`On this page`),e)}let l;for(let e of W.querySelectorAll(`a[data-slug]`))e.dataset.slug===r.slug?(e.setAttribute(`aria-current`,`page`),l=e):e.removeAttribute(`aria-current`);l&&ge(l),q(!1),document.title=`${r.title} - Margin Help`;let u=n?document.getElementById(n):null;u?u.scrollIntoView():window.scrollTo(0,0),X()}function Q(e){let t=F(L,e);G.replaceChildren(V(`h1`,{},t.length?`Results for "${e.trim()}"`:`No pages hold "${e.trim()}"`));let n=V(`ul`,{class:`help-results`});for(let e of t){let t=e.heading?`/${j(e.heading)}`:``,r=L.find(t=>t.slug===e.slug)?.section??``;n.append(V(`li`,{},V(`p`,{class:`help-hit-section`},r),V(`a`,{href:`#/${e.slug}${t}`},e.title,e.heading?V(`span`,{},` › ${e.heading}`):``),V(`p`,{class:`help-hit-snippet`},e.snippet)))}G.append(n),K.replaceChildren(),Y=[];for(let e of W.querySelectorAll(`a[aria-current]`))e.removeAttribute(`aria-current`);window.scrollTo(0,0)}function $(){let{slug:e,anchor:t}=I(location.hash);U.value=``,_e(e,t)}U.addEventListener(`input`,()=>U.value.trim()?Q(U.value):$()),U.addEventListener(`keydown`,e=>{e.key===`Enter`&&G.querySelector(`.help-results a`)?.click(),e.key===`Escape`&&(U.value=``,$())}),document.addEventListener(`keydown`,e=>{e.key===`/`&&document.activeElement!==U&&(e.preventDefault(),U.focus()),e.key===`Escape`&&q(!1)}),window.addEventListener(`hashchange`,$),$();
+`).map(e=>e.trim()).filter(Boolean).slice(0,c.at+1);for(let e of t){let t=a.find(t=>t.text===e);t&&(l=t.text)}}let u=n.reduce((t,n)=>t+P(e).split(n).length-1,0);r.push({slug:t.slug,title:t.title,heading:l,snippet:c&&c.count>0?c.line.slice(0,160):t.summary,score:o+s+(c?.count??0),said:u})}return r.sort((e,t)=>t.score-e.score||t.said-e.said||e.title.localeCompare(t.title)).slice(0,20).map(({score:e,said:t,...n})=>n)}function I(e){let[t=``,n=``]=e.replace(/^#\/?/,``).split(`/`);return{slug:decodeURIComponent(t),anchor:decodeURIComponent(n)}}var L=Object.entries(Object.assign({"../../../help/pages/agents.md":n,"../../../help/pages/ai-across-notes.md":r,"../../../help/pages/ai.md":i,"../../../help/pages/appearance.md":a,"../../../help/pages/calc.md":o,"../../../help/pages/checks.md":s,"../../../help/pages/code-blocks.md":c,"../../../help/pages/databases.md":l,"../../../help/pages/edit-without-marks.md":u,"../../../help/pages/editor.md":d,"../../../help/pages/export.md":f,"../../../help/pages/find-and-create.md":p,"../../../help/pages/find-and-replace.md":m,"../../../help/pages/flavors.md":ee,"../../../help/pages/formatting.md":h,"../../../help/pages/images.md":g,"../../../help/pages/import.md":te,"../../../help/pages/install.md":ne,"../../../help/pages/keyboard-shortcuts.md":re,"../../../help/pages/links.md":ie,"../../../help/pages/lists-and-tasks.md":ae,"../../../help/pages/manage-notes.md":oe,"../../../help/pages/notes-folder.md":se,"../../../help/pages/outline-and-sections.md":ce,"../../../help/pages/panel.md":le,"../../../help/pages/plugins.md":ue,"../../../help/pages/preview.md":de,"../../../help/pages/privacy.md":fe,"../../../help/pages/properties-and-bases.md":pe,"../../../help/pages/safety.md":_,"../../../help/pages/schema-blocks.md":v,"../../../help/pages/schema-review.md":y,"../../../help/pages/settings.md":b,"../../../help/pages/slash-menu.md":x,"../../../help/pages/tables.md":S,"../../../help/pages/tabs-and-layouts.md":C,"../../../help/pages/tasks.md":w,"../../../help/pages/troubleshooting.md":T,"../../../help/pages/whats-new.md":E,"../../../help/pages/window-tour.md":D})).map(([e,t])=>k(e.replace(/^.*\/|\.md$/g,``),t)),R=A(L),z=R.flatMap(e=>e.pages),B=e(`all`);function V(e,t={},...n){let r=document.createElement(e);for(let[e,n]of Object.entries(t))n!==void 0&&r.setAttribute(e,n);return r.append(...n),r}var H=V(`button`,{class:`help-menu`,type:`button`,"aria-expanded":`false`,"aria-controls":`help-nav`},`Pages`),U=V(`input`,{type:`search`,placeholder:`Search the guide`,"aria-label":`Search Help`,spellcheck:`false`}),W=V(`nav`,{class:`help-nav`,id:`help-nav`,"aria-label":`Pages`}),G=V(`main`,{class:`help-page preview`}),K=V(`aside`,{class:`help-toc`,"aria-label":`On this page`});document.body.append(V(`header`,{class:`help-bar`},H,V(`a`,{class:`help-title`,href:`#/`},`Margin Help`),V(`label`,{class:`help-search`},U,V(`kbd`,{},`/`))),V(`div`,{class:`help-body`},W,V(`div`,{class:`help-main`},G,K)));for(let e of R){let t=V(`ul`);for(let n of e.pages)t.append(V(`li`,{},V(`a`,{href:`#/${n.slug}`,"data-slug":n.slug},n.title)));W.append(V(`h2`,{},e.section),t)}function q(e){document.body.classList.toggle(`help-nav-open`,e),H.setAttribute(`aria-expanded`,String(e))}H.addEventListener(`click`,()=>q(!document.body.classList.contains(`help-nav-open`)));function me(e){for(let t of e.querySelectorAll(`a[href]`)){let e=t.getAttribute(`href`)??``,n=/^([\w-]+)\.md(?:#([\w-]+))?$/.exec(e);n?t.setAttribute(`href`,`#/${n[1]}${n[2]?`/${n[2]}`:``}`):e.startsWith(`#`)&&t.setAttribute(`href`,`#/${J}/${e.slice(1)}`)}}function he(e){for(let t of[...e.querySelectorAll(`h2`)]){if(!/^(good to know|limits)$/i.test((t.textContent??``).trim()))continue;let e=V(`section`,{class:`help-note`});t.before(e);let n=t;for(;n&&!(n instanceof HTMLHeadingElement&&n.tagName===`H2`&&n!==t);){let t=n.nextSibling;e.append(n),n=t}}}function ge(e){for(let t of e.querySelectorAll(`table`)){let e=V(`div`,{class:`help-table`});t.before(e),e.append(t)}}var J=``,Y=[];function X(){if(Y.length===0)return;let e=(document.querySelector(`.help-bar`)?.getBoundingClientRect().bottom??0)+40,t=Y[0];for(let n of Y)n.heading.getBoundingClientRect().top<=e&&(t=n);window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-2&&(t=Y[Y.length-1]);for(let e of Y)e===t?e.link.setAttribute(`aria-current`,`location`):e.link.removeAttribute(`aria-current`)}var Z=!1;window.addEventListener(`scroll`,()=>{Z||(Z=!0,requestAnimationFrame(()=>{Z=!1,X()}))},{passive:!0});function _e(e){let t=e.offsetTop,n=t+e.offsetHeight;(t<W.scrollTop||n>W.scrollTop+W.clientHeight)&&(W.scrollTop=t-W.clientHeight/3)}function Q(e,n){let r=L.find(t=>t.slug===e)??z[0];if(!r)return;J=r.slug,G.innerHTML=t(B.render(r.body)),G.prepend(V(`p`,{class:`help-kicker`},r.section));for(let e of G.querySelectorAll(`h2`))e.id=j(e.textContent??``);he(G),ge(G);for(let e of G.querySelectorAll(`ol[start]`))e.style.counterReset=`step ${e.start-1}`;me(G);let i=z.indexOf(r),a=z[i-1],o=z[i+1],s=V(`nav`,{class:`help-steps`,"aria-label":`Previous and next`});a&&s.append(V(`a`,{href:`#/${a.slug}`,class:`help-previous`},V(`span`,{},`Previous`),a.title)),o&&s.append(V(`a`,{href:`#/${o.slug}`,class:`help-next`},V(`span`,{},`Next`),o.title)),G.append(s),K.replaceChildren(),Y=[];let c=M(r.body);if(c.length>1){let e=V(`ul`);for(let t of c){let n=V(`a`,{href:`#/${r.slug}/${t.id}`},t.text),i=document.getElementById(t.id);i&&Y.push({heading:i,link:n}),e.append(V(`li`,{},n))}K.append(V(`h2`,{},`On this page`),e)}let l;for(let e of W.querySelectorAll(`a[data-slug]`))e.dataset.slug===r.slug?(e.setAttribute(`aria-current`,`page`),l=e):e.removeAttribute(`aria-current`);l&&_e(l),q(!1),document.title=`${r.title} - Margin Help`;let u=n?document.getElementById(n):null;u?u.scrollIntoView():window.scrollTo(0,0),X()}function ve(e){let t=F(L,e);G.replaceChildren(V(`h1`,{},t.length?`Results for "${e.trim()}"`:`No pages hold "${e.trim()}"`));let n=V(`ul`,{class:`help-results`});for(let e of t){let t=e.heading?`/${j(e.heading)}`:``,r=L.find(t=>t.slug===e.slug)?.section??``;n.append(V(`li`,{},V(`p`,{class:`help-hit-section`},r),V(`a`,{href:`#/${e.slug}${t}`},e.title,e.heading?V(`span`,{},` › ${e.heading}`):``),V(`p`,{class:`help-hit-snippet`},e.snippet)))}G.append(n),K.replaceChildren(),Y=[];for(let e of W.querySelectorAll(`a[aria-current]`))e.removeAttribute(`aria-current`);window.scrollTo(0,0)}function $(){let{slug:e,anchor:t}=I(location.hash);U.value=``,Q(e,t)}U.addEventListener(`input`,()=>U.value.trim()?ve(U.value):$()),U.addEventListener(`keydown`,e=>{e.key===`Enter`&&G.querySelector(`.help-results a`)?.click(),e.key===`Escape`&&(U.value=``,$())}),document.addEventListener(`keydown`,e=>{e.key===`/`&&document.activeElement!==U&&(e.preventDefault(),U.focus()),e.key===`Escape`&&q(!1)}),window.addEventListener(`hashchange`,$),$();
